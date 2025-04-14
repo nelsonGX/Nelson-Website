@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h3 className="text-xl font-bold text-white flex items-center">
-              <span className="text-orange-300">Nelson</span><span>'s</span>
+              <span className="text-orange-300">Nelso</span><span>n</span>
             </h3>
             <p className="text-zinc-500">Student & Developer from Taiwan</p>
           </div>
@@ -24,8 +24,14 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="mt-6 text-center text-zinc-600 text-sm">
-          <p>© {new Date().getFullYear()} Nelson. All rights reserved.</p>
+        <div className="mt-6 text-center text-zinc-600 text-sm px-4">
+          <div className="flex flex-wrap items-center justify-center gap-1">
+            <span className="text-zinc-500">Nelson{"\'"}s Website</span>
+            <span>&copy; 2025 nelsonGX.</span>
+            <span>This page is open-sourced on</span>
+            <a href="https://github.com/nelsonGX/Nelson-Website" className="text-orange-300/50">GitHub</a>
+            <span>with MIT license.</span>
+          </div>
         </div>
       </div>
     </footer>
