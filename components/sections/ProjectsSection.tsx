@@ -74,15 +74,14 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </div>
               </div>
               }
-              <div className="w-full md:w-2/3">
+              <div className="w-fit items-center justify-center relative">
                 <h3 className="text-2xl font-bold text-white mb-3">Server Managing</h3>
                 <p className="text-gray-300 mb-4">
                   I am the founder of several server hostings. I have experience in managing servers and hosting websites.
                 </p>
                 {window1Maximized && (
                   <>
-                  <h1 className="text-4xl py-10">Server Hosting I&apos;ve made</h1>
-                    <div className="border-2-2 absolute border-zinc-200 h-full border left-[10%]" />
+                  <h1 className="text-4xl py-10 text-center">Server Hosting I&apos;ve made</h1>
                     {[
                     { date: 'Mar 2022', title: 'FreeServer', imageSrc: "/assets/images/freeserver.png", description: 
                     <>
@@ -126,19 +125,12 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                         </div>
                     </>
                     },
-                   { date: 'Jul 2024', title: 'Paid Hosting', imageSrc: "/assets/images/exampleimage.png", description: 
-                    <>
-                        <div>
-                            <p>abc</p>
-                        </div>
-                    </>
-                    },
                   ].map((data, idx) => (
-                    <div className="mb-8 flex items-center" key={idx}>
-                        <div className="left-[7%] relative flex bg-zinc-600 shadow-xl w-24 h-12 rounded-lg">
+                    <div className="mb-8 md:flex space-y-4 items-center space-x-6 justify-center" key={idx}>
+                        <div className="relative flex bg-zinc-600 shadow-xl w-24 h-12 rounded-lg">
                             <h1 className="mx-auto my-auto font-semibold text-lg text-white">{data.date}</h1>
                         </div>
-                        <div className="left-[10%] flex md:block relative bg-zinc-800 rounded-lg shadow-xl w-1/2 px-6 py-4">
+                        <div className="md:flex bg-zinc-800 rounded-lg shadow-xl md:max-w-2/3 px-6 py-4">
                             <Image src={data.imageSrc} alt={'Image'} width={100} height={10} className="object-cover h-20 w-auto my-auto" />
                             <div className="relative px-4">
                                 <h3 className="mb-3 font-bold text-white text-xl">{data.title}</h3>
@@ -221,7 +213,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <div className="w-full md:w-2/3">
                 <h3 className="text-2xl font-bold text-white mb-3">Minecraft</h3>
                 <p className="text-gray-300 mb-4">
-                  I have been playing Minecraft for over 10 years. I have experience in creating custom mods and plugins.
+                  I have been playing Minecraft for over 7 years. I have experience in creating custom plugins and stuff.
                 </p>
                 {window3Maximized && (
                   <div className="mt-4">

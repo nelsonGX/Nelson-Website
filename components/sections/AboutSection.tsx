@@ -28,7 +28,7 @@ const AboutSection: React.FC = () => {
       name: 'JavaScript', 
       icon: <FaJs className="text-yellow-400" />, 
       bg: "bg-zinc-700/50",
-      confidence: "Not bad"
+      confidence: "Not bad, but I hate it"
     },
     { 
       name: 'Next.JS', 
@@ -43,10 +43,22 @@ const AboutSection: React.FC = () => {
       confidence: "It's just inside nextjs"
     },
     { 
+      name: 'Tailwind CSS', 
+      icon: <Image src="/assets/images/tailwind.png" alt="Tailwind CSS" width={20} height={20} className="text-white" />, 
+      bg: "bg-yellow-400/15",
+      confidence: "better than pure css"
+    },
+    { 
       name: 'MongoDB', 
       icon: <FaLeaf className="text-green-800" />, 
       bg: "bg-yellow-400/15",
-      confidence: "I use it"
+      confidence: "I use it (not really well)"
+    },
+    { 
+      name: 'CraftBukkit',
+      icon: <Image src="/assets/images/craftbukkit.png" alt="CraftBukkit" width={20} height={20} className="text-white" />,
+      bg: "bg-yellow-400/15",
+      confidence: "the minecraft plugin api"
     },
     { 
       name: 'Linux', 
@@ -73,19 +85,22 @@ const AboutSection: React.FC = () => {
       title: 'CheapServer',
       description: 'A hosting service for game servers based in Taiwan.',
       since: '2022 - now',
-      link: 'https://cheapserver.tw'
+      link: 'https://cheapserver.tw',
+      tech: ["Networking", "Infrastructure", "Linux"]
     },
     {
       title: 'FreeServer v3',
       description: 'A free hosting service community.',
       since: '2023 - now',
-      link: 'https://freeserver.tw'
+      link: 'https://freeserver.tw',
+      tech: ["Networking", "Linux", "Next.JS", "JavaScript"]
     },
     {
       title: 'FreeServer Network',
       description: 'A Minecraft server focusing on map sharing for creators.',
       since: '2024 - now',
-      link: 'https://freeserver.network'
+      link: 'https://freeserver.network',
+      tech: ["Networking", "Infrastructure", "Linux", "Java", "CraftBukkit", "Next.JS"]
     }
   ];
 
@@ -172,7 +187,7 @@ const AboutSection: React.FC = () => {
                 </div>
                 
                 {/* Right column - Tech Stack and Projects */}
-                <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700 h-[512px] overflow-auto">
+                <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700 h-[560px] overflow-auto">
                   <div className="space-y-8">
                       <h3 className="text-xl text-orange-400 font-semibold mb-4">Projects / Services</h3>
                       <div className="space-y-4">
@@ -180,6 +195,11 @@ const AboutSection: React.FC = () => {
                           <div key={index} className="bg-zinc-700/50 p-4 rounded-lg">
                             <h4 className="text-lg font-medium text-white">{project.title}</h4>
                             <p className="text-zinc-300 text-sm mt-1">{project.description}</p>
+                            <div className="flex flex-wrap gap-2 mt-2">
+                              {project.tech.map((tech, index) => (
+                                <span key={index} className="bg-zinc-600/50 text-xs px-2 py-1 rounded-full">{tech}</span>
+                              ))}
+                            </div>
                             <div className="mt-2 flex justify-between items-center">
                               <span className="text-xs text-zinc-400">{project.since}</span>
                               <a href={project.link} className="text-xs text-orange-400 hover:text-orange-300">Website →</a>
