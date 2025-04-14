@@ -1,7 +1,18 @@
 import React from 'react';
 import DraggableWindow from '../ui/DraggableWindow';
-import { Maximize2 } from 'lucide-react';
 import Image from 'next/image';
+
+const IconWrapper = ({ children }: { children: React.ReactNode }) => (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {children}
+        </svg>
+);
+
+const Square = () => (
+  <IconWrapper>
+        <rect x="5" y="5" width="12" height="12" rx="2" ry="2"></rect>
+  </IconWrapper>
+);
 
 interface ProjectsSectionProps {
   windowPositions: {
@@ -56,32 +67,91 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             startDrag={startDrag}
           >
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+              { !window1Maximized &&
               <div className="w-full md:w-1/3 flex justify-center">
                 <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
                   <Image src="/assets/images/server-1080x1080.webp" height={1080} width={1080} alt="Server Management" className="w-full h-full object-cover" />
                 </div>
               </div>
+              }
               <div className="w-full md:w-2/3">
                 <h3 className="text-2xl font-bold text-white mb-3">Server Managing</h3>
                 <p className="text-gray-300 mb-4">
                   I am the founder of several server hostings. I have experience in managing servers and hosting websites.
                 </p>
                 {window1Maximized && (
-                  <div className="mt-4">
-                    <h4 className="text-lg font-medium text-orange-300 mb-2">Experience includes:</h4>
-                    <ul className="list-disc pl-5 text-gray-300 space-y-1">
-                      <li>Linux server administration</li>
-                      <li>Docker containerization</li>
-                      <li>Web hosting configuration</li>
-                      <li>Database management</li>
-                      <li>Server security hardening</li>
-                      <li>Load balancing and scaling</li>
-                    </ul>
-                  </div>
+                  <>
+                  <h1 className="text-4xl py-10">Server Hosting I&apos;ve made</h1>
+                    <div className="border-2-2 absolute border-zinc-200 h-full border left-[10%]" />
+                    {[
+                    { date: 'Mar 2022', title: 'FreeServer', imageSrc: "/assets/images/freeserver.png", description: 
+                    <>
+                        <div>
+                            <p>FreeServer was a project started by me and Mayboy. Initially, I saw my friend Mayboy was using Google Cloud Platform (GCP)&apos;s free 300 USD plan, and I was wondering if we can use that as a free hosting. Thus, we found another friend, Windless, to join the project.<br/>
+                            <br/>
+                            The FreeServer provides free hosting for Minecraft servers and discord bots. The free specs include 1 vCPU, 4 GB RAM, and 10 GB Disks. The server located in Taiwan. The specs is pretty a lot for a free hosting in Asia. <br/>
+                            <br/>
+                            The server got a lot of DDoS traffic when started, until we met Fast-Line&apos;s owner Alger Huang. He offers free anti-DDoS service for us. After about 4 months later, we met both GCP&apos;s policy change and EOS of Fast-Line&apos;s free anti-DDoS service. Finally, We decided to shut down the FreeServer at August 2022.</p>
+                        </div>
+                    </>
+                    },
+                    { date: 'Aug 2022', title: 'CheapServer', imageSrc: "/assets/images/CheapServer_white.png", description: 
+                    <>
+                        <div>
+                            <p>As we&apos;ve earnt some money from FreeServer, thus we decided to open a paid server hosting service called CheapServer. We added our another friend CH this time, to start the business. <br/>
+                            <br/>
+                            When CheapServer started, there were no such hosting in Taiwan that can provide the same low price as us (as we believed). We was selling when started. <br/>
+                            <br/>
+                            CheapServer is still running until now. We have a lot of customers, and we are still providing the best service to our customers, trying to improve our service.
+                            </p>
+                        </div>
+                    </>
+                    },
+                   { date: 'Jan 2023', title: 'FreeServer v2', imageSrc: "/assets/images/freeserver.png", description: 
+                    <>
+                        <div>
+                            <p>After CheapServer, we missed the good old days while operating FreeServer. Thus, we spent some money from CheapServer instead of getting free trials from GCP this time, to operate the FreeServer v2.<br/>
+                            <br/>
+                            Firstly, we bought a VPS from Taipei 101 (one of my friend), then started the hosting. We re-used the website components from FreeServer v1. We had some cooperate issues, so we changed the server provider to Hetzner.<br/>
+                            <br/>
+                            However, we had no more money and was getting tired. Thus, we decided to shut down the FreeServer v2 at July 2023.
+                            </p>
+                        </div>
+                    </>
+                    },
+                   { date: 'Nov 2023', title: 'FreeServer v3', imageSrc: "/assets/images/freeserverv3.png", description: 
+                    <>
+                        <div>
+                            <p>One of my friend, Ricky aka Smitug mentioned re-open of FreeServer when we were in our Discord VC. </p>
+                        </div>
+                    </>
+                    },
+                   { date: 'Jul 2024', title: 'Paid Hosting', imageSrc: "/assets/images/exampleimage.png", description: 
+                    <>
+                        <div>
+                            <p>abc</p>
+                        </div>
+                    </>
+                    },
+                  ].map((data, idx) => (
+                    <div className="mb-8 flex items-center" key={idx}>
+                        <div className="left-[7%] relative flex bg-zinc-600 shadow-xl w-24 h-12 rounded-lg">
+                            <h1 className="mx-auto my-auto font-semibold text-lg text-white">{data.date}</h1>
+                        </div>
+                        <div className="left-[10%] flex md:block relative bg-zinc-800 rounded-lg shadow-xl w-1/2 px-6 py-4">
+                            <Image src={data.imageSrc} alt={'Image'} width={100} height={10} className="object-cover h-20 w-auto my-auto" />
+                            <div className="relative px-4">
+                                <h3 className="mb-3 font-bold text-white text-xl">{data.title}</h3>
+                                <p className="text-sm leading-snug tracking-wide text-zinc-300 text-opacity-100">{data.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                  ))}
+                  </>
                 )}
                 {!window1Maximized && (
                   <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
-                    Click maximize <Maximize2 size={14} /> button to see more.
+                    Click maximize ( <Square /> ) button to see more.
                   </p>
                 )}
               </div>
@@ -119,7 +189,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 )}
                 {!window2Maximized && (
                   <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
-                    Click maximize <Maximize2 size={14} /> button to see more.
+                    Click maximize ( <Square /> ) button to see more.
                   </p>
                 )}
               </div>
@@ -167,7 +237,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 )}
                 {!window3Maximized && (
                   <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
-                    Click maximize <Maximize2 size={14} /> button to see more.
+                    Click maximize ( <Square /> ) button to see more.
                   </p>
                 )}
               </div>
