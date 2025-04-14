@@ -1,9 +1,48 @@
-import React from 'react';
-import { Mail, Github } from 'lucide-react';
+"use client";
+
+import React, { useState } from 'react';
+import { Mail, Link as LLink, Check, Copy } from 'lucide-react';
+import { FaDiscord, FaTelegram } from 'react-icons/fa';
+
+interface ContactCardProps {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+}
+
+const ContactCard: React.FC<ContactCardProps> = ({ icon, title, value }) => {
+  const [copied, setCopied] = useState(false);
+  
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+  
+  return (
+    <div className="flex items-center gap-4 p-4 bg-zinc-800/40 backdrop-blur-sm rounded-lg border border-zinc-700 relative group">
+      {icon}
+      <div className="flex-grow">
+        <h4 className="text-gray-300 font-medium">{title}</h4>
+        <p className="text-gray-500">{value}</p>
+      </div>
+      <button 
+        onClick={copyToClipboard}
+        className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-zinc-700/70 cursor-pointer"
+        aria-label={`Copy ${title}`}
+      >
+        {copied ? <Check className="text-green-400" size={18} /> : <Copy className="text-gray-400" size={18} />}
+      </button>
+    </div>
+  );
+};
 
 const ContactSection: React.FC = () => {
   return (
-    <section id="contact" className="min-h-screen py-20 px-6 relative bg-black">
+    <section id="contact" className="min-h-screen pt-20 px-6 relative bg-black">
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
@@ -20,25 +59,34 @@ const ContactSection: React.FC = () => {
               <div>
                 <h3 className="text-xl font-semibold text-white mb-4">Get In Touch</h3>
                 <p className="text-gray-400">
-                  Interested in working together or have a question?
-                  Feel free to reach out--I&apos;m always open to new opportunities and connections.
+                  Want to talk to me?
                 </p>
               </div>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 bg-zinc-800/40 backdrop-blur-sm rounded-lg border border-zinc-700">
-                  <Mail className="text-orange-400" size={24} />
-                  <div>
-                    <h4 className="text-gray-300 font-medium">Email</h4>
-                    <p className="text-gray-500">nelson@example.com</p>
-                  </div>
-                </div>
+                <ContactCard 
+                  icon={<Mail className="text-orange-400" size={24} />}
+                  title="Email"
+                  value="hi@nelsongx.com"
+                />
                 
+                <ContactCard 
+                  icon={<FaDiscord className="text-orange-400" size={24} />}
+                  title="Discord"
+                  value="@nelsonGX"
+                />
+
+                <ContactCard 
+                  icon={<FaTelegram className="text-orange-400" size={24} />}
+                  title="Telegram"
+                  value="@nelsonGX"
+                />
+
                 <div className="flex items-center gap-4 p-4 bg-zinc-800/40 backdrop-blur-sm rounded-lg border border-zinc-700">
-                  <Github className="text-orange-400" size={24} />
+                  <LLink className="text-orange-400" size={24} />
                   <div>
-                    <h4 className="text-gray-300 font-medium">GitHub</h4>
-                    <p className="text-gray-500">github.com/nelson</p>
+                    <h4 className="text-gray-300 font-medium">View More...</h4>
+                    <a href="/socials" className="text-orange-300 hover:underline">Go to the socials page</a>
                   </div>
                 </div>
               </div>

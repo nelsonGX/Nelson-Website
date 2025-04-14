@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { User, Contact } from "lucide-react"
+import { User, Link as LLink } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 export default function Header() {
@@ -26,9 +26,9 @@ export default function Header() {
           <User />
           <p>About</p>
         </Link>
-        <Link href="/contact" className={`flex items-center space-x-1 cursor-pointer ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}>
-          <Contact />
-          <p>Contact</p>
+        <Link href="/socials" className={`flex items-center space-x-1 cursor-pointer ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}>
+          <LLink />
+          <p>Socials</p>
         </Link>
       </div>
     </header>
