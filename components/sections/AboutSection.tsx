@@ -81,7 +81,7 @@ const AboutSection: React.FC = () => {
               </button>
             </div>
             
-            <div className="text-zinc-400 text-xs">nelson@portfolio ~ </div>
+            <div className="text-zinc-400 text-xs">nelson@whoami ~ </div>
           </div>
           
           {/* Window content */}
@@ -91,18 +91,21 @@ const AboutSection: React.FC = () => {
                 {/* Left column - About me text */}
                 <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700">
                   <p className="text-lg text-gray-300 mb-6">
-                    Hello! My name is Nelson. I&apos;m a student from Taiwan. I have a passion in field of computer related stuff.
+                    Hello! My name is Nelson, aka nelsonGX. I&apos;m a student from Taiwan, and I have a passion in field of computer related stuff.
                   </p>
                   <p className="text-lg text-gray-300 mb-6">
-                    I love exploring new technologies, participating in tech events, and building interesting projects. My interests span from server management to web development and everything in between.
+                    I currently own Very Fast Network LTD, a company based in Taiwan that operates CheapServer hosting services under AS152619. Alongside this main business, I run FreeServer, a free hosting service community designed for people who want to host their own servers.
+                  </p>
+                  <p className="text-lg text-gray-300 mb-6">
+                    I also love to participate in open-source projects and contribute to the community. I believe in the power of collaboration and sharing knowledge.
                   </p>
                   <div>
                     <h3 className="text-xl text-orange-400 font-semibold mb-4">Tech Stack</h3>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="flex flex-wrap gap-2">
                       {techStack.map((tech, index) => (
-                        <div key={index} className="flex items-center gap-3 bg-zinc-700/50 p-3 rounded-lg">
+                        <div key={index} className="flex items-center gap-3 bg-zinc-700/50 px-2 py-1 rounded-lg max-w-min">
                           {tech.icon}
-                          <span className="text-gray-200">{tech.name}</span>
+                          <span className="text-gray-200 text-sm">{tech.name}</span>
                         </div>
                       ))}
                     </div>

@@ -1,9 +1,9 @@
 const events: Record<string, string[]> = {
   "2025": [
-    "SITCON 2025 - Developer",
+    "SITCON 2025 - Developement Team - Member",
     "CYBERSEC 2025 - Attendee",
     "COMPUTEX 2025 - Attendee",
-    "SITCON Camp 2025 - Curriculum Designer",
+    "SITCON Camp 2025 - Event Coordination Team - Leader",
   ],
   "2024": [
     "HITCON CTF 2024 - Attendee",
