@@ -3,11 +3,10 @@
 import React, { useState, useEffect } from 'react';
 
 // Layout components
-import Navigation from '../components/layout/Navigation';
-import SocialLinks from '../components/layout/SocialLinks';
 import ProgressIndicator from '../components/layout/ProgressIndicator';
 import LoadingScreen from '../components/layout/LoadingScreen';
 import Footer from '../components/layout/Footer';
+import Header from '@/components/layout/Header';
 
 // Section components
 import HeroSection from '../components/sections/HeroSection';
@@ -28,7 +27,6 @@ import {
 import events from '../components/data/eventsData';
 
 const NelsonPortfolio = () => {
-  const [activeSection, setActiveSection] = useState('home');
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
   const [terminalActive, setTerminalActive] = useState(false);
@@ -55,7 +53,7 @@ const NelsonPortfolio = () => {
       setTimeout(() => {
         setLoading(false);
         setFadeOut(true);
-      }, 300);
+      }, 0);
     }
   }, []);
   
@@ -66,12 +64,12 @@ const NelsonPortfolio = () => {
       
       {/* Loading screen */}
       <LoadingScreen loading={loading} fadeOut={fadeOut} />
-      
-      {/* Navigation */}
-      <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+  
+      {/* Header */}
+      <Header />
       
       {/* Hero section */}
-      <HeroSection setActiveSection={setActiveSection} />
+      <HeroSection />
       
       {/* About section */}
       <AboutSection />

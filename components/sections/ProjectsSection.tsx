@@ -2,6 +2,7 @@ import React from 'react';
 import DraggableWindow from '../ui/DraggableWindow';
 import TerminalComponent from '../ui/TerminalComponent';
 import { Maximize2 } from 'lucide-react';
+import Image from 'next/image';
 
 interface ProjectsSectionProps {
   windowPositions: {
@@ -58,7 +59,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-full md:w-1/3 flex justify-center">
                 <div className="w-32 h-32 md:w-48 md:h-48 rounded-lg overflow-hidden">
-                  <img src="/api/placeholder/300/300?text=Server" alt="Server Management" className="w-full h-full object-cover" />
+                  <Image src="/api/placeholder/300/300?text=Server" height={128} width={128} alt="Server Management" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="w-full md:w-2/3">
@@ -125,7 +126,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
               <div className="w-full md:w-1/3 flex justify-center">
                 <div className="w-32 h-32 md:w-48 md:h-48 rounded-lg overflow-hidden">
-                  <img src="/api/placeholder/300/300?text=Coding" alt="Coding and Development" className="w-full h-full object-cover" />
+                  <Image src="/api/placeholder/300/300?text=Coding" height={100} width={128} alt="Coding and Development" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
