@@ -17,8 +17,7 @@ import ContactSection from '../components/sections/ContactSection';
 
 // Custom hooks
 import { 
-  useWindowDimensions, 
-  useMousePosition, 
+  useWindowDimensions,
   useScrollProgress, 
   useDraggableWindows 
 } from '../components/hooks';
@@ -29,11 +28,9 @@ import events from '../components/data/eventsData';
 const NelsonPortfolio = () => {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
-  const [terminalActive, setTerminalActive] = useState(false);
   
   // Using custom hooks
-  const { windowWidth, windowHeight, isSmallScreen } = useWindowDimensions();
-  const { mousePosition, getParallaxStyle } = useMousePosition(windowWidth, windowHeight);
+  const { isSmallScreen } = useWindowDimensions();
   const scrollProgress = useScrollProgress();
   const { 
     windowPositions, 
