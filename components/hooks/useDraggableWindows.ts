@@ -29,9 +29,9 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
   const [draggedWindow, setDraggedWindow] = useState<string | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [windowPositions, setWindowPositions] = useState<WindowPositions>({
-    window1: { x: 100, y: 50 },
-    window2: { x: 200, y: 150 },
-    window3: { x: 300, y: 250 }
+    window1: { x: 50, y: 30 },
+    window2: { x: 400, y: 300 },
+    window3: { x: 90, y: 700 }
   });
   
   // Use refs to avoid re-renders during drag operations
@@ -113,9 +113,6 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
   const startDrag = (windowId: string, e: React.MouseEvent) => {
     // Don't start drag if any window is maximized
     if (window1Maximized || window2Maximized || window3Maximized) return;
-    
-    // Get the element being dragged
-    const element = e.currentTarget;
     
     // Bring clicked window to front
     const allWindows = document.querySelectorAll('[id^="window"]');

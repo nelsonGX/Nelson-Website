@@ -32,7 +32,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   isSmallScreen
 }) => {
   return (
-    <section id="projects" className="min-h-screen py-20 px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
+    <section id="projects" className="min-h-screen pb-96 pt-10 px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
