@@ -1,7 +1,13 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { User, Contact } from "lucide-react"
 
 export default function Header() {
+  const currentPath = window.location.pathname
+  const isHomePage = currentPath === "/"
+
   return (
     <header className="absolute flex min-w-screen top-0 backdrop-blur-md px-8 py-4 justify-between">
       <div>
@@ -14,11 +20,13 @@ export default function Header() {
       </div>
       
       <div className="flex items-center space-x-6">
-        <Link href="/about">
-          <p className="text-zinc-200">About</p>
+        <Link href="/" className={`flex items-center space-x-1 ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}>
+          <User />
+          <p>About</p>
         </Link>
-        <Link href="/contact">
-          <p className="text-zinc-200">Contact</p>
+        <Link href="/contact" className={`flex items-center space-x-1 ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}>
+          <Contact />
+          <p>Contact</p>
         </Link>
       </div>
     </header>
