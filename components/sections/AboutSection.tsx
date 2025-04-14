@@ -90,7 +90,7 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen py-20 px-6 relative bg-gradient-to-b from-zinc-900 to-zinc-800 overflow-hidden">
+    <section id="about" className="min-h-screen py-20 px-2 md:px-6 relative bg-gradient-to-b from-zinc-900 to-zinc-800 overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section title outside the Mac window */}
         <div className="flex items-center mb-12">
@@ -135,19 +135,19 @@ const AboutSection: React.FC = () => {
           </div>
           
           {/* Window content */}
-          <div className="p-6">
+          <div className="p-2 md:p-6">
             {viewMode === 'gui' ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10">
                 {/* Left column - About me text */}
                 <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700">
                   <p className="text-lg text-gray-300 mb-6">
                     Hello! My name is Nelson, aka nelsonGX. I&apos;m a student from Taiwan, and I have a passion in field of computer related stuff.
                   </p>
                   <p className="text-lg text-gray-300 mb-6">
-                    I currently own Very Fast Network LTD, a company based in Taiwan that operates CheapServer hosting services under AS152619. Alongside this main business, I run FreeServer, a free hosting service community designed for people who want to host their own servers.
+                    I currently own Very Fast Network LTD, a company based in Taiwan that operates CheapServer hosting services under AS152619. Alongside this main business, I run FreeServer, a free hosting service community. I also manage a Minecraft server called FreeServer Network, which focuses on map sharing for creators.
                   </p>
                   <p className="text-lg text-gray-300 mb-6">
-                    I also love to participate in open-source projects and contribute to the community. I believe in the power of collaboration and sharing knowledge.
+                    I&apos;m actively involved in tech communities, attending conferences like SITCON, HITCON, and COSCUP to learn and network with fellow enthusiasts.
                   </p>
                   <div>
                     <h3 className="text-xl text-orange-400 font-semibold mb-4">Tech Stack</h3>
