@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Server, Code, Layers, Database, Globe, Github } from 'lucide-react';
+import { FaPython, FaJava, FaJs, FaReact, FaLeaf, FaLinux } from 'react-icons/fa';
+import { Globe, Server } from 'lucide-react';
 import TerminalComponent from '../ui/TerminalComponent';
+import Image from 'next/image';
 
 const AboutSection: React.FC = () => {
   const [viewMode, setViewMode] = useState<'gui' | 'terminal'>('gui');
@@ -10,12 +12,60 @@ const AboutSection: React.FC = () => {
   };
 
   const techStack = [
-    { name: 'React', icon: <Code className="text-blue-400" size={24} /> },
-    { name: 'Node.js', icon: <Server className="text-green-400" size={24} /> },
-    { name: 'PostgreSQL', icon: <Database className="text-blue-300" size={24} /> },
-    { name: 'Docker', icon: <Layers className="text-blue-500" size={24} /> },
-    { name: 'AWS', icon: <Globe className="text-orange-400" size={24} /> },
-    { name: 'Git', icon: <Github className="text-white" size={24} /> },
+    { 
+      name: 'Python', 
+      icon: <FaPython className="text-blue-300" />, 
+      bg: "bg-zinc-700/50",
+      confidence: "Pretty confident" 
+    },
+    { 
+      name: 'Java', 
+      icon: <FaJava className="text-red-400" />, 
+      bg: "bg-zinc-700/50",
+      confidence: "I do minecraft plugins" 
+    },
+    { 
+      name: 'JavaScript', 
+      icon: <FaJs className="text-yellow-400" />, 
+      bg: "bg-zinc-700/50",
+      confidence: "Not bad"
+    },
+    { 
+      name: 'Next.JS', 
+      icon: <Image src="/assets/images/nextjs.webp" alt="Next.js" width={20} height={20} className="text-white" />, 
+      bg: "bg-yellow-400/15",
+      confidence: "Pretty confident"
+    },
+    { 
+      name: 'React', 
+      icon: <FaReact className="text-blue-400" />, 
+      bg: "bg-yellow-400/15",
+      confidence: "It's just inside nextjs"
+    },
+    { 
+      name: 'MongoDB', 
+      icon: <FaLeaf className="text-green-800" />, 
+      bg: "bg-yellow-400/15",
+      confidence: "I use it"
+    },
+    { 
+      name: 'Linux', 
+      icon: <FaLinux className="text-gray-400" />, 
+      bg: "bg-yellow-400/15",
+      confidence: "I can read commands"
+    },
+    { 
+      name: 'Networking', 
+      icon: <Globe className="text-green-400" />, 
+      bg: "bg-orange-400/15",
+      confidence: "not bad"
+    },
+    { 
+      name: 'Infrastructure', 
+      icon: <Server className="text-orange-400" />, 
+      bg: "bg-orange-400/15",
+      confidence: "not bad"
+    }
   ];
 
   const pastProjects = [
@@ -103,9 +153,18 @@ const AboutSection: React.FC = () => {
                     <h3 className="text-xl text-orange-400 font-semibold mb-4">Tech Stack</h3>
                     <div className="flex flex-wrap gap-2">
                       {techStack.map((tech, index) => (
-                        <div key={index} className="flex items-center gap-3 bg-zinc-700/50 px-2 py-1 rounded-lg max-w-min">
+                        <div 
+                          key={index} 
+                          className={`flex items-center gap-3 px-2 py-1 rounded-lg max-w-fit ${tech.bg} transition-all duration-300 hover:scale-105 relative group cursor-pointer`}
+                        >
                           {tech.icon}
                           <span className="text-gray-200 text-sm">{tech.name}</span>
+                          {/* Tooltip that appears on hover */}
+                          <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1 bg-zinc-900 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                            <span className="font-medium">{tech.confidence}</span>
+                            {/* Triangle pointer */}
+                            <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-zinc-900"></div>
+                          </div>
                         </div>
                       ))}
                     </div>
