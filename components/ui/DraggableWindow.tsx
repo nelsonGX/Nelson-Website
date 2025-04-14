@@ -93,7 +93,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         left: position.x, 
         top: position.y, 
         width: isSmallScreen ? '90%' : '750px', 
-        height: '500px'
+        height: '400px'
       }}
     >
       {/* Window header - Windows-style title bar */}

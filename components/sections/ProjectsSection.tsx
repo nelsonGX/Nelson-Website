@@ -1,6 +1,5 @@
 import React from 'react';
 import DraggableWindow from '../ui/DraggableWindow';
-import TerminalComponent from '../ui/TerminalComponent';
 import { Maximize2 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -56,10 +55,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             onMinimize={() => {}}
             startDrag={startDrag}
           >
-            <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
               <div className="w-full md:w-1/3 flex justify-center">
-                <div className="w-32 h-32 md:w-48 md:h-48 rounded-lg overflow-hidden">
-                  <Image src="/api/placeholder/300/300?text=Server" height={128} width={128} alt="Server Management" className="w-full h-full object-cover" />
+                <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
+                  <Image src="/assets/images/server-1080x1080.webp" height={1080} width={1080} alt="Server Management" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="w-full md:w-2/3">
@@ -100,7 +99,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             onMinimize={() => {}}
             startDrag={startDrag}
           >
-            <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-2/3">
                 <h3 className="text-2xl font-bold text-white mb-3">Coding & Development</h3>
                 <p className="text-gray-300 mb-4">
@@ -125,8 +124,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 )}
               </div>
               <div className="w-full md:w-1/3 flex justify-center">
-                <div className="w-32 h-32 md:w-48 md:h-48 rounded-lg overflow-hidden">
-                  <Image src="/api/placeholder/300/300?text=Coding" height={100} width={128} alt="Coding and Development" className="w-full h-full object-cover" />
+                <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
+                  <Image src="/assets/images/coding-816x816.webp" height={816} width={816} alt="Coding and Development" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -135,7 +134,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {/* Window 3 */}
           <DraggableWindow
             id="window3"
-            title="terminal.exe"
+            title="aboutme.exe - minecraft"
             position={windowPositions.window3}
             maximized={window3Maximized}
             isSmallScreen={isSmallScreen}
@@ -143,7 +142,36 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             onMinimize={() => {}}
             startDrag={startDrag}
           >
-            <TerminalComponent />
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="w-full md:w-1/3 flex justify-center">
+                <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
+                  <Image src="/assets/images/minecraft-1080x1080.webp" height={1080} width={1080} alt="Minecraft" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="w-full md:w-2/3">
+                <h3 className="text-2xl font-bold text-white mb-3">Minecraft</h3>
+                <p className="text-gray-300 mb-4">
+                  I have been playing Minecraft for over 10 years. I have experience in creating custom mods and plugins.
+                </p>
+                {window3Maximized && (
+                  <div className="mt-4">
+                    <h4 className="text-lg font-medium text-orange-300 mb-2">Experience includes:</h4>
+                    <ul className="list-disc pl-5 text-gray-300 space-y-1">
+                      <li>Java programming</li>
+                      <li>Plugin development</li>
+                      <li>Server management</li>
+                      <li>Modding</li>
+                      <li>Community engagement</li>
+                    </ul>
+                  </div>
+                )}
+                {!window3Maximized && (
+                  <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
+                    Click maximize <Maximize2 size={14} /> button to see more.
+                  </p>
+                )}
+              </div>
+            </div>
           </DraggableWindow>
         </div>
       </div>

@@ -30,7 +30,7 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [windowPositions, setWindowPositions] = useState<WindowPositions>({
     window1: { x: 50, y: 30 },
-    window2: { x: 400, y: 300 },
+    window2: { x: 400, y: 350 },
     window3: { x: 90, y: 700 }
   });
   
