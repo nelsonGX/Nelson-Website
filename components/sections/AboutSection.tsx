@@ -53,7 +53,7 @@ const AboutSection: React.FC = () => {
         </div>
         
         {/* Mac-style window */}
-        <div className="bg-zinc-950/30 rounded-lg overflow-hidden shadow-xl border border-zinc-700">
+        <div className="bg-zinc-950/20 rounded-lg overflow-hidden shadow-xl border border-zinc-700">
           {/* Mac-style window header */}
           <div className="bg-zinc-800 px-4 py-2 flex items-center justify-between">
             <div className="flex space-x-2">

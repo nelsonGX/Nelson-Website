@@ -88,7 +88,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     <div 
       id={id}
       ref={windowRef}
-      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} bg-gray-800/90 backdrop-blur-md border border-gray-700 rounded-lg overflow-hidden shadow-lg transition-colors duration-200`}
+      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} bg-zinc-900/90 backdrop-blur-md border border-zinc-700 rounded-lg overflow-hidden shadow-lg transition-colors duration-200`}
       style={maximized ? {} : { 
         left: position.x, 
         top: position.y, 
@@ -98,22 +98,22 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     >
       {/* Window header - Windows-style title bar */}
       <div 
-        className="bg-gray-700/70 px-4 py-2 flex justify-between items-center cursor-move select-none"
+        className="bg-zinc-800/70 px-4 py-2 flex justify-between items-center cursor-move select-none"
         onMouseDown={(e) => !maximized && startDrag(id, e)}
       >
-        <h3 className="text-gray-300 font-mono truncate">{title}</h3>
+        <h3 className="text-zinc-300 font-mono truncate">{title}</h3>
         <div className="flex gap-1 ml-4">
-          <button className="p-1 hover:bg-gray-600 rounded cursor-default">
+          <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
             <Minus />
           </button>
-          <button onClick={handleMaximize} className="p-1 hover:bg-gray-600 rounded">
+          <button onClick={handleMaximize} className="p-1 hover:bg-zinc-600 rounded">
             {maximized ? 
               <MaxSquare />
               :
               <Square />
             }
           </button>
-          <button className="p-1 hover:bg-gray-600 rounded cursor-default">
+          <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
             <X/>
           </button>
         </div>
