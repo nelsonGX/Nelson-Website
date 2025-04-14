@@ -8,7 +8,7 @@ const ContactSection: React.FC = () => {
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
             <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2>Contact</h2><h2 className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;Me</h2>
+              <h2><span>Contact</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;Me</span></h2>
             </div>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
@@ -21,7 +21,7 @@ const ContactSection: React.FC = () => {
                 <h3 className="text-xl font-semibold text-white mb-4">Get In Touch</h3>
                 <p className="text-gray-400">
                   Interested in working together or have a question?
-                  Feel free to reach out--I'm always open to new opportunities and connections.
+                  Feel free to reach out--I&apos;m always open to new opportunities and connections.
                 </p>
               </div>
               

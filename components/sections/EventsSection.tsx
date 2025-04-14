@@ -14,7 +14,7 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
             <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2>Events</h2><h2 className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I</h2><h2>&apos;ve Participated</h2>
+              <h2><span>Events</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I</span><span>&apos;ve Participated</span></h2>
             </div>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>

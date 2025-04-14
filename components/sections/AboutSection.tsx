@@ -46,7 +46,7 @@ const AboutSection: React.FC = () => {
         <div className="flex items-center mb-12">
           <div className="text-6xl font-bold">
             <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2>Who Am</h2><h2 className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I&nbsp;</h2><h2>?</h2>
+              <h2><span>Who Am</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I&nbsp;</span><span>?</span></h2>
             </div>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
