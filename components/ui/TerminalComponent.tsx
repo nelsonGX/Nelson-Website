@@ -21,10 +21,10 @@ const Terminal = () => {
     "  Temperature:  69.0 C",
     " ",
   ]);
-  const [history, setHistory] = useState([]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
-  const inputRef = useRef(null);
-  const outputRef = useRef(null);
+  const [history, setHistory] = useState<string[]>([]); 
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const outputRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const fileSystem = {
     'about-me': 'Hi, I\'m a simulated user in this React terminal.\nI enjoy coding and learning new technologies!',
@@ -41,11 +41,11 @@ const Terminal = () => {
     }
   }, [output]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setInput(e.target.value);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: { key: string; preventDefault: () => void; }) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit();
@@ -58,7 +58,7 @@ const Terminal = () => {
     }
   };
 
-  const navigateHistory = (direction) => {
+  const navigateHistory = (direction: number) => {
     const newIndex = historyIndex + direction;
     if (newIndex >= -1 && newIndex < history.length) {
       setHistoryIndex(newIndex);
@@ -75,7 +75,7 @@ const Terminal = () => {
     }
   };
 
-  const processCommand = (cmd) => {
+  const processCommand = (cmd: string) => {
     const [command, ...args] = cmd.trim().split(' ');
     let response;
 
@@ -96,7 +96,7 @@ const Terminal = () => {
         if (args.length === 0) {
           response = 'Usage: cat <filename>';
         } else {
-          const filename = args[0];
+          const filename = args[0] as keyof typeof fileSystem;
           response = fileSystem[filename] || `File not found: ${filename}`;
         }
         break;
