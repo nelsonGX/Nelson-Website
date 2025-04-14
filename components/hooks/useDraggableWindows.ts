@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface WindowPositions {
   window1: { x: number; y: number };
@@ -29,26 +29,75 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
   const [draggedWindow, setDraggedWindow] = useState<string | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [windowPositions, setWindowPositions] = useState<WindowPositions>({
-    window1: { x: 100, y: 400 },
-    window2: { x: 400, y: 600 },
-    window3: { x: 150, y: 800 }
+    window1: { x: 100, y: 50 },
+    window2: { x: 200, y: 150 },
+    window3: { x: 300, y: 250 }
   });
   
-  // Handle mouse movement for dragging windows
+  // Use refs to avoid re-renders during drag operations
+  const windowPositionsRef = useRef(windowPositions);
+  const draggedWindowRef = useRef<string | null>(null);
+  const dragOffsetRef = useRef({ x: 0, y: 0 });
+  
+  // Update refs when state changes
   useEffect(() => {
+    windowPositionsRef.current = windowPositions;
+  }, [windowPositions]);
+  
+  // Handle window maximized states to prevent page scrolling
+  useEffect(() => {
+    const anyWindowMaximized = window1Maximized || window2Maximized || window3Maximized;
+    
+    if (anyWindowMaximized) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [window1Maximized, window2Maximized, window3Maximized]);
+  
+  // Direct DOM manipulation for smooth dragging
+  useEffect(() => {
+    // Don't do anything if any window is maximized
+    const anyWindowMaximized = window1Maximized || window2Maximized || window3Maximized;
+    if (anyWindowMaximized) {
+      return;
+    }
+    
     const handleMouseMove = (e: MouseEvent) => {
-      if (draggedWindow) {
-        const newPositions = {...windowPositions};
-        newPositions[draggedWindow as keyof WindowPositions] = { 
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y
-        };
-        setWindowPositions(newPositions);
-      }
+      if (!draggedWindowRef.current) return;
+      
+      // Get the window element
+      const windowElement = document.getElementById(draggedWindowRef.current);
+      if (!windowElement) return;
+      
+      // Calculate new position
+      const newX = e.clientX - dragOffsetRef.current.x;
+      const newY = e.clientY - dragOffsetRef.current.y;
+      
+      // Apply position directly to DOM for smoother movement
+      windowElement.style.left = `${newX}px`;
+      windowElement.style.top = `${newY}px`;
+      
+      // Cache the position for when we finish dragging
+      const newPositions = {...windowPositionsRef.current};
+      newPositions[draggedWindowRef.current as keyof WindowPositions] = { x: newX, y: newY };
+      windowPositionsRef.current = newPositions;
+      
+      e.preventDefault();
     };
     
     const handleMouseUp = () => {
-      setDraggedWindow(null);
+      if (draggedWindowRef.current) {
+        // Update React state only once at the end of drag
+        setWindowPositions(windowPositionsRef.current);
+        document.body.style.userSelect = '';
+        draggedWindowRef.current = null;
+        setDraggedWindow(null);
+      }
     };
     
     window.addEventListener('mousemove', handleMouseMove);
@@ -58,16 +107,47 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [draggedWindow, dragOffset, windowPositions]);
+  }, [window1Maximized, window2Maximized, window3Maximized]);
   
-  // Handle window dragging
+  // Handle window dragging - using direct DOM manipulation for performance
   const startDrag = (windowId: string, e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setDraggedWindow(windowId);
-    setDragOffset({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+    // Don't start drag if any window is maximized
+    if (window1Maximized || window2Maximized || window3Maximized) return;
+    
+    // Get the element being dragged
+    const element = e.currentTarget;
+    
+    // Bring clicked window to front
+    const allWindows = document.querySelectorAll('[id^="window"]');
+    allWindows.forEach(window => {
+      (window as HTMLElement).style.zIndex = '30';
     });
+    
+    const clickedWindow = document.getElementById(windowId);
+    if (clickedWindow) {
+      clickedWindow.style.zIndex = '40';
+    }
+    
+    // Calculate the offset (position of cursor relative to the element)
+    const windowElement = document.getElementById(windowId);
+    if (!windowElement) return;
+    
+    // Get current position from the element's style (DOM) which is up-to-date
+    const currentX = parseInt(windowElement.style.left || '0', 10);
+    const currentY = parseInt(windowElement.style.top || '0', 10);
+    
+    // Offset is the difference between mouse position and window position
+    const offsetX = e.clientX - currentX;
+    const offsetY = e.clientY - currentY;
+    
+    // Store dragging state both in React state and in refs
+    draggedWindowRef.current = windowId;
+    dragOffsetRef.current = { x: offsetX, y: offsetY };
+    setDraggedWindow(windowId);
+    setDragOffset({ x: offsetX, y: offsetY });
+    
+    // Disable text selection during drag
+    document.body.style.userSelect = 'none';
     e.preventDefault();
   };
   

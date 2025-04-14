@@ -21,7 +21,7 @@ const ContactSection: React.FC = () => {
                 <h3 className="text-xl font-semibold text-white mb-4">Get In Touch</h3>
                 <p className="text-gray-400">
                   Interested in working together or have a question?
-                  Feel free to reach out—I'm always open to new opportunities and connections.
+                  Feel free to reach out--I'm always open to new opportunities and connections.
                 </p>
               </div>
               
