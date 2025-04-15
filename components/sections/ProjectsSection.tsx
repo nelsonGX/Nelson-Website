@@ -1,7 +1,8 @@
 import React from 'react';
 import DraggableWindow from '../ui/DraggableWindow';
 import Image from 'next/image';
-import { Server, Code, Box } from 'lucide-react';
+import { Server, Code, Box, Github } from 'lucide-react';
+import Link from 'next/link';
 
 const IconWrapper = ({ children }: { children: React.ReactNode }) => (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -77,7 +78,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
               }
               <div className="w-fit items-center justify-center relative">
-                <h3 className="text-2xl font-bold text-white mb-3">Server Managing</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">Server Managing & Networking</h3>
                 <p className="text-gray-300 mb-4">
                   I am the founder of several server hostings. I have experience in managing servers and hosting websites.
                 </p>
@@ -180,8 +181,11 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <div className="w-full md:w-2/3">
                 <h3 className="text-2xl font-bold text-white mb-3">Coding & Development</h3>
                 <p className="text-gray-300 mb-4">
-                  I specialize in web development using modern technologies like React, Next.js, and TailwindCSS.
+                  As you can see, I do code. I have experience in Python, Java, Next.JS/React and more. In the most part, am still learning. You can find my projects on Github:
                 </p>
+                <Link className="flex space-x-1 text-zinc-400 hover:text-zinc-200 transition-all duration-150" href="https://github.com/nelsonGX">
+                  <Github /> <p>Github</p>
+                </Link>
                 {window2Maximized && (
                   <div className="mt-4">
                     <h4 className="text-lg font-medium text-orange-300 mb-2">Tech stack:</h4>
