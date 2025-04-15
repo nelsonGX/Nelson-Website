@@ -36,6 +36,7 @@ const X = () => (
 interface DraggableWindowProps {
   id: string;
   title: string;
+  titleIcon: React.ReactNode | null;
   position: { x: number; y: number };
   maximized: boolean;
   isSmallScreen: boolean;
@@ -48,6 +49,7 @@ interface DraggableWindowProps {
 const DraggableWindow: React.FC<DraggableWindowProps> = ({
   id,
   title,
+  titleIcon,
   position,
   maximized,
   isSmallScreen,
@@ -101,7 +103,10 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
         className="bg-zinc-800/70 px-4 py-2 flex justify-between items-center cursor-move select-none"
         onMouseDown={(e) => !maximized && startDrag(id, e)}
       >
-        <h3 className="text-zinc-300 font-mono truncate">{title}</h3>
+        <div className="flex space-x-2">
+          {titleIcon && titleIcon}
+          <h3 className="text-zinc-300 font-mono truncate">{title}</h3>
+        </div>
         <div className="flex gap-1 ml-4">
           <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
             <Minus />
