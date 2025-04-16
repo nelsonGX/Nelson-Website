@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -8,11 +9,10 @@ import Footer from '@/components/layout/Footer';
 const AppleDeviceUI = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   
-  // Update time every minute
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
-    }, 60000);
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
   
@@ -24,28 +24,14 @@ const AppleDeviceUI = () => {
   };
   
   const apps = [
-    { name: 'Messages', color: 'bg-green-500', icon: '💬' },
-    { name: 'Calendar', color: 'bg-white', icon: '📅' },
-    { name: 'Photos', color: 'bg-gradient-to-br from-purple-500 to-yellow-400', icon: '🖼️' },
-    { name: 'Camera', color: 'bg-zinc-800', icon: '📷' },
-    { name: 'Weather', color: 'bg-blue-400', icon: '☀️' },
-    { name: 'Clock', color: 'bg-black', icon: '⏰' },
-    { name: 'Maps', color: 'bg-gradient-to-br from-pink-200 to-indigo-400', icon: '🗺️' },
-    { name: 'Notes', color: 'bg-yellow-200', icon: '📝' },
-    { name: 'App Store', color: 'bg-gradient-to-br from-blue-500 to-blue-600', icon: 'A' },
-    { name: 'Health', color: 'bg-red-500', icon: '❤️' },
-    { name: 'Wallet', color: 'bg-black', icon: '💳' },
-    { name: 'Settings', color: 'bg-zinc-400', icon: '⚙️' },
-    { name: 'Fitness', color: 'bg-red-400', icon: '🏃' },
-    { name: 'Books', color: 'bg-orange-400', icon: '📚' },
-    { name: 'Stocks', color: 'bg-black', icon: '📈' },
-    { name: 'Reminders', color: 'bg-white', icon: '📋' },
-    { name: 'News', color: 'bg-red-600', icon: '📰' },
-    { name: 'TV', color: 'bg-blue-800', icon: '📺' },
-    { name: 'Podcasts', color: 'bg-purple-600', icon: '🎙️' },
-    { name: 'Files', color: 'bg-blue-300', icon: '📁' },
+    { name: 'Email', color: 'bg-zinc-700', icon: <FaEnvelope size={32} />, content: "hi@nelsongx.com", link: "mailto:hi@nelsongx.com" },
+    { name: 'Discord', color: 'bg-indigo-500', icon: <FaDiscord size={40} />, content: "nelsongx", link: "https://discord.com/users/490731820552290324" },
+    { name: 'Telegram', color: 'bg-blue-500', icon: <FaTelegram size={40} />, content: "@nelsonGX", link: "https://t.me/nelsongx" },
+    { name: 'Twitter (X)', color: 'bg-blue-400', icon: <FaTwitter size={36} />, content: "@nelsonGX", link: "https://twitter.com/nelsonGX" },
+    { name: 'Github', color: 'bg-zinc-800', icon: <FaGithub size={36} />, content: "nelsonGX", link: "https://github.com/nelsonGX" },
+    { name: 'Instagram', color: 'bg-gradient-to-br from-pink-500 to-purple-500', icon: <FaInstagram size={40} />, content: "@nelsonGX", link: "https://instagram.com/nelsonGX" },
   ];
-  
+
   const dockApps = [
     { name: 'Phone', color: 'bg-green-500', icon: '📞' },
     { name: 'Safari', color: 'bg-blue-500', icon: '🧭' },
