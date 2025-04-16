@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram, FaFacebook, FaReddit, FaSlack, FaTwitch, FaYoutube } from 'react-icons/fa';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -30,6 +30,11 @@ const AppleDeviceUI = () => {
     { name: 'Twitter (X)', color: 'bg-blue-400', icon: <FaTwitter size={36} />, content: "@nelsonGX", link: "https://twitter.com/nelsonGX" },
     { name: 'Github', color: 'bg-zinc-800', icon: <FaGithub size={36} />, content: "nelsonGX", link: "https://github.com/nelsonGX" },
     { name: 'Instagram', color: 'bg-gradient-to-br from-pink-500 to-purple-500', icon: <FaInstagram size={40} />, content: "@nelsonGX", link: "https://instagram.com/nelsonGX" },
+    { name: 'Facebook', color: 'bg-blue-600', icon: <FaFacebook size={36} />, content: "nelsonGX", link: "https://facebook.com/nelsonGX" },
+    { name: 'Reddit', color: 'bg-orange-600', icon: <FaReddit size={36} />, content: "u/nelsonGX", link: "https://reddit.com/user/nelsonGX" },
+    { name: 'Slack', color: 'bg-purple-600', icon: <FaSlack size={36} />, content: "@nelsonGX", link: "https://slack.com" },
+    { name: 'YouTube', color: 'bg-red-600', icon: <FaYoutube size={36} />, content: "@nelsonGX", link: "https://youtube.com/@nelsonGX" },
+    { name: 'Twitch', color: 'bg-purple-700', icon: <FaTwitch size={36} />, content: "nelsonGX", link: "https://twitch.tv/nelsonGX" },
   ];
 
   const dockApps = [
