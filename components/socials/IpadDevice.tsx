@@ -58,11 +58,6 @@ export const IpadDevice: React.FC<IpadDeviceProps> = ({
                 <DockIcon key={index} app={app} />
               ))}
             </div>
-            
-            {/* Home Indicator */}
-            {selectedApp && <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 z-50">
-              <div className="w-32 h-1 bg-white rounded-full"></div>
-            </div>}
           </div>
         </div>
       </div>

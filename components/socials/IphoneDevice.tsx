@@ -58,11 +58,6 @@ export const IphoneDevice: React.FC<IphoneDeviceProps> = ({
                 <DockIcon key={index} app={app} />
               ))}
             </div>
-            
-            {/* Home Indicator */}
-            <div className="hidden justify-center pb-1">
-              <div className="w-24 h-1 bg-white rounded-full"></div>
-            </div>
           </div>
         </div>
       </div>

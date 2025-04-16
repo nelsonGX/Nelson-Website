@@ -76,14 +76,25 @@ export const AppPopup: React.FC<AppPopupProps> = ({
         {/* Close button with slightly delayed appearance */}
         <button 
           onClick={closeApp}
-          className={`absolute ${isIpad ? 'top-4 right-4' : 'top-2 right-2'} z-50 bg-black bg-opacity-50 rounded-full p-2 
+          className={`absolute ${isIpad ? 'top-3 right-3' : 'top-2 right-2'} z-50 bg-black bg-opacity-50 rounded-full p-2 
                   transition-all duration-200 hover:bg-opacity-70
                   ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
         >
-          <FaTimes size={isIpad ? 24 : 20} />
+          <FaTimes size={isIpad ? 24 : 20} className="cursor-pointer" />
         </button>
         
         <AppContent app={selectedApp} />
+                    
+        {/* Home Indicator */}
+        {isIpad ? 
+        <div className="justify-center pb-1 absolute bottom-0 left-1/2 transform -translate-x-1/2" onClick={closeApp}>
+          <div className="w-48 h-1 bg-white rounded-full"></div>
+        </div>
+        :
+        <div className="justify-center pb-1 absolute bottom-0 left-1/2 transform -translate-x-1/2" onClick={closeApp}>
+          <div className="w-30 h-1 bg-white rounded-full"></div>
+        </div>
+        }
       </div>
     </div>
   );
