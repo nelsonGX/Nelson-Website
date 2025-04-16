@@ -10,7 +10,7 @@ export default function Header() {
   const isHomePage = pathname === "/"
 
   return (
-    <header className="absolute flex w-full top-0 backdrop-blur-md px-8 py-4 justify-between z-50">
+    <header className="absolute flex w-full top-0 backdrop-blur-md px-8 py-2 md:py-4 justify-between z-50">
       <div>
         <Link href="/" className="cursor-pointer">
           <div className="flex items-center justify-center space-x-4">

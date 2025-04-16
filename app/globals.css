@@ -33,3 +33,12 @@ body {
 .font-minecraft {
   font-family: 'Minecraft', monospace;
 }
+
+@font-face {
+  font-family: 'SFPro';
+  src: url('/assets/fonts/SFPRO.ttf') format('truetype');
+}
+
+.font-sfpro {
+  font-family: 'SFPro', monospace;
+}
