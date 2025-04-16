@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const AppleDeviceUI = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -52,7 +54,9 @@ const AppleDeviceUI = () => {
   ];
   
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen bg-zinc-800 p-4">
+    <>
+    <div className="flex flex-col items-center justify-center w-full h-screen bg-zinc-900 p-4">
+      <Header />
       {/* iPhone on small screens, iPad on md and up */}
       <div className="relative md:hidden w-[350px] h-[700px] rounded-4xl overflow-hidden bg-black border-4 border-zinc-700 shadow-2xl">
         {/* Dynamic Island */}
@@ -88,7 +92,7 @@ const AppleDeviceUI = () => {
               <div className="mx-4 mb-6 bg-zinc-500 bg-opacity-20 backdrop-blur-md rounded-3xl p-3 flex justify-around">
                 {dockApps.map((app, index) => (
                   <div key={index} className="flex items-center">
-                    <div className={`w-14 h-14 ${app.color} rounded-2xl flex items-center justify-center text-3xl shadow-md`}>
+                    <div className={`w-12 h-12 ${app.color} rounded-2xl flex items-center justify-center text-3xl shadow-md`}>
                       {app.icon}
                     </div>
                   </div>
@@ -106,8 +110,6 @@ const AppleDeviceUI = () => {
 
       {/* iPad for md screens and up */}
       <div className="hidden md:block relative w-[800px] h-[600px] rounded-2xl overflow-hidden bg-black border-2 border-zinc-700 shadow-2xl">
-        {/* Camera */}
-        <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-zinc-900 rounded-full z-50"></div>
         
         {/* Screen */}
         <div className="relative w-full h-full bg-cover bg-center bg-gradient-to-br from-blue-700/30 to-red-600/40">
@@ -138,7 +140,7 @@ const AppleDeviceUI = () => {
             
             {/* Dock - iPad dock is centered */}
             <div className="mt-auto flex justify-center">
-              <div className="mx-auto bg-zinc-500 bg-opacity-20 backdrop-blur-md rounded-3xl p-3 flex justify-around space-x-8 w-auto">
+              <div className="mx-auto bg-zinc-500 bg-opacity-20 backdrop-blur-md rounded-3xl p-3 flex justify-around space-x-4 w-auto">
                 {dockApps.map((app, index) => (
                   <div key={index} className="flex items-center">
                     <div className={`w-14 h-14 ${app.color} rounded-2xl flex items-center justify-center text-3xl shadow-md`}>
@@ -157,6 +159,8 @@ const AppleDeviceUI = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
