@@ -4,6 +4,7 @@ import { FaDiscord, FaSpotify } from 'react-icons/fa';
 import { ExternalLink, Clock, Gamepad2 } from 'lucide-react';
 import { App } from './types';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface AppContentProps {
   app: App;
@@ -123,7 +124,7 @@ export const AppContent: React.FC<AppContentProps> = ({ app }) => {
     return `${minutes}m`;
   };
 
-  const renderDiscordContent = () => {
+  function renderDiscordContent() {
     if (loading) {
       return (
         <div className="flex-1 bg-zinc-900 flex items-center justify-center">
@@ -243,6 +244,57 @@ export const AppContent: React.FC<AppContentProps> = ({ app }) => {
     );
   };
 
+  const FriendlySitesData = [
+    {
+      "name": "Google",
+      "content": "Search the web",
+      "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
+      "link": "https://www.google.com",
+      "color": "bg-red-600"
+    },
+    {
+      "name": "Google",
+      "content": "Search the web",
+      "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
+      "link": "https://www.google.com",
+      "color": "bg-red-600"
+    },
+    {
+      "name": "Google",
+      "content": "Search the web",
+      "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
+      "link": "https://www.google.com",
+      "color": "bg-red-600"
+    },
+    {
+      "name": "Google",
+      "content": "Search the web",
+      "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
+      "link": "https://www.google.com",
+      "color": "bg-red-600"
+    },
+  ]
+
+  function renderFriendlySiteContent() {
+    return (
+      <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">
+        <div className="grid grid-cols-2 gap-4">
+          {FriendlySitesData.map((site, index) => (
+            <Link key={index} href={site.link} className={`flex items-center p-3 rounded-lg ${site.color}`}>
+              <div className="w-10 h-10 rounded-full bg-indigo-700 flex items-center justify-center mr-3">
+                {site.icon}
+              </div>
+              <div>
+                <p className="font-semibold text-white">{site.name}</p>
+                <p className="text-xs text-gray-300">{site.content}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (app.name === 'Discord') {
     return (
       <div className="flex flex-col h-full">
@@ -250,6 +302,15 @@ export const AppContent: React.FC<AppContentProps> = ({ app }) => {
           <h3 className="text-lg font-semibold">Discord</h3>
         </div>
         {renderDiscordContent()}
+      </div>
+    );
+  } else if (app.name === 'Friendly Sites') {
+    return (
+      <div className="flex flex-col h-full">
+        <div className="bg-indigo-600 text-white p-4 flex justify-between items-center">
+          <h3 className="text-lg font-semibold">Friendly Sites</h3>
+        </div>
+        {renderFriendlySiteContent()}
       </div>
     );
   }
