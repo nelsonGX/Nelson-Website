@@ -25,8 +25,8 @@ export default function AppleDeviceUI() {
     closeApp 
   } = useAppAnimation();
   
+  // Update time
   useEffect(() => {
-    // Update time
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 10000);
@@ -46,10 +46,9 @@ export default function AppleDeviceUI() {
         setTimeout(() => {
           setLoading(false);
           setFadeOut(true);
-        }, 800); // Give more time for initial loading animation
+        }, 800);
       } else {
         console.log('Socials page - showing transition');
-        // Skip loading screen if not first visit (navigating between pages)
         setLoading(false);
       }
     }
