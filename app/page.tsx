@@ -1,12 +1,15 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 // Layout components
 import ProgressIndicator from '../components/layout/ProgressIndicator';
 import LoadingScreen from '../components/layout/LoadingScreen';
 import Footer from '../components/layout/Footer';
 import Header from '@/components/layout/Header';
+import TransitionEffect from '@/components/layout/TransitionEffect';
+import { useLoadingContext } from '@/components/context/LoadingContext';
 
 // Section components
 import HeroSection from '../components/sections/HeroSection';
@@ -32,6 +35,7 @@ const NelsonPortfolio = () => {
   // Using custom hooks
   const { isSmallScreen } = useWindowDimensions();
   const scrollProgress = useScrollProgress();
+  const { isFirstVisit } = useLoadingContext();
   const { 
     windowPositions, 
     startDrag, 
@@ -43,19 +47,37 @@ const NelsonPortfolio = () => {
     setWindow3Maximized
   } = useDraggableWindows();
   
-  // Initialize loading animation
+  // Initialize loading animation only on first visit
   useEffect(() => {
+    console.log('Page.tsx - isFirstVisit:', isFirstVisit);
+    
     // Loading animation
     if (typeof window !== 'undefined') {
-      setTimeout(() => {
+      if (isFirstVisit) {
+        console.log('Showing loading screen...');
+        setTimeout(() => {
+          setLoading(false);
+          setFadeOut(true);
+        }, 800); // Give more time for initial loading animation
+      } else {
+        console.log('Skipping loading screen, showing transition...');
+        // Skip loading screen if not first visit (navigating between pages)
         setLoading(false);
-        setFadeOut(true);
-      }, 0);
+      }
     }
-  }, []);
+  }, [isFirstVisit]);
   
   return (
-    <div className="min-h-screen bg-zinc-900 text-gray-100 overflow-x-hidden">
+    <motion.div 
+      className="min-h-screen bg-zinc-900 text-gray-100 overflow-x-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: isSmallScreen ? 0.3 : 0.5 }}
+    >
+      {/* Page transition effect - only show when navigating between pages */}
+      {!isFirstVisit && <TransitionEffect />}
+      
       {/* Progress indicator */}
       <ProgressIndicator scrollProgress={scrollProgress} />
       
@@ -92,7 +114,7 @@ const NelsonPortfolio = () => {
       
       {/* Footer */}
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

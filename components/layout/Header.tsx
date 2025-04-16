@@ -22,11 +22,17 @@ export default function Header() {
       </div>
       
       <div className="flex items-center space-x-6 border-1 rounded-2xl px-6 py-2 border-zinc-600">
-        <Link href="/" className={`flex items-center space-x-1 cursor-pointer ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}>
+        <Link 
+          href="/" 
+          className={`flex items-center space-x-1 cursor-pointer ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
+        >
           <User />
           <p>About</p>
         </Link>
-        <Link href="/socials" className={`flex items-center space-x-1 cursor-pointer ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}>
+        <Link 
+          href="/socials" 
+          className={`flex items-center space-x-1 cursor-pointer ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
+        >
           <LLink />
           <p>Socials</p>
         </Link>
