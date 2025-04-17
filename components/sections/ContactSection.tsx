@@ -96,7 +96,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen pt-20 px-6 relative bg-black">
+    <section id="contact" className="min-h-screen pt-20 px-6 relative bg-black pb-20 md:pb-0">
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
