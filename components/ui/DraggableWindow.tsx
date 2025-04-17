@@ -57,26 +57,20 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   startDrag,
   children
 }) => {
-  // Store position before maximizing to restore it later
   const previousPositionRef = useRef<{ x: number; y: number } | null>(null);
   const windowRef = useRef<HTMLDivElement | null>(null);
   
-  // Apply position on first render and when position props change
   useEffect(() => {
     if (maximized || !windowRef.current) return;
     
-    // Only update from React state when not actively dragging
-    // This prevents jumps when React state updates during drag
     if (!document.body.style.userSelect) {
       windowRef.current.style.left = `${position.x}px`;
       windowRef.current.style.top = `${position.y}px`;
     }
   }, [position, maximized]);
   
-  // Handle window maximizing/restoring
   const handleMaximize = () => {
     if (!maximized && windowRef.current) {
-      // Save current position before maximizing
       previousPositionRef.current = {
         x: parseInt(windowRef.current.style.left || '0', 10),
         y: parseInt(windowRef.current.style.top || '0', 10)

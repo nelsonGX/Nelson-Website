@@ -17,6 +17,13 @@ export default function FriendlySiteContent() {
     "link": "https://bcxy.me/",
     "color": "bg-gray-700"
   },
+  {
+    "name": "Qian",
+    "content": "幫我想 幹 好啦 我想一下 好 就這樣 好謝謝你",
+    "icon": <Image src="/assets/images/socials/friendsites/qian.png" alt="" width={64} height={64} />,
+    "link": "https://blog.qian30.net/",
+    "color": "bg-zinc-800"
+  }, 
 ]
   return (
     <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">

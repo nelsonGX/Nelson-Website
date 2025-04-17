@@ -40,7 +40,6 @@ const Terminal = () => {
   useEffect(() => {
     inputRef.current?.focus();
     
-    // Re-focus terminal input when user clicks anywhere in the terminal
     const handleClick = () => {
       inputRef.current?.focus();
     };
@@ -59,7 +58,6 @@ const Terminal = () => {
     }
   }, [output]);
   
-  // Add blinking cursor effect when typing
   useEffect(() => {
     const blinkInterval = setInterval(() => {
       setIsTyping(prev => !prev);
