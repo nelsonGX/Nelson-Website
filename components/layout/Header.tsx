@@ -19,17 +19,17 @@ export default function Header() {
         </Link>
       </div>
       
-      <div className="flex items-center border-1 rounded-2xl border-zinc-600">
+      <div className="flex items-center border-1 rounded-2xl border-zinc-600 h-12 md:h-auto">
         <Link 
           href="/" 
-          className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
+          className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
         >
           <User />
           <p>About</p>
         </Link>
         <Link 
           href="/socials" 
-          className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
+          className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
         >
           <LLink />
           <p>Socials</p>
