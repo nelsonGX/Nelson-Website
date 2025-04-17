@@ -2,61 +2,7 @@ import { Clock, Gamepad2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaDiscord, FaSpotify } from "react-icons/fa";
 import Image from "next/image";
-
-interface LanyardResponse {
-  data: LanyardData;
-  success: boolean;
-}
-
-interface LanyardData {
-  discord_user: DiscordUser;
-  activities: Activity[];
-  discord_status: "online" | "idle" | "dnd" | "offline";
-  listening_to_spotify: boolean;
-  spotify: SpotifyData | null;
-}
-
-interface DiscordUser {
-  id: string;
-  username: string;
-  avatar: string;
-  discriminator: string;
-  global_name: string;
-  display_name: string;
-}
-
-interface Activity {
-  id: string;
-  name: string;
-  type: number;
-  state?: string;
-  emoji?: {
-    id: string;
-    name: string;
-    animated: boolean;
-  };
-  timestamps?: {
-    start?: number;
-    end?: number;
-  };
-  application_id?: string;
-  details?: string;
-  assets?: {
-    large_image?: string;
-    large_text?: string;
-  };
-}
-
-interface SpotifyData {
-  album_art_url: string;
-  album: string;
-  artist: string;
-  song: string;
-  timestamps: {
-    start: number;
-    end: number;
-  };
-}
+import { LanyardResponse, LanyardData  } from "../types";
 
 export default function DiscordContent() {
   const [userData, setUserData] = useState<LanyardData | null>(null);
@@ -115,13 +61,62 @@ export default function DiscordContent() {
     return `${minutes}m`;
   };
 
+  function renderDefaultContent() {
+    return (
+      <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">
+        {/* Default User Profile */}
+        <div className="flex items-center mb-4">
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full mr-3 border-2 border-indigo-700 bg-zinc-800 flex items-center justify-center">
+              <FaDiscord className="text-indigo-500" size={24} />
+            </div>
+            <div className="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-gray-500 border-2 border-indigo-900"></div>
+          </div>
+          <div>
+            <p className="font-semibold text-white">nelsongx</p>
+            <p className="text-xs text-gray-300">@nelsongx</p>
+          </div>
+        </div>
+
+        {/* Default Custom Status */}
+        <div className="bg-indigo-800 rounded-lg p-3 mb-4">
+          <div className="flex items-center">
+            <span className="mr-2" role="img" aria-label="emoji">
+              👋
+            </span>
+            <p className="text-sm text-gray-200">Loading status...</p>
+          </div>
+        </div>
+
+        {/* Default Activities */}
+        <div className="space-y-3">
+          <p className="text-xs uppercase text-gray-400 font-semibold">Activities</p>
+          <div className="bg-zinc-800 rounded-lg p-3">
+            <div className="flex items-center">
+              <Gamepad2 size={18} className="text-indigo-400 mr-2" />
+              <p className="font-medium text-white text-sm">Loading activity...</p>
+            </div>
+            <div className="flex items-center text-xs text-gray-400 mt-2">
+              <Clock size={14} className="mr-1" />
+              <span>--m</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 text-xs text-center text-gray-500">
+          Connecting to Discord...
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <div className="w-8 h-8 rounded-full border-t-2 border-indigo-500 animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
+
   function renderDiscordContent() {
     if (loading) {
-      return (
-        <div className="flex-1 bg-zinc-900 flex items-center justify-center">
-          <div className="animate-pulse text-white">Loading...</div>
-        </div>
-      );
+      return renderDefaultContent();
     }
 
     if (error || !userData) {

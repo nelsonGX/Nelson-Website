@@ -1,4 +1,4 @@
-import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram, FaFacebook, FaReddit, FaSlack, FaTwitch, FaYoutube, FaGlobe, FaPhone, FaSafari, FaComment, FaMusic } from 'react-icons/fa';
+import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram, FaFacebook, FaReddit, FaSlack, FaTwitch, FaYoutube, FaPhone, FaSafari, FaComment, FaMusic } from 'react-icons/fa';
 import { App } from './types';
 
 export const apps: App[] = [
@@ -13,7 +13,6 @@ export const apps: App[] = [
   { name: 'Facebook', color: 'bg-blue-600', icon: <FaFacebook size={36} />, content: "Nelson Lin", link: "https://www.facebook.com/nelson.lin.52438" },
   { name: 'Slack', color: 'bg-purple-600', icon: <FaSlack size={36} />, content: "@nelsonGX", link: "https://slack.com" },
   { name: 'Twitch', color: 'bg-purple-700', icon: <FaTwitch size={36} />, content: "nelsonGX_", link: "https://twitch.tv/nelsonGX_" },
-  { name: 'Friendly Sites', color: 'bg-lime-400/80', icon: <FaGlobe size={32} />, content: "", link: "" },
 ];
 
 export const dockApps: App[] = [

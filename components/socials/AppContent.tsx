@@ -1,11 +1,10 @@
 import React, { memo } from 'react';
-import { ExternalLink } from 'lucide-react';
 import { App } from './types';
-import Link from 'next/link';
 
 import DiscordContent from './contents/Discord';
 import FriendlySiteContent from './contents/FriendlySites';
 import { MusicContent } from './contents/DockContents';
+import ViewMyButton from './ViewMyButton';
 
 interface AppContentProps {
   app: App;
@@ -15,7 +14,7 @@ function getAppContent(appName: string) {
   switch (appName) {
     case 'Discord':
       return <DiscordContent />;
-    case 'Friendly Sites':
+    case 'Safari':
       return <FriendlySiteContent />;
     case 'Music':
       return <MusicContent />;
@@ -46,14 +45,11 @@ const AppContentComponent = ({ app }: AppContentProps) => {
           <div className="w-20 h-20 flex items-center justify-center">
             {app.icon}
           </div>
-          <p className="font-semibold text-white text-xl">{app.name}</p>
-          <p className="text-sm text-gray-300">{app.content}</p>
-          {app.link && (
-            <Link href={app.link} target="_blank"
-              className="flex mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-300">
-              View My {app.name} &nbsp; <ExternalLink />
-            </Link>
-          )}
+          <div className="text-center mb-6">
+            <p className="font-semibold text-white text-xl">{app.name}</p>
+            <p className="text-sm text-gray-300">{app.content}</p>
+          </div>
+          <ViewMyButton name={app.name} link={app.link} bgColor={app.color} />
         </div>
       </div>
     );

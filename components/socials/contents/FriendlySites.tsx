@@ -4,10 +4,10 @@ import Link from "next/link";
 export default function FriendlySiteContent() {
   const FriendlySitesData = [
   {
-    "name": "Google",
-    "content": "Search the web",
+    "name": "Osga",
+    "content": "他是大帥哥",
     "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
-    "link": "https://www.google.com",
+    "link": "https://osga.dev",
     "color": "bg-red-600"
   },
   {
@@ -34,6 +34,7 @@ export default function FriendlySiteContent() {
 ]
   return (
     <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">
+      <h1 className="text-lg font-semibold text-white mb-4">Friendly Sites</h1>
       <div className="grid grid-cols-2 gap-4">
         {FriendlySitesData.map((site, index) => (
           <Link key={index} href={site.link} target="_blank" className={`flex items-center p-3 rounded-lg ${site.color}`}>
