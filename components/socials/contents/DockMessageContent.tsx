@@ -1,4 +1,6 @@
+import { ArrowUp } from "lucide-react";
 import { RefObject, SetStateAction, useEffect, useRef, useState } from "react";
+import generateSmartReply from "./GenerateSmartReply";
 
 export default function DockMessageContent() {
   const typingIndicatorCSS = `
@@ -29,13 +31,10 @@ export default function DockMessageContent() {
     id: number;
     text: string;
     sent: boolean;
-    time: string;
   }
 
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hey there! How's it going?", sent: false, time: "9:41 AM" },
-    { id: 2, text: "Hi! I'm doing well, thanks for asking. How about you?", sent: true, time: "9:42 AM" },
-    { id: 3, text: "Pretty good! Just checking out this iOS message simulator.", sent: false, time: "9:43 AM" }
+    { id: 1, text: "Hi, I am nelson. good morning", sent: false},
   ]);
   
   const [newMessage, setNewMessage] = useState('');
@@ -58,71 +57,6 @@ export default function DockMessageContent() {
       inputRef.current?.focus();
     }
   }, [messages, isResponding]);
-
-  const generateSmartReply = (userMessage: string) => {
-    const msg = userMessage.toLowerCase();
-    
-    if (msg.match(/^(hi|hello|hey|howdy|sup|yo)/)) {
-      return "Hey there! How can I help you today?";
-    }
-    
-    if (msg.includes("how are you") || msg.includes("how's it going") || msg.includes("how are things")) {
-      return "I'm doing great, thanks for asking! How about yourself?";
-    }
-    
-    if (msg.includes("weather") || msg.includes("sunny") || msg.includes("rain") || msg.includes("snow") || msg.includes("cold") || msg.includes("hot")) {
-      return "I heard the weather is supposed to be nice this weekend. Any outdoor plans?";
-    }
-    
-    if (msg.includes("food") || msg.includes("eat") || msg.includes("dinner") || msg.includes("lunch") || msg.includes("breakfast") || msg.includes("restaurant")) {
-      return "I've been trying to cook more at home lately. Have you tried any new recipes?";
-    }
-    
-    if (msg.includes("work") || msg.includes("job") || msg.includes("study") || msg.includes("class") || msg.includes("school")) {
-      return "Work-life balance is so important. Make sure you're taking breaks when needed!";
-    }
-    
-    if (msg.includes("movie") || msg.includes("film") || msg.includes("tv") || msg.includes("show") || msg.includes("series") || msg.includes("watch")) {
-      return "I just finished watching that new series everyone's talking about. Have you seen it?";
-    }
-    
-    if (msg.includes("?")) {
-      if (msg.startsWith("what") || msg.startsWith("why") || msg.startsWith("how")) {
-        return "That's a great question. I've been thinking about that too recently.";
-      } else if (msg.startsWith("do you") || msg.startsWith("are you") || msg.startsWith("can you")) {
-        return "I'd say yes, but it depends on the context! What do you think?";
-      } else {
-        return "Hmm, I'm not entirely sure about that. What's your take?";
-      }
-    }
-    
-    if (msg.includes("!")) {
-      return "I can feel your enthusiasm! That's awesome!";
-    }
-    
-    if (userMessage.length > 100) {
-      return "Thanks for sharing all that. It gives me a lot to think about. I appreciate you opening up.";
-    }
-    
-    if (userMessage.length < 10) {
-      return "Tell me more...";
-    }
-  
-    if (/\d+/.test(msg)) {
-      return "Those numbers are interesting. Is there something significant about them?";
-    }
-    
-    const genericResponses = [
-      "That's an interesting perspective. Tell me more about that.",
-      "I see what you mean. How long have you felt that way?",
-      "I'm curious to hear more about your thoughts on this.",
-      "That makes a lot of sense. What else is on your mind?",
-      "I hadn't thought about it that way before. Thanks for sharing.",
-      "Let's explore that idea a bit more. What specifically interests you about it?"
-    ];
-    
-    return genericResponses[Math.floor(Math.random() * genericResponses.length)];
-  };
 
   const handleSendMessage = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -245,7 +179,7 @@ export default function DockMessageContent() {
               ref={inputRef}
               type="text"
               className={`w-full focus:outline-none bg-transparent text-white ${isResponding ? 'opacity-50 cursor-not-allowed' : ''}`}
-              placeholder={isResponding ? "Waiting for response..." : "iMessage"}
+              placeholder={isResponding ? "Waiting for response..." : "nMessage"}
               value={newMessage}
               onChange={handleInputChange}
               disabled={isResponding}
@@ -254,16 +188,14 @@ export default function DockMessageContent() {
           
           <button 
             type="submit" 
-            className={`p-2 rounded-full ${
+            className={`p-2 rounded-full transition-all duration-200 ${
               newMessage.trim() && !isResponding 
-                ? 'text-blue-500' 
+                ? 'bg-blue-500' 
                 : 'text-gray-300 cursor-not-allowed'
             }`}
             disabled={!newMessage.trim() || isResponding}
           >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
+          <ArrowUp className="h-6 w-6" />
           </button>
         </form>
       </div>

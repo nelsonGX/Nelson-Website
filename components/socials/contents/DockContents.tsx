@@ -52,6 +52,7 @@ export function PhoneContent() {
 export function MessageContent() {
   return (
     <>
-    <DockMessageContent /></>
+    <DockMessageContent />
+    </>
   )
 }
