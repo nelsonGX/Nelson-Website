@@ -4,32 +4,18 @@ import Link from "next/link";
 export default function FriendlySiteContent() {
   const FriendlySitesData = [
   {
-    "name": "Osga",
-    "content": "他是大帥哥",
-    "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
-    "link": "https://osga.dev",
-    "color": "bg-red-600"
+    "name": "Yimang",
+    "content": "一個高中生",
+    "icon": <Image src="/assets/images/socials/friendsites/yimang.png" alt="" width={64} height={64} />,
+    "link": "https://yimang.tw/",
+    "color": "bg-gray-600"
   },
   {
-    "name": "Google",
-    "content": "Search the web",
-    "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
-    "link": "https://www.google.com",
-    "color": "bg-red-600"
-  },
-  {
-    "name": "Google",
-    "content": "Search the web",
-    "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
-    "link": "https://www.google.com",
-    "color": "bg-red-600"
-  },
-  {
-    "name": "Google",
-    "content": "Search the web",
-    "icon": <Image src="/assets/images/google.png" alt="Google" width={24} height={24} />,
-    "link": "https://www.google.com",
-    "color": "bg-red-600"
+    "name": "BC",
+    "content": "分享酷東西的高品質網站",
+    "icon": <Image src="/assets/images/socials/friendsites/bc.png" alt="" width={64} height={64} />,
+    "link": "https://bcxy.me/",
+    "color": "bg-gray-700"
   },
 ]
   return (
@@ -38,7 +24,7 @@ export default function FriendlySiteContent() {
       <div className="grid grid-cols-2 gap-4">
         {FriendlySitesData.map((site, index) => (
           <Link key={index} href={site.link} target="_blank" className={`flex items-center p-3 rounded-lg ${site.color}`}>
-            <div className="w-10 h-10 rounded-full bg-indigo-700 flex items-center justify-center mr-3">
+            <div className="w-10 h-10 rounded-full bg-zinc-700 flex items-center justify-center mr-3">
               {site.icon}
             </div>
             <div>
