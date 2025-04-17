@@ -55,7 +55,7 @@ export const IphoneDevice: React.FC<IphoneDeviceProps> = ({
           <div className="mt-auto">
             <div className="mx-4 mb-6 bg-zinc-500 bg-opacity-20 backdrop-blur-md rounded-3xl p-3 flex justify-around">
               {dockApps.map((app, index) => (
-                <DockIcon key={index} app={app} />
+                <DockIcon key={index} app={app} onClick={handleAppClick} />
               ))}
             </div>
           </div>

@@ -1,5 +1,5 @@
-import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram, FaFacebook, FaReddit, FaSlack, FaTwitch, FaYoutube, FaGlobe } from 'react-icons/fa';
-import { App, DockApp } from './types';
+import { FaEnvelope, FaDiscord, FaTelegram, FaTwitter, FaGithub, FaInstagram, FaFacebook, FaReddit, FaSlack, FaTwitch, FaYoutube, FaGlobe, FaPhone, FaSafari, FaComment, FaMusic } from 'react-icons/fa';
+import { App } from './types';
 
 export const apps: App[] = [
   { name: 'Email', color: 'bg-zinc-700', icon: <FaEnvelope size={32} />, content: "hi@nelsongx.com", link: "mailto:hi@nelsongx.com" },
@@ -16,9 +16,9 @@ export const apps: App[] = [
   { name: 'Friendly Sites', color: 'bg-lime-400/80', icon: <FaGlobe size={32} />, content: "", link: "" },
 ];
 
-export const dockApps: DockApp[] = [
-  { name: 'Phone', color: 'bg-green-500', icon: '📞' },
-  { name: 'Safari', color: 'bg-blue-500', icon: '🧭' },
-  { name: 'Mail', color: 'bg-blue-400', icon: '✉️' },
-  { name: 'Music', color: 'bg-gradient-to-br from-pink-500 to-purple-500', icon: '🎵' },
+export const dockApps: App[] = [
+  { name: 'Phone', color: 'bg-green-500', icon: <FaPhone size={32} className="rotate-90" /> },
+  { name: 'Safari', color: 'bg-white', icon: <FaSafari size={40} className="text-blue-400" /> },
+  { name: 'Message', color: 'bg-green-500', icon: <FaComment size={32} /> },
+  { name: 'Music', color: 'bg-gradient-to-br from-pink-500 to-purple-500', icon: <FaMusic size={32}/> },
 ];

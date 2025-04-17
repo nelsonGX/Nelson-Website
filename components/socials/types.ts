@@ -4,14 +4,8 @@ export interface App {
   name: string;
   color: string;
   icon: ReactNode;
-  content: string;
+  content?: string;
   link?: string;
-}
-
-export interface DockApp {
-  name: string;
-  color: string;
-  icon: string;
 }
 
 export interface AppRef {

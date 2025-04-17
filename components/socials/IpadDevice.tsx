@@ -55,7 +55,7 @@ export const IpadDevice: React.FC<IpadDeviceProps> = ({
           <div className="mt-auto flex justify-center pb-1">
             <div className="mx-auto bg-zinc-500 bg-opacity-20 backdrop-blur-md rounded-3xl p-3 flex justify-around space-x-4 w-auto">
               {dockApps.map((app, index) => (
-                <DockIcon key={index} app={app} />
+                <DockIcon key={index} app={app} onClick={handleAppClick} />
               ))}
             </div>
           </div>
