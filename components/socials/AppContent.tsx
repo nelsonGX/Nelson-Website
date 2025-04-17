@@ -3,7 +3,7 @@ import { App } from './types';
 
 import DiscordContent from './contents/Discord';
 import FriendlySiteContent from './contents/FriendlySites';
-import { MusicContent } from './contents/DockContents';
+import { MusicContent, MessageContent, PhoneContent } from './contents/DockContents';
 import ViewMyButton from './ViewMyButton';
 
 interface AppContentProps {
@@ -18,6 +18,10 @@ function getAppContent(appName: string) {
       return <FriendlySiteContent />;
     case 'Music':
       return <MusicContent />;
+    case 'Phone':
+      return <PhoneContent />;
+    case 'Message':
+      return <MessageContent />;
     default:
       return null;
   }

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import DockMessageContent from './DockMessageContent';
 
 export function MusicContent() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -36,4 +37,21 @@ export function MusicContent() {
       </div>
     </div>
   );
+}
+
+export function PhoneContent() {
+  return (
+    <>
+    <div className="items-center justify-center flex flex-col w-full h-full p-4 bg-zinc-800">
+      <h1 className="text-2xl font-bold text-center mb-4">🔊🔊🔊🔊<br/>sdong dong dong dong dong dong dong<br/>💥💥💥your phone lining <br/>your phone lining📱📱📞<br/>big boy come pickup yo fone !!!<br/>why you no pick up ??yo phone lininnnng !!!<br/>yo  phone going to voicemail goodba 👋👋<br/>🗣️🗣️🗣️</h1>
+    </div>
+    </>
+  )
+}
+
+export function MessageContent() {
+  return (
+    <>
+    <DockMessageContent /></>
+  )
 }
