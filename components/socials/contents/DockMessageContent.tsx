@@ -1,7 +1,6 @@
 import { RefObject, SetStateAction, useEffect, useRef, useState } from "react";
 
 export default function DockMessageContent() {
-  // CSS for typing indicator
   const typingIndicatorCSS = `
     @keyframes bouncing {
       0% { transform: translateY(0); }
@@ -40,6 +39,7 @@ export default function DockMessageContent() {
   ]);
   
   const [newMessage, setNewMessage] = useState('');
+  const [isResponding, setIsResponding] = useState(false);
   const messagesEndRef = useRef<HTMLElement | null | undefined>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -54,46 +54,38 @@ export default function DockMessageContent() {
 
   useEffect(() => {
     scrollToBottom();
-    // Focus the input when the component mounts
-    inputRef.current?.focus();
-  }, [messages]);
+    if (!isResponding) {
+      inputRef.current?.focus();
+    }
+  }, [messages, isResponding]);
 
-  // Smart reply generator based on user message content
   const generateSmartReply = (userMessage: string) => {
-    // Convert to lowercase for easier matching
     const msg = userMessage.toLowerCase();
     
-    // Greeting patterns
     if (msg.match(/^(hi|hello|hey|howdy|sup|yo)/)) {
       return "Hey there! How can I help you today?";
     }
     
-    // Questions about status/feeling
     if (msg.includes("how are you") || msg.includes("how's it going") || msg.includes("how are things")) {
       return "I'm doing great, thanks for asking! How about yourself?";
     }
     
-    // Weather related
     if (msg.includes("weather") || msg.includes("sunny") || msg.includes("rain") || msg.includes("snow") || msg.includes("cold") || msg.includes("hot")) {
       return "I heard the weather is supposed to be nice this weekend. Any outdoor plans?";
     }
     
-    // Food related
     if (msg.includes("food") || msg.includes("eat") || msg.includes("dinner") || msg.includes("lunch") || msg.includes("breakfast") || msg.includes("restaurant")) {
       return "I've been trying to cook more at home lately. Have you tried any new recipes?";
     }
     
-    // Work/study related
     if (msg.includes("work") || msg.includes("job") || msg.includes("study") || msg.includes("class") || msg.includes("school")) {
       return "Work-life balance is so important. Make sure you're taking breaks when needed!";
     }
     
-    // Movie/TV related
     if (msg.includes("movie") || msg.includes("film") || msg.includes("tv") || msg.includes("show") || msg.includes("series") || msg.includes("watch")) {
       return "I just finished watching that new series everyone's talking about. Have you seen it?";
     }
     
-    // Questions
     if (msg.includes("?")) {
       if (msg.startsWith("what") || msg.startsWith("why") || msg.startsWith("how")) {
         return "That's a great question. I've been thinking about that too recently.";
@@ -104,27 +96,22 @@ export default function DockMessageContent() {
       }
     }
     
-    // Excited messages (with exclamation mark)
     if (msg.includes("!")) {
       return "I can feel your enthusiasm! That's awesome!";
     }
     
-    // Longer messages get more thoughtful responses
     if (userMessage.length > 100) {
       return "Thanks for sharing all that. It gives me a lot to think about. I appreciate you opening up.";
     }
     
-    // Short messages
     if (userMessage.length < 10) {
       return "Tell me more...";
     }
-    
-    // Messages with numbers might be about measurements, quantities, dates
+  
     if (/\d+/.test(msg)) {
       return "Those numbers are interesting. Is there something significant about them?";
     }
     
-    // Generic responses for when nothing specific matches
     const genericResponses = [
       "That's an interesting perspective. Tell me more about that.",
       "I see what you mean. How long have you felt that way?",
@@ -139,9 +126,8 @@ export default function DockMessageContent() {
 
   const handleSendMessage = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    if (newMessage.trim() === '') return;
+    if (newMessage.trim() === '' || isResponding) return;
     
-    // Add user message
     const userMsg = {
       id: messages.length + 1,
       text: newMessage,
@@ -151,26 +137,22 @@ export default function DockMessageContent() {
     
     setMessages([...messages, userMsg]);
     
-    // Generate a smart reply based on the user's message
     const smartReply = generateSmartReply(newMessage);
     setNewMessage('');
+  
+    setIsResponding(true);
     
-    // Show typing indicator
     setTimeout(() => {
-      // Add the "typing" indicator
       setMessages(prevMessages => [
         ...prevMessages, 
         { id: 0, text: '', sent: false, time: '', typing: true }
       ]);
     }, 500);
     
-    // Remove typing indicator and add actual reply after a delay
     setTimeout(() => {
       setMessages(prevMessages => {
-        // Filter out the typing indicator
         const messagesWithoutTyping = prevMessages.filter(msg => msg.typing !== true);
         
-        // Add the actual reply
         const replyMsg = {
           id: messagesWithoutTyping.length + 1,
           text: smartReply,
@@ -180,7 +162,9 @@ export default function DockMessageContent() {
         
         return [...messagesWithoutTyping, replyMsg];
       });
-    }, 2000); // Longer delay to simulate thinking/typing
+      
+      setIsResponding(false);
+    }, 2000);
   };
 
   const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => {
@@ -246,7 +230,11 @@ export default function DockMessageContent() {
         
         {/* Message Input */}
         <form onSubmit={handleSendMessage} className="bg-zinc-800 p-2 flex items-center">
-          <button type="button" className="p-2 rounded-full text-gray-600">
+          <button 
+            type="button" 
+            className={`p-2 rounded-full ${isResponding ? 'text-gray-500' : 'text-gray-600'}`}
+            disabled={isResponding}
+          >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
@@ -256,17 +244,22 @@ export default function DockMessageContent() {
             <input
               ref={inputRef}
               type="text"
-              className="w-full focus:outline-none"
-              placeholder="iMessage"
+              className={`w-full focus:outline-none bg-transparent text-white ${isResponding ? 'opacity-50 cursor-not-allowed' : ''}`}
+              placeholder={isResponding ? "Waiting for response..." : "iMessage"}
               value={newMessage}
               onChange={handleInputChange}
+              disabled={isResponding}
             />
           </div>
           
           <button 
             type="submit" 
-            className={`p-2 rounded-full ${newMessage.trim() ? 'text-blue-500' : 'text-gray-300'}`}
-            disabled={!newMessage.trim()}
+            className={`p-2 rounded-full ${
+              newMessage.trim() && !isResponding 
+                ? 'text-blue-500' 
+                : 'text-gray-300 cursor-not-allowed'
+            }`}
+            disabled={!newMessage.trim() || isResponding}
           >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
