@@ -30,7 +30,7 @@ export default function FriendlySiteContent() {
       <h1 className="text-lg font-semibold text-white mb-4">Friendly Sites</h1>
       <div className="grid grid-cols-2 gap-4">
         {FriendlySitesData.map((site, index) => (
-          <Link key={index} href={site.link} target="_blank" className={`flex items-center p-3 rounded-lg ${site.color}`}>
+          <Link key={index} href={site.link} target="_blank" className={`flex items-center p-3 hover:scale-[102%] transition-all duration-150 rounded-lg ${site.color}`}>
             <div className="w-10 h-10 rounded-full bg-zinc-700 flex items-center justify-center mr-3">
               {site.icon}
             </div>
