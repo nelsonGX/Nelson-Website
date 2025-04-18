@@ -61,7 +61,7 @@ export default function FriendlySiteContent() {
     <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">
       <style jsx>{rgbBorderStyle}</style>
       <h1 className="text-lg font-semibold text-white mb-4">Friendly Sites</h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {FriendlySitesData.map((site, index) => (
           <Link 
             key={index} 
