@@ -127,7 +127,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   </p>
                 )}
               </div>
-              <div className="w-full md:w-1/3 flex justify-center">
+              <div className="w-full md:w-1/3 justify-center hidden md:flex">
                 <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
                   <Image src="/assets/images/coding-816x816.webp" height={816} width={816} alt="Coding and Development" className="w-full h-full object-cover" />
                 </div>

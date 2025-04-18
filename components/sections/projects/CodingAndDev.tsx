@@ -93,6 +93,11 @@ export default function CodingAndDev() {
             </div>
           ))}
       </div>
+
+      <h1 className="text-3xl font-bold py-4 pt-8">How it all started...</h1>
+      <p>
+        I started programming from making Discord bots. When I was in junior high, I wanted to make my own bot and started to learn. https://github.com/nelsonGX/DiscordURLshortenBot
+      </p>
     </div>
   </>
   )
