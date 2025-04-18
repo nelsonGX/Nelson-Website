@@ -513,7 +513,8 @@ const generateSmartReply = (userMessage: string) => {
       "那是個很有見地的觀點。你是怎麼得出這個結論的？",
       "謝謝你的分享。你還有什麼其他的見解嗎？",
       "你的觀點很有價值。我們可以更深入地探討嗎？",
-      "這給了我一些思考的材料。是什麼讓你有這個想法？"
+      "這給了我一些思考的材料。是什麼讓你有這個想法？",
+      "你好有趣唷！認識你好開心"
     ];
     
     return zhGenericResponses[Math.floor(Math.random() * zhGenericResponses.length)];
