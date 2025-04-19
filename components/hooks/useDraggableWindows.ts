@@ -32,6 +32,33 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
     window3: { x: 90, y: 700 }
   });
   
+  // Reset window positions for small screens
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        // Get window height to calculate proper spacing (aproximate without rendering)
+        const windowHeight = 450; // From DraggableWindow.tsx
+        const padding = 20;
+        
+        setWindowPositions({
+          window1: { x: 15, y: 30 },
+          window2: { x: 15, y: 30 + windowHeight + padding },
+          window3: { x: 15, y: 30 + (windowHeight + padding) * 2 }
+        });
+      }
+    };
+    
+    // Set initial positions
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   const windowPositionsRef = useRef(windowPositions);
   const draggedWindowRef = useRef<string | null>(null);
   const dragOffsetRef = useRef({ x: 0, y: 0 });
@@ -66,8 +93,21 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
       const windowElement = document.getElementById(draggedWindowRef.current);
       if (!windowElement) return;
       
-      const newX = e.clientX - dragOffsetRef.current.x;
-      const newY = e.clientY - dragOffsetRef.current.y;
+      // Get viewport dimensions
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Calculate new position
+      let newX = e.clientX - dragOffsetRef.current.x;
+      let newY = e.clientY - dragOffsetRef.current.y;
+      
+      // Make sure windows don't go off-screen
+      const elementWidth = windowElement.offsetWidth;
+      
+      // Keep at least 40px of the window visible
+      const minVisible = 40;
+      newX = Math.max(-elementWidth + minVisible, Math.min(newX, viewportWidth - minVisible));
+      newY = Math.max(0, Math.min(newY, viewportHeight - minVisible));
       
       windowElement.style.left = `${newX}px`;
       windowElement.style.top = `${newY}px`;

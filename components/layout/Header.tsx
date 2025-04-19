@@ -14,7 +14,7 @@ export default function Header() {
           <div className="flex items-center justify-center space-x-4">
             <Image src={"/assets/images/nelsongx.png"} alt="" height={32} width={32} />
             <div className="relative text-xl font-bold md:hidden"><div className="flex"><p className="text-orange-300">Nelson</p><p className="text-zinc-300">&apos;s</p></div><p className="text-zinc-400">Website</p></div>
-            <div className="md:flex text-xl font-bold hidden text-reveal text-reveal-flex on-scroll visible"><p className="text-orange-300">Nelson</p><p className="text-zinc-200">&apos;s Website</p></div>
+            <div className="md:flex text-xl font-bold hidden"><p className="text-orange-300">Nelson</p><p className="text-zinc-200">&apos;s Website</p></div>
           </div>
         </Link>
       </div>

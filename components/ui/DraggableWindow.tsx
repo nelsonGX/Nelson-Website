@@ -67,10 +67,14 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     if (maximized || !windowRef.current) return;
     
     if (!document.body.style.userSelect) {
-      windowRef.current.style.left = `${position.x}px`;
+      // Ensure window stays within viewport on mobile
+      const viewportWidth = window.innerWidth;
+      const safeX = Math.min(position.x, viewportWidth - 40);
+      
+      windowRef.current.style.left = `${safeX}px`;
       windowRef.current.style.top = `${position.y}px`;
     }
-  }, [position, maximized]);
+  }, [position, maximized, isSmallScreen]);
   
   const handleMaximize = () => {
     if (!maximized && windowRef.current) {
@@ -132,12 +136,12 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     <motion.div 
       id={id}
       ref={el => { windowRef.current = el; windowRef2.current = el; }}
-      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden shadow-orange`}
+      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden ${isSmallScreen && !maximized ? 'shadow-lg border border-zinc-700/50' : 'shadow-orange'}`}
       style={{
         left: !maximized ? position.x : undefined, 
         top: !maximized ? position.y : undefined, 
-        width: !maximized ? (isSmallScreen ? '90%' : '750px') : undefined, 
-        height: !maximized ? '400px' : undefined
+        width: !maximized ? (isSmallScreen ? '90%' : 'min(750px, 90vw)') : undefined, 
+        height: !maximized ? (isSmallScreen ? '450px' : '400px') : undefined
       }}
       variants={cardVariants}
       initial="hidden"
@@ -161,12 +165,12 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       >
         {/* Window header - Windows-style title bar */}
         <div 
-          className="bg-zinc-800/70 px-4 py-2 flex justify-between items-center cursor-move select-none"
-          onMouseDown={(e) => !maximized && startDrag(id, e)}
+          className={`bg-zinc-800/70 px-4 py-2 flex justify-between items-center ${!isSmallScreen && !maximized ? 'cursor-move' : ''} select-none`}
+          onMouseDown={(e) => !maximized && !isSmallScreen && startDrag(id, e)}
         >
           <div className="flex space-x-2">
             {titleIcon && titleIcon}
-            <h3 className="text-zinc-300 font-mono truncate">{title}</h3>
+            <h3 className="text-zinc-300 font-mono truncate hidden md:block">{title}</h3>
           </div>
           <div className="flex gap-1 ml-4">
             <button className="p-1 hover:bg-zinc-600 rounded cursor-default">

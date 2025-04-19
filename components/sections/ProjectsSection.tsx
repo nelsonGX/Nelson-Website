@@ -36,7 +36,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   isSmallScreen
 }) => {
   return (
-    <section id="projects" className="min-h-screen pb-96 pt-10 px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
+    <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
@@ -48,7 +48,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         </div>
         
         {/* Draggable Windows */}
-        <div className="relative h-[800px]">
+        <div className="relative h-[1500px] md:h-[800px]">
           {/* Window 1 */}
           <DraggableWindow
             id="window1"
@@ -77,7 +77,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 {window1Maximized && (
                   <ServerManager />
                 )}
-                {!window1Maximized && (
+                {!window1Maximized && !isSmallScreen && (
                 <div className="text-yellow-200 rotate-3 absolute right-5 -top-14">
                   <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
                     <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
@@ -89,7 +89,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
             </div>
           </DraggableWindow>
-          
+
           {/* Window 2 */}
           <DraggableWindow
             id="window2"
@@ -149,7 +149,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 {window3Maximized && (
                   <Minecraft />
                 )}
-                {!window1Maximized && (
+                {!window3Maximized && !isSmallScreen && (
                 <div className="text-yellow-200 rotate-3 absolute right-10 top-20">
                   <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
                     <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />

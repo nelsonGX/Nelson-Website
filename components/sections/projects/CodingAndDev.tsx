@@ -76,7 +76,7 @@ export default function CodingAndDev() {
     <>
     <div className="mt-4">
       <h4 className="text-lg font-medium text-orange-300 mb-2">Tech stack:</h4>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 justify-center md:justify-start">
           {techStack.map((tech, index) => (
             <div 
               key={index} 

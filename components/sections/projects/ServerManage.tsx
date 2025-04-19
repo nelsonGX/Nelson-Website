@@ -58,12 +58,12 @@ export default function ServerManager() {
       </>
       },
     ].map((data, idx) => (
-      <div className="mb-8 md:flex space-y-4 items-center space-x-6 justify-center" key={idx}>
+      <div className="mb-8 md:flex md:space-x-6 space-y-4 md:space-y-0 items-center justify-center" key={idx}>
         <div className="relative flex bg-zinc-600 shadow-xl w-24 h-12 rounded-lg">
           <h1 className="mx-auto my-auto font-semibold text-lg text-white">{data.date}</h1>
         </div>
-        <div className="md:flex bg-zinc-800 rounded-lg shadow-xl md:max-w-2/3 px-6 py-4">
-          <Image src={data.imageSrc} alt={'Image'} width={100} height={10} className="object-cover h-20 w-auto my-auto" />
+        <div className="md:flex bg-zinc-800 rounded-lg shadow-xl md:max-w-[66%] px-6 py-4">
+          <Image src={data.imageSrc} alt={'Image'} width={100} height={10} className="object-cover h-20 w-auto mx-auto md:mx-0 my-4 md:my-auto" />
           <div className="relative px-4">
               <h3 className="mb-3 font-bold text-white text-xl">{data.title}</h3>
               <div className="text-sm leading-snug tracking-wide text-zinc-300 text-opacity-100">{data.description}</div>
