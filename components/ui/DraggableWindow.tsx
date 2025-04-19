@@ -90,44 +90,46 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
   const windowRef2 = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(windowRef2, { once: true, amount: 0.3 });
   
-  // Content (front) side variants
+  // Content (front) side variants - simplified for mobile
   const contentVariants = {
     hidden: { 
       opacity: 0,
-      scale: 0.95,
+      scale: isSmallScreen ? 0.98 : 0.95,
       transition: { 
-        duration: 0.1
+        duration: isSmallScreen ? 0.05 : 0.1
       }
     },
     visible: { 
       opacity: 1,
       scale: 1,
       transition: { 
-        delay: 0.3,
-        duration: 0.8,
-        type: "spring",
-        stiffness: 100,
-        damping: 12
+        delay: isSmallScreen ? 0.1 : 0.3,
+        duration: isSmallScreen ? 0.3 : 0.8,
+        type: isSmallScreen ? "tween" : "spring",
+        stiffness: isSmallScreen ? 50 : 100,
+        damping: isSmallScreen ? 8 : 12
       }
     }
   };
   
-  // Card flip variants
+  // Card flip variants - simplified for mobile
   const cardVariants = {
     hidden: { 
-      rotateY: 180,
+      rotateY: isSmallScreen ? 0 : 180, // Disable flip on mobile
+      opacity: isSmallScreen ? 0 : 1,
       backgroundColor: "#111",
       borderColor: "#111"
     },
     visible: { 
       rotateY: 0,
+      opacity: 1,
       backgroundColor: "rgba(24, 24, 27, 0.9)",
       borderColor: "rgb(63, 63, 70)",
       transition: { 
-        type: "spring",
-        stiffness: 120,
-        damping: 12,
-        duration: 0.8
+        type: isSmallScreen ? "tween" : "spring",
+        stiffness: isSmallScreen ? 50 : 120,
+        damping: isSmallScreen ? 8 : 12,
+        duration: isSmallScreen ? 0.3 : 0.8
       }
     }
   };
@@ -147,15 +149,18 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       >
-      <motion.div 
-        className="absolute inset-0 bg-black rounded-lg"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ 
-          delay: 0.5,
-          duration: 0.3
-        }}
-      />
+      {/* Simplified overlay animation for mobile */}
+      {!isSmallScreen && (
+        <motion.div 
+          className="absolute inset-0 bg-black rounded-lg"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ 
+            delay: 0.5,
+            duration: 0.3
+          }}
+        />
+      )}
       
       <motion.div
         variants={contentVariants}

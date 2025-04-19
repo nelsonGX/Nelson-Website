@@ -9,8 +9,15 @@ const useMousePosition = (windowWidth: number, windowHeight: number): UseMousePo
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   useEffect(() => {
+    // Skip mouse tracking on mobile devices to improve performance
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      // Throttle updates to reduce DOM operations
+      requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
     
     window.addEventListener('mousemove', handleMouseMove);
@@ -21,6 +28,11 @@ const useMousePosition = (windowWidth: number, windowHeight: number): UseMousePo
   }, []);
   
   const getParallaxStyle = (depth = 1) => {
+    // Disable parallax on mobile
+    if (window.innerWidth < 768) {
+      return { transform: 'translate(0, 0)' };
+    }
+    
     const x = (mousePosition.x / windowWidth - 0.5) * depth * 20;
     const y = (mousePosition.y / windowHeight - 0.5) * depth * 20;
     return { transform: `translate(${x}px, ${y}px)` };
