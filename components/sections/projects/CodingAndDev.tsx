@@ -96,7 +96,7 @@ export default function CodingAndDev() {
 
       <h1 className="text-3xl font-bold py-4 pt-8">How it all started...</h1>
       <p>
-        I started programming from making Discord bots. When I was in junior high, I wanted to make my own bot and started to learn. https://github.com/nelsonGX/DiscordURLshortenBot
+        The first language I learnt is Python, as many people does. I started programming from making Discord bots. When I was in junior high, I wanted to make my own bot and started to learn. 
       </p>
     </div>
   </>
