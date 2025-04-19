@@ -95,8 +95,14 @@ export default function CodingAndDev() {
       </div>
 
       <h1 className="text-3xl font-bold py-4 pt-8">How it all started...</h1>
-      <p>
-        The first language I learnt is Python, as many people does. I started programming from making Discord bots. When I was in junior high, I wanted to make my own bot and started to learn. 
+      <p className="mb-4 text-gray-300">
+        Started with Python like everyone else. My first real project? A Discord bot that didn't crash (most of the time). Watching people actually use something I built was mind-blowing. I was hooked.
+      </p>
+      <p className="mb-4 text-gray-300">
+        Got tired of static websites, so I jumped into Next.js. Figured out how to make things that don't look terrible on mobile and load faster than a snail climbing a mountain.
+      </p>
+      <p className="text-gray-300">
+        These days I'm wrestling with Java and the Bukkit API for my passion project: FreeServer Network. It's a Minecraft server where I'm throwing everything I've learned into one chaotic experiment. We'll see if it works.
       </p>
     </div>
   </>
