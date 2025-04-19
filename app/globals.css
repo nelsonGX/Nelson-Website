@@ -70,3 +70,67 @@ body {
   font-family: 'SFPro', monospace;
 }
 
+/* Text reveal animation classes for global.css */
+
+/* Base class for text containers of any type */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Maintain display properties based on element type */
+span.text-reveal, 
+a.text-reveal {
+  display: inline-block;
+}
+
+/* For flex containers */
+.text-reveal-flex {
+  display: flex;
+}
+
+/* Black mask overlay for the reveal effect */
+.text-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(207, 207, 207);
+  backdrop-filter: blur(100px);
+  z-index: 2; /* Higher than content */
+  transform: translateX(0);
+  transform-origin: left;
+}
+
+/* Ensure content stays visible */
+.text-reveal > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Auto-animate version */
+.text-reveal.animate::before {
+  animation: revealTextMask 0.8s ease-in-out forwards;
+}
+
+/* Scroll-triggered version (starts paused) */
+.text-reveal.on-scroll::before {
+  animation: revealTextMask 0.6s ease-in-out forwards paused;
+}
+
+/* Class added when element is in view */
+.text-reveal.visible::before {
+  animation-play-state: running;
+}
+
+/* Animation keyframes - moving the mask right */
+@keyframes revealTextMask {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(101%);
+  }
+}

@@ -3,6 +3,7 @@ import { FaPython, FaJava, FaJs, FaReact, FaLeaf, FaLinux } from 'react-icons/fa
 import { Globe, Server } from 'lucide-react';
 import TerminalComponent from '../ui/TerminalComponent';
 import Image from 'next/image';
+import { TextReveal } from '../ui/TextReveal';
 
 const AboutSection: React.FC = () => {
   const [viewMode, setViewMode] = useState<'gui' | 'terminal'>('gui');
@@ -110,9 +111,9 @@ const AboutSection: React.FC = () => {
         {/* Section title outside the Mac window */}
         <div className="flex items-center mb-12">
           <div className="text-6xl font-bold">
-            <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
+            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
               <h2><span>Who Am</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I&nbsp;</span><span>?</span></h2>
-            </div>
+            </TextReveal>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
         </div>
@@ -155,15 +156,15 @@ const AboutSection: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10">
                 {/* Left column - About me text */}
                 <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700">
-                  <p className="text-lg text-gray-300 mb-6">
+                  <TextReveal className="text-lg text-gray-300 mb-6">
                     Hello! My name is Nelson, aka nelsonGX. I&apos;m a student from Taiwan, and I have a passion in field of computer related stuff.
-                  </p>
-                  <p className="text-lg text-gray-300 mb-6">
+                  </TextReveal>
+                  <TextReveal className="text-lg text-gray-300 mb-6">
                     I currently own Very Fast Network LTD, a company based in Taiwan that operates CheapServer hosting services under AS152619. Alongside this main business, I run FreeServer, a free hosting service community. I also manage a Minecraft server called FreeServer Network, which focuses on map sharing for creators.
-                  </p>
-                  <p className="text-lg text-gray-300 mb-6">
+                  </TextReveal>
+                  <TextReveal className="text-lg text-gray-300 mb-6">
                     I&apos;m actively involved in tech communities, attending conferences like SITCON, HITCON, and COSCUP to learn and network with fellow enthusiasts.
-                  </p>
+                  </TextReveal>
                   <div>
                     <h3 className="text-xl text-orange-400 font-semibold mb-4">Tech Stack</h3>
                     <div className="flex flex-wrap gap-2">

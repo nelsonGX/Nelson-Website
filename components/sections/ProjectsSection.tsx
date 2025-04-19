@@ -6,6 +6,7 @@ import Link from 'next/link';;
 import ServerManager from './projects/ServerManage';
 import CodingAndDev from './projects/CodingAndDev';
 import Minecraft from './projects/Minecraft';
+import { TextReveal } from '../ui/TextReveal';
 
 const IconWrapper = ({ children }: { children: React.ReactNode }) => (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -51,9 +52,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
-            <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
+            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
               <h2><span>What can</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I&nbsp;</span><span>do?</span></h2>
-            </div>
+            </TextReveal>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
         </div>
@@ -81,17 +82,17 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
               }
               <div className="w-fit items-center justify-center relative">
-                <h3 className="text-2xl font-bold text-white mb-3">Server Managing & Networking</h3>
-                <p className="text-gray-300 mb-4">
+                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">Server Managing & Networking</TextReveal>
+                <TextReveal as="p" className="text-gray-300 mb-4">
                   I am the founder of several server hostings. I have experience in managing servers and hosting websites.
-                </p>
+                </TextReveal>
                 {window1Maximized && (
                   <ServerManager />
                 )}
                 {!window1Maximized && (
-                  <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
+                  <TextReveal as="p" className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
                     Click maximize ( <Square /> ) button to see more.
-                  </p>
+                  </TextReveal>
                 )}
               </div>
             </div>
@@ -111,10 +112,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-2/3">
-                <h3 className="text-2xl font-bold text-white mb-3">Coding & Development</h3>
-                <p className="text-gray-300 mb-4">
+                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">Coding & Development</TextReveal>
+                <TextReveal as="p" className="text-gray-300 mb-4">
                   As you can see, I do code. I have experience in Python, Java, Next.JS/React and more. In the most part, am still learning. You can find my projects on Github:
-                </p>
+                </TextReveal>
                 <Link className="flex space-x-1 text-zinc-400 hover:text-zinc-200 transition-all duration-150" href="https://github.com/nelsonGX">
                   <Github /> <p>Github</p>
                 </Link>
@@ -122,9 +123,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <CodingAndDev />
                 )}
                 {!window2Maximized && (
-                  <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
+                  <TextReveal as="p" className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
                     Click maximize ( <Square /> ) button to see more.
-                  </p>
+                  </TextReveal>
                 )}
               </div>
               <div className="w-full md:w-1/3 justify-center hidden md:flex">
@@ -154,17 +155,17 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </div>
               </div>
               <div className="w-full md:w-2/3">
-                <h3 className="text-2xl font-bold text-white mb-3">Minecraft</h3>
-                <p className="text-gray-300 mb-4">
+                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">Minecraft</TextReveal>
+                <TextReveal as="p" className="text-gray-300 mb-4">
                   I have been playing Minecraft for over 7 years. I have experience in creating custom plugins and stuff.
-                </p>
+                </TextReveal>
                 {window3Maximized && (
                   <Minecraft />
                 )}
                 {!window3Maximized && (
-                  <p className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
+                  <TextReveal as="p" className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
                     Click maximize ( <Square /> ) button to see more.
-                  </p>
+                  </TextReveal>
                 )}
               </div>
             </div>

@@ -1,11 +1,11 @@
 import React from 'react';
+import { TextReveal } from '../ui/TextReveal';
 
 interface EventsSectionProps {
   events: Record<string, string[]>;
 }
 
 const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
-  // Track the line number across all years and events
   let lineNumber = 1;
 
   return (
@@ -13,9 +13,9 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
-            <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
+            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
               <h2><span>Events</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I</span><span>&apos;ve Participated</span></h2>
-            </div>
+            </TextReveal>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
         </div>
@@ -32,7 +32,7 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
                   {eventList.map((event) => (
                     <div key={event} className="flex">
                       <span className="text-orange-800 w-8">{lineNumber++}</span>
-                      <span className="text-gray-300">{event}</span>
+                      <TextReveal as="span" className="text-gray-300">{event}</TextReveal>
                     </div>
                   ))}
                   <div>

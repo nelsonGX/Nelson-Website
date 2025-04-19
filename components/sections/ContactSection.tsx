@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Mail, Link as LLink, Check, Copy } from 'lucide-react';
 import { FaDiscord, FaTelegram } from 'react-icons/fa';
+import { TextReveal } from '../ui/TextReveal';
 
 interface ContactCardProps {
   icon: React.ReactNode;
@@ -100,9 +101,9 @@ const ContactSection: React.FC = () => {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
-            <div className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
+            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
               <h2><span>Contact</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;Me</span></h2>
-            </div>
+            </TextReveal>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
         </div>
