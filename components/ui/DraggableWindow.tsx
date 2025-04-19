@@ -140,7 +140,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       style={{
         left: !maximized ? position.x : undefined, 
         top: !maximized ? position.y : undefined, 
-        width: !maximized ? (isSmallScreen ? '90%' : 'min(750px, 90vw)') : undefined, 
+        width: !maximized ? (isSmallScreen ? '95%' : 'min(750px, 90vw)') : undefined, 
         height: !maximized ? (isSmallScreen ? '450px' : '400px') : undefined
       }}
       variants={cardVariants}

@@ -300,7 +300,7 @@ const AboutSection: React.FC = () => {
                 
                 {/* Right column - Tech Stack and Projects */}
                 <motion.div 
-                  className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700 h-[560px] overflow-auto"
+                  className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700 h-min overflow-auto"
                   variants={itemVariants}
                 >
                   <div className="space-y-8">
