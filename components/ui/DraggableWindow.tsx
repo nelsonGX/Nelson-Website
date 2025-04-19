@@ -132,7 +132,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     <motion.div 
       id={id}
       ref={el => { windowRef.current = el; windowRef2.current = el; }}
-      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden shadow-lg`}
+      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden shadow-orange`}
       style={{
         left: !maximized ? position.x : undefined, 
         top: !maximized ? position.y : undefined, 
