@@ -1,4 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+"use client"
+
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const IconWrapper = ({ children }: { children: React.ReactNode }) => (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -80,49 +83,114 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     onMaximize();
   };
   
+  const windowRef2 = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(windowRef2, { once: true, amount: 0.3 });
+  
+  // Content (front) side variants
+  const contentVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.95,
+      transition: { 
+        duration: 0.1
+      }
+    },
+    visible: { 
+      opacity: 1,
+      scale: 1,
+      transition: { 
+        delay: 0.3,
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
+  
+  // Card flip variants
+  const cardVariants = {
+    hidden: { 
+      rotateY: 180,
+      backgroundColor: "#111",
+      borderColor: "#111"
+    },
+    visible: { 
+      rotateY: 0,
+      backgroundColor: "rgba(24, 24, 27, 0.9)",
+      borderColor: "rgb(63, 63, 70)",
+      transition: { 
+        type: "spring",
+        stiffness: 120,
+        damping: 12,
+        duration: 0.8
+      }
+    }
+  };
+
   return (
-    <div 
+    <motion.div 
       id={id}
-      ref={windowRef}
-      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} bg-zinc-900/90 backdrop-blur-md border border-zinc-700 rounded-lg overflow-hidden shadow-lg transition-colors duration-200`}
-      style={maximized ? {} : { 
-        left: position.x, 
-        top: position.y, 
-        width: isSmallScreen ? '90%' : '750px', 
-        height: '400px'
+      ref={el => { windowRef.current = el; windowRef2.current = el; }}
+      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden shadow-lg`}
+      style={{
+        left: !maximized ? position.x : undefined, 
+        top: !maximized ? position.y : undefined, 
+        width: !maximized ? (isSmallScreen ? '90%' : '750px') : undefined, 
+        height: !maximized ? '400px' : undefined
       }}
-    >
-      {/* Window header - Windows-style title bar */}
-      <div 
-        className="bg-zinc-800/70 px-4 py-2 flex justify-between items-center cursor-move select-none"
-        onMouseDown={(e) => !maximized && startDrag(id, e)}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
       >
-        <div className="flex space-x-2">
-          {titleIcon && titleIcon}
-          <h3 className="text-zinc-300 font-mono truncate">{title}</h3>
-        </div>
-        <div className="flex gap-1 ml-4">
-          <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
-            <Minus />
-          </button>
-          <button onClick={handleMaximize} className="p-1 hover:bg-zinc-600 rounded">
-            {maximized ? 
-              <MaxSquare />
-              :
-              <Square />
-            }
-          </button>
-          <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
-            <X/>
-          </button>
-        </div>
-      </div>
+      <motion.div 
+        className="absolute inset-0 bg-black rounded-lg"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ 
+          delay: 0.5,
+          duration: 0.3
+        }}
+      />
       
-      {/* Window content */}
-      <div className="p-4 h-[calc(100%-40px)] overflow-auto">
-        {children}
-      </div>
-    </div>
+      <motion.div
+        variants={contentVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        className="w-full h-full relative"
+      >
+        {/* Window header - Windows-style title bar */}
+        <div 
+          className="bg-zinc-800/70 px-4 py-2 flex justify-between items-center cursor-move select-none"
+          onMouseDown={(e) => !maximized && startDrag(id, e)}
+        >
+          <div className="flex space-x-2">
+            {titleIcon && titleIcon}
+            <h3 className="text-zinc-300 font-mono truncate">{title}</h3>
+          </div>
+          <div className="flex gap-1 ml-4">
+            <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
+              <Minus />
+            </button>
+            <button onClick={handleMaximize} className="p-1 hover:bg-zinc-600 rounded">
+              {maximized ? 
+                <MaxSquare />
+                :
+                <Square />
+              }
+            </button>
+            <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
+              <X/>
+            </button>
+          </div>
+        </div>
+        
+        {/* Window content */}
+        <div className="p-4 h-[calc(100%-40px)] overflow-auto">
+          {children}
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
