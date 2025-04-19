@@ -8,18 +8,6 @@ import CodingAndDev from './projects/CodingAndDev';
 import Minecraft from './projects/Minecraft';
 import { TextReveal } from '../ui/TextReveal';
 
-const IconWrapper = ({ children }: { children: React.ReactNode }) => (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                {children}
-        </svg>
-);
-
-const Square = () => (
-  <IconWrapper>
-        <rect x="5" y="5" width="12" height="12" rx="2" ry="2"></rect>
-  </IconWrapper>
-);
-
 interface ProjectsSectionProps {
   windowPositions: {
     window1: { x: number; y: number };
@@ -90,9 +78,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <ServerManager />
                 )}
                 {!window1Maximized && (
-                  <TextReveal as="p" className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
-                    Click maximize ( <Square /> ) button to see more.
-                  </TextReveal>
+                <div className="text-yellow-200 rotate-3 absolute right-5 -top-14">
+                  <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
+                    <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
+                    <path d="M14 12 L18 10 L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <div className="text-xs ">click to expand</div>
+                </div>
                 )}
               </div>
             </div>
@@ -121,11 +113,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </Link>
                 {window2Maximized && (
                   <CodingAndDev />
-                )}
-                {!window2Maximized && (
-                  <TextReveal as="p" className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
-                    Click maximize ( <Square /> ) button to see more.
-                  </TextReveal>
                 )}
               </div>
               <div className="w-full md:w-1/3 justify-center hidden md:flex">
@@ -162,10 +149,14 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 {window3Maximized && (
                   <Minecraft />
                 )}
-                {!window3Maximized && (
-                  <TextReveal as="p" className="text-yellow-200 text-sm mt-4 flex items-center gap-1">
-                    Click maximize ( <Square /> ) button to see more.
-                  </TextReveal>
+                {!window1Maximized && (
+                <div className="text-yellow-200 rotate-3 absolute right-10 top-20">
+                  <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
+                    <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
+                    <path d="M14 12 L18 10 L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <div className="text-xs ">click to expand</div>
+                </div>
                 )}
               </div>
             </div>

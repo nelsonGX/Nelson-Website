@@ -66,7 +66,7 @@ export default function ServerManager() {
           <Image src={data.imageSrc} alt={'Image'} width={100} height={10} className="object-cover h-20 w-auto my-auto" />
           <div className="relative px-4">
               <h3 className="mb-3 font-bold text-white text-xl">{data.title}</h3>
-              <p className="text-sm leading-snug tracking-wide text-zinc-300 text-opacity-100">{data.description}</p>
+              <div className="text-sm leading-snug tracking-wide text-zinc-300 text-opacity-100">{data.description}</div>
           </div>
         </div>
       </div>

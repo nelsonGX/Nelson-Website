@@ -145,9 +145,9 @@ a.text-reveal {
   animation-play-state: running;
 }
 
-/* Add shimmer effect when visible */
+/* Add shimmer effect when visible - only once on scroll */
 .text-reveal.visible::after {
-  animation: shimmerEffect 1.2s ease-out 0.6s forwards;
+  animation: shimmerEffect 1.2s ease-out 0.6s forwards; /* forwards ensures it stays at the end state */
 }
 
 /* Animation keyframes - moving the mask right */
@@ -160,7 +160,7 @@ a.text-reveal {
   }
 }
 
-/* Animation for shimmer effect */
+/* Animation for shimmer effect - runs once */
 @keyframes shimmerEffect {
   0% {
     left: -100%;
@@ -171,7 +171,7 @@ a.text-reveal {
   }
   100% {
     left: 150%;
-    opacity: 0;
+    opacity: 0; /* Completely disappears at the end */
   }
 }
 
