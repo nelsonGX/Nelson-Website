@@ -13,11 +13,11 @@ export default function ServerManager() {
         <>
           <div>
             <span>
-              FreeServer was a project started by me and Mayboy. Initially, I noticed my friend Mayboy using Google Cloud Platform (GCP)'s free 300 USD plan, and I wondered if we could use it for free hosting. So, we invited our friend Windless to join the project.
+              FreeServer was a project started by me and Mayboy. Initially, I noticed my friend Mayboy using Google Cloud Platform (GCP)&apos;s free 300 USD plan, and I wondered if we could use it for free hosting. So, we invited our friend Windless to join the project.
               <br/><br/>
               FreeServer provided free hosting for Minecraft servers and Discord bots. The free specs included 1 vCPU, 4 GB RAM, and 10 GB of disk space. The server was located in Taiwan. These specs were quite generous for free hosting in Asia.
               <br/><br/>
-              The server faced a lot of DDoS traffic initially, until we met Alger Huang, the owner of Fast-Line, who offered free anti-DDoS service for us. After about 4 months, we encountered policy changes from GCP and the end of Fast-Line's free anti-DDoS service. Eventually, we decided to shut down FreeServer in August 2022.
+              The server faced a lot of DDoS traffic initially, until we met Alger Huang, the owner of Fast-Line, who offered free anti-DDoS service for us. After about 4 months, we encountered policy changes from GCP and the end of Fast-Line&apos;s free anti-DDoS service. Eventually, we decided to shut down FreeServer in August 2022.
             </span>
           </div>
         </>

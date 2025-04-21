@@ -1,7 +1,7 @@
 import { FaPython, FaJava, FaJs, FaReact, FaLeaf, FaLinux } from 'react-icons/fa';
 import { Globe, Server } from 'lucide-react';
 import Image from 'next/image';
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react';
+import { Key } from 'react';
 
 export default function CodingAndDev() {
   const techStack = [
@@ -131,7 +131,7 @@ export default function CodingAndDev() {
 
       <h1 className="text-3xl font-bold py-4 pt-8">Java & Bukkit API</h1>
       <p className="mb-4 text-gray-300">
-        After opening FreeServer (please view the Server Managing & Networking part if you havn't), I waned to make a Minecraft server called "FreeServer Network". I need custom plugins for the server, but I don't want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning.
+        After opening FreeServer (please view the Server Managing & Networking part if you havn&apos;t), I waned to make a Minecraft server called FreeServer Network. I need custom plugins for the server, but I don&apos;t want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning.
       </p>
 
       <h1 className="text-3xl font-bold py-4 pt-8">My Projects</h1>
