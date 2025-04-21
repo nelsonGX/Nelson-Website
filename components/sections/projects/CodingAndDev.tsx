@@ -1,6 +1,7 @@
 import { FaPython, FaJava, FaJs, FaReact, FaLeaf, FaLinux } from 'react-icons/fa';
 import { Globe, Server } from 'lucide-react';
 import Image from 'next/image';
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react';
 
 export default function CodingAndDev() {
   const techStack = [
@@ -71,6 +72,30 @@ export default function CodingAndDev() {
       confidence: "not bad"
     }
   ];
+  
+  interface RelativeProjects {
+    [key: string]: Array<{ name: string; link: string }>;
+  }
+
+  const relativeProjects: RelativeProjects = {
+    "Python": [
+      { name: "My first OpenSourced Bot", link: "https://github.com/nelsonGX/DiscordURLshortenBot" },
+      { name: "MultiAI Chatbot", link: "https://github.com/nelsonGX/multiai-chatbot"},
+      { name: "AI Video Analyze Bot", link: "https://github.com/nelsonGX/ai-video-analyze-bot" },
+      { name: "Nelson x2", link: "https://github.com/nelsonGX/Nelson-x2"},
+      { name: "Siri Pro", link: "https://github.com/nelsonGX/siri-pro"},
+    ],
+    "Next.JS": [
+      { name: "This personal website", link: "https://nelsongx.com" },
+      { name: "FreeServer", link: "https://freeserver.tw" },
+      { name: "FreeServer Network", link: "https://freeserver.network" },
+      { name: "Simple Info. Website", link: "https://www.simple.taipei" },
+      { name: "SITCON 2025 Website (contributor)", link: "https://sitcon.org/2025/venue" },
+    ],
+    "Java": [
+      { name: "Most of them on FreeServer Network Github", link: "https://github.com/freeServer-Network" },
+    ]
+  }
 
   return (
     <>
@@ -96,14 +121,48 @@ export default function CodingAndDev() {
 
       <h1 className="text-3xl font-bold py-4 pt-8">How it all started...</h1>
       <p className="mb-4 text-gray-300">
-        Started with Python like everyone else. My first real project? A Discord bot that didn't crash (most of the time). Watching people actually use something I built was mind-blowing. I was hooked.
+        Started with Python like everyone else. The first real project was started from a Discord bot. I was interested and learnt how to use Discord APIs. About few years later, LLMs came out and I started making Discord chatbots. It was pretty fun.
       </p>
+
+      <h1 className="text-3xl font-bold py-4 pt-8">Web Development</h1>
       <p className="mb-4 text-gray-300">
-        Got tired of static websites, so I jumped into Next.js. Figured out how to make things that don't look terrible on mobile and load faster than a snail climbing a mountain.
+        About the website, I always wanted to make websites but I hated pure HTML and CSS. One time our team needed to make a web app for a project, and one of my friend bring me into Next.JS. I was like, omg its so better, and started to learn and use it. Now I have several projects using Next.JS.
       </p>
-      <p className="text-gray-300">
-        These days I'm wrestling with Java and the Bukkit API for my passion project: FreeServer Network. It's a Minecraft server where I'm throwing everything I've learned into one chaotic experiment. We'll see if it works.
+
+      <h1 className="text-3xl font-bold py-4 pt-8">Java & Bukkit API</h1>
+      <p className="mb-4 text-gray-300">
+        After opening FreeServer (please view the Server Managing & Networking part if you havn't), I waned to make a Minecraft server called "FreeServer Network". I need custom plugins for the server, but I don't want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning.
       </p>
+
+      <h1 className="text-3xl font-bold py-4 pt-8">My Projects</h1>
+      <div className="space-y-8">
+        {Object.keys(relativeProjects).map((tech) => (
+          <div key={tech} className="relative">
+            <h4 className="text-xl font-medium text-orange-300 mb-3">{tech} Projects:</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relativeProjects[tech].map((project: { link: string | undefined; name: string | undefined; }, index: Key | null | undefined) => (
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  key={index}
+                  className="group block"
+                >
+                  <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-4 transition-all duration-300 hover:bg-zinc-700/70 hover:scale-105">
+                    <h5 className="text-white font-medium group-hover:text-orange-300 transition-colors duration-300">{project.name}</h5>
+                    <p className="text-gray-400 text-sm mt-1 flex items-center">
+                      <span className="underline text-gray-500">View project</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </>
   )
