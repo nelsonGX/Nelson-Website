@@ -368,37 +368,7 @@ const AboutSection: React.FC = () => {
           </div>
         </motion.div>
       </motion.div>
-      
-      {/* Background elements with animation */}
-      <motion.div 
-        className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-orange-600/10 rounded-full filter blur-3xl"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ 
-          opacity: [0.3, 0.6, 0.3], 
-          scale: [0.8, 1.2, 0.8],
-          x: [0, 20, 0] 
-        }}
-        transition={{ 
-          duration: 10, 
-          repeat: Infinity,
-          repeatType: "mirror" 
-        }}
-      ></motion.div>
-      <motion.div 
-        className="absolute bottom-1/4 left-0 w-1/4 h-1/4 bg-yellow-600/10 rounded-full filter blur-3xl"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ 
-          opacity: [0.2, 0.5, 0.2], 
-          scale: [0.9, 1.1, 0.9],
-          y: [0, 30, 0]
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity,
-          repeatType: "mirror",
-          delay: 2
-        }}
-      ></motion.div>
+     
     </section>
   );
 };

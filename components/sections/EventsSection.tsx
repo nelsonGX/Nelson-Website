@@ -197,53 +197,6 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
         </motion.div>
       </motion.div>
       
-      {/* Animated background elements */}
-      <motion.div 
-        className="absolute top-1/4 right-1/4 w-1/3 h-1/3 bg-orange-600/5 rounded-full filter blur-3xl"
-        animate={{ 
-          opacity: [0.2, 0.5, 0.2], 
-          scale: [0.9, 1.1, 0.9],
-          x: [0, 20, 0]
-        }}
-        transition={{ 
-          duration: 15, 
-          repeat: Infinity,
-          repeatType: "mirror" 
-        }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -bottom-32 left-0 w-full h-64 bg-gradient-to-t from-purple-900/10 to-transparent"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
-      ></motion.div>
-      <motion.div 
-        className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-orange-500 rounded-full"
-        animate={{
-          y: [-10, 10, -10],
-          opacity: [0.2, 1, 0.2],
-          scale: [1, 2, 1]
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          repeatType: "mirror"
-        }}
-      ></motion.div>
-      <motion.div 
-        className="absolute top-1/3 right-1/3 w-1 h-1 bg-yellow-500 rounded-full"
-        animate={{
-          y: [-15, 15, -15],
-          opacity: [0.2, 1, 0.2],
-          scale: [1, 3, 1]
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          repeatType: "mirror",
-          delay: 1
-        }}
-      ></motion.div>
     </section>
   );
 };
