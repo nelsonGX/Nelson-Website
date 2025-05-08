@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const HeroSection = ({}) => {
   return (
-    <section id="hero" className="min-h-screen relative flex items-center justify-center px-6 overflow-hidden">
+    <section className="min-h-screen relative flex items-center justify-center px-6 overflow-hidden">
 
       {/* Container for both Spline and content */}
       <div className="relative w-full h-screen">

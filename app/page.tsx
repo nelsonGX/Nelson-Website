@@ -10,7 +10,6 @@ import Footer from '../components/layout/Footer';
 import Header from '@/components/layout/Header';
 import TransitionEffect from '@/components/layout/TransitionEffect';
 import { useLoadingContext } from '@/components/context/LoadingContext';
-import SectionFocus from '@/components/layout/SectionFocus';
 
 // Section components
 import HeroSection from '../components/sections/HeroSection';
@@ -23,15 +22,11 @@ import ContactSection from '../components/sections/ContactSection';
 import { 
   useWindowDimensions,
   useScrollProgress, 
-  useDraggableWindows,
-  useSectionInView
+  useDraggableWindows 
 } from '../components/hooks';
 
 // Data
 import events from '../components/data/eventsData';
-
-// Section IDs for the focus effect
-const SECTION_IDS = ['hero', 'about', 'projects', 'events', 'contact'];
 
 const NelsonPortfolio = () => {
   const [loading, setLoading] = useState(true);
@@ -41,8 +36,6 @@ const NelsonPortfolio = () => {
   const { isSmallScreen } = useWindowDimensions();
   const scrollProgress = useScrollProgress();
   const { isFirstVisit } = useLoadingContext();
-  const activeSection = useSectionInView(SECTION_IDS);
-  
   const { 
     windowPositions, 
     startDrag, 
@@ -95,39 +88,29 @@ const NelsonPortfolio = () => {
       <Header />
       
       {/* Hero section */}
-      <SectionFocus isActive={activeSection === 'hero'}>
-        <HeroSection />
-      </SectionFocus>
+      <HeroSection />
       
       {/* About section */}
-      <SectionFocus isActive={activeSection === 'about'}>
-        <AboutSection />
-      </SectionFocus>
+      <AboutSection />
       
       {/* Projects section */}
-      <SectionFocus isActive={activeSection === 'projects'}>
-        <ProjectsSection 
-          windowPositions={windowPositions}
-          window1Maximized={window1Maximized}
-          window2Maximized={window2Maximized}
-          window3Maximized={window3Maximized}
-          setWindow1Maximized={setWindow1Maximized}
-          setWindow2Maximized={setWindow2Maximized}
-          setWindow3Maximized={setWindow3Maximized}
-          startDrag={startDrag}
-          isSmallScreen={isSmallScreen}
-        />
-      </SectionFocus>
+      <ProjectsSection 
+        windowPositions={windowPositions}
+        window1Maximized={window1Maximized}
+        window2Maximized={window2Maximized}
+        window3Maximized={window3Maximized}
+        setWindow1Maximized={setWindow1Maximized}
+        setWindow2Maximized={setWindow2Maximized}
+        setWindow3Maximized={setWindow3Maximized}
+        startDrag={startDrag}
+        isSmallScreen={isSmallScreen}
+      />
       
       {/* Events section */}
-      <SectionFocus isActive={activeSection === 'events'}>
-        <EventsSection events={events} />
-      </SectionFocus>
+      <EventsSection events={events} />
       
       {/* Contact section */}
-      <SectionFocus isActive={activeSection === 'contact'}>
-        <ContactSection />
-      </SectionFocus>
+      <ContactSection />
       
       {/* Footer */}
       <Footer />
