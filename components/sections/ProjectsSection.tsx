@@ -1,8 +1,8 @@
 import React from 'react';
 import DraggableWindow from '../ui/DraggableWindow';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Server, Code, Box, Github } from 'lucide-react';
-import Link from 'next/link';;
 import ServerManager from './projects/ServerManage';
 import CodingAndDev from './projects/CodingAndDev';
 import Minecraft from './projects/Minecraft';
@@ -36,7 +36,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   isSmallScreen
 }) => {
   return (
-    <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
+    <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b z-15 from-zinc-800 to-zinc-900">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">

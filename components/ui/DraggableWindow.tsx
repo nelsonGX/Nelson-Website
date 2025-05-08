@@ -67,7 +67,6 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     if (maximized || !windowRef.current) return;
     
     if (!document.body.style.userSelect) {
-      // Ensure window stays within viewport on mobile
       const viewportWidth = window.innerWidth;
       const safeX = Math.min(position.x, viewportWidth - 40);
       
