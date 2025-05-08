@@ -250,8 +250,8 @@ const AboutSection: React.FC = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10"
                 variants={containerVariants}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
+                animate="visible"
+                key="gui-view"
               >
                 {/* Left column - About me text */}
                 <motion.div 
@@ -357,7 +357,7 @@ const AboutSection: React.FC = () => {
               </motion.div>
             ) : (
               <motion.div 
-                className="h-[512px] bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700"
+                className="h-[600px] bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
