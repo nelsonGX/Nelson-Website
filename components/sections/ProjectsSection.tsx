@@ -163,9 +163,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           </DraggableWindow>
         </div>
       </div>
-      
-      {/* Background elements */}
-      <div className="absolute top-1/3 left-1/4 w-1/3 h-1/3 bg-gradient-to-br from-orange-600/5 to-yellow-600/5 rounded-full filter blur-3xl"></div>
     </section>
   );
 };
