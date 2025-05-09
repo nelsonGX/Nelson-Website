@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Mail, Link as LLink, Check, Copy } from 'lucide-react';
 import { FaDiscord, FaTelegram } from 'react-icons/fa';
 import { TextReveal } from '../ui/TextReveal';
+import Link from 'next/link';
 
 interface ContactCardProps {
   icon: React.ReactNode;
@@ -141,7 +142,7 @@ const ContactSection: React.FC = () => {
                   <LLink className="text-orange-400" size={24} />
                   <div>
                     <h4 className="text-gray-300 font-medium">View More...</h4>
-                    <a href="/socials" className="text-orange-300 hover:underline">Go to the socials page</a>
+                    <Link href="/socials" className="text-orange-300 hover:underline">Go to the socials page</Link>
                   </div>
                 </div>
               </div>
