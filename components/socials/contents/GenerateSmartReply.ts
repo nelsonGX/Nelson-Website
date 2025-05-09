@@ -279,6 +279,14 @@ const generateSmartReply = (userMessage: string) => {
     ];
     return apologyResponses[Math.floor(Math.random() * apologyResponses.length)];
   }
+
+  // Neega
+  if (msg.includes("nigga") || msg.includes("nigger") || msg.includes("niggar")) {
+    const farewellResponses = [
+      "nigger"
+    ];
+    return farewellResponses[Math.floor(Math.random() * farewellResponses.length)];
+  }
   
   // Farewell
   if (msg.includes("bye") || msg.includes("goodbye") || msg.includes("see you") || 
