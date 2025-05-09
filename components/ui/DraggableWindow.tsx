@@ -17,15 +17,15 @@ const Minus = () => (
 
 const Square = () => (
   <IconWrapper>
-        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <rect x="5" y="5" width="15" height="15" rx="2" ry="2"></rect>
   </IconWrapper>
 );
 
 const MaxSquare = () => (
     <IconWrapper>
-        <rect x="5" y="7" width="12" height="12" rx="2" ry="2"></rect>
-        <line x1="8" y1="2" x2="22" y2="2"></line>
-        <line x1="22" y1="14" x2="22" y2="2"></line>
+        <rect x="5" y="7" width="10" height="10" rx="2" ry="2"></rect>
+        <line x1="10" y1="3" x2="20" y2="3"></line>
+        <line x1="20" y1="12" x2="20" y2="3"></line>
     </IconWrapper>
 );
 
@@ -176,7 +176,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
             {titleIcon && titleIcon}
             <h3 className="text-zinc-300 font-mono truncate hidden md:block">{title}</h3>
           </div>
-          <div className="flex gap-1 ml-4">
+          <div className="flex gap-3 ml-4">
             <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
               <Minus />
             </button>
