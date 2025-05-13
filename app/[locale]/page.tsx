@@ -4,29 +4,29 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Layout components
-import ProgressIndicator from '../components/layout/ProgressIndicator';
-import LoadingScreen from '../components/layout/LoadingScreen';
-import Footer from '../components/layout/Footer';
+import ProgressIndicator from '@/components/layout/ProgressIndicator';
+import LoadingScreen from '@/components/layout/LoadingScreen';
+import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import TransitionEffect from '@/components/layout/TransitionEffect';
 import { useLoadingContext } from '@/components/context/LoadingContext';
 
 // Section components
-import HeroSection from '../components/sections/HeroSection';
-import AboutSection from '../components/sections/AboutSection';
-import ProjectsSection from '../components/sections/ProjectsSection';
-import EventsSection from '../components/sections/EventsSection';
-import ContactSection from '../components/sections/ContactSection';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import EventsSection from '@/components/sections/EventsSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 // Custom hooks
 import { 
   useWindowDimensions,
   useScrollProgress, 
   useDraggableWindows 
-} from '../components/hooks';
+} from '@/components/hooks';
 
 // Data
-import events from '../components/data/eventsData';
+import events from '@/components/data/eventsData';
 
 const NelsonPortfolio = () => {
   const [loading, setLoading] = useState(true);
@@ -47,21 +47,14 @@ const NelsonPortfolio = () => {
     setWindow3Maximized
   } = useDraggableWindows();
   
-  // Initialize loading animation only on first visit
-  useEffect(() => {
-    console.log('Page.tsx - isFirstVisit:', isFirstVisit);
-    
-    // Loading animation
+  useEffect(() => {   
     if (typeof window !== 'undefined') {
       if (isFirstVisit) {
-        console.log('Showing loading screen...');
         setTimeout(() => {
           setLoading(false);
           setFadeOut(true);
-        }, 800); // Give more time for initial loading animation
+        }, 800);
       } else {
-        console.log('Skipping loading screen, showing transition...');
-        // Skip loading screen if not first visit (navigating between pages)
         setLoading(false);
       }
     }
