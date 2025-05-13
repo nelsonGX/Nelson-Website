@@ -26,7 +26,7 @@ import {
 } from '@/components/hooks';
 
 // Data
-import events from '@/components/data/eventsData';
+import EventsData from '@/components/data/eventsData';
 
 const NelsonPortfolio = () => {
   const [loading, setLoading] = useState(true);
@@ -100,7 +100,7 @@ const NelsonPortfolio = () => {
       />
       
       {/* Events section */}
-      <EventsSection events={events} />
+      <EventsSection events={EventsData()} />
       
       {/* Contact section */}
       <ContactSection />

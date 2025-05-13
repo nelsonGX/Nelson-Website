@@ -259,5 +259,38 @@
       "waitingResponse": "Waiting for response...",
       "messagePlaceholder": "nMessage"
     }
+  },
+  "eventData": {
+    "2025": {
+      "sitcon": "SITCON 2025 - 開發組組員",
+      "cybersec": "CYBERSEC 2025 - 會眾",
+      "twnog": "TWNOG 6 - 會眾",
+      "computex": "COMPUTEX 2025 - 會眾",
+      "nvidiaKeynote": "NVIDIA CEO Keynote - 會眾",
+      "sitconCamp": "SITCON Camp 2025 - 課程活動組組長",
+      "coscup": "COSCUP 2025 - 會眾"
+    },
+    "2024": {
+      "hitconCtf": "HITCON CTF 2024 - 會眾",
+      "hitconCmt": "HITCON CMT 2024 - 會眾",
+      "coscup": "COSCUP 2024 - 會眾",
+      "sitconBof": "SITCON BoF 2024 - 參與者",
+      "sitconCamp": "SITCON Camp 2024 - 隊輔組組員",
+      "sitcon": "SITCON 2024 - 會眾",
+      "g0vSummit": "g0v Summit 2024 Conference - 會眾",
+      "nvidiaKeynote": "NVIDIA CEO Keynote - 會眾",
+      "computex": "COMPUTEX 2024 - 會眾",
+      "cybersec": "CYBERSEC 2024 - 會眾"
+    },
+    "2023": {
+      "coscup": "COSCUP 2023 - 會眾",
+      "sitconBof": "SITCON BoF 2023 - 參與者",
+      "gamforce": "2023 GAMFORCE - 參與者",
+      "g0vHackathon": "g0v hackath58n - 會眾"
+    },
+    "2022": {
+      "coscup": "COSCUP 2022 - 會眾",
+      "taiwanAiExpo": "2022 Taiwan AI EXPO - 會眾"
+    }
   }
 }

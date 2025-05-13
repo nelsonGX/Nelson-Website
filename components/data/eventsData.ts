@@ -1,34 +1,43 @@
-const events: Record<string, string[]> = {
-  "2025": [
-    "SITCON 2025 - Developement Team - Member",
-    "CYBERSEC 2025 - Attendee",
-    "TWNOG 6 - Attendee",
-    "COMPUTEX 2025 - Attendee",
-    "SITCON Camp 2025 - Event Coordination Team - Leader",
-    "COSCUP 2025 - Attendee"
-  ],
-  "2024": [
-    "HITCON CTF 2024 - Attendee",
-    "HITCON CMT 2024 - Attendee",
-    "COSCUP 2024 - Attendee",
-    "SITCON BoF 2024 - Participator",
-    "SITCON Camp 2024 - Instructor",
-    "SITCON 2024 - Attendee",
-    "g0v Summit 2024 Conference - Attendee",
-    "NVIDIA Keynote - Attendee",
-    "COMPUTEX 2024 - Attendee",
-    "CYBERSEC 2024 - Attendee"
-  ],
-  "2023": [
-    "COSCUP 2023 - Attendee",
-    "SITCON BoF 2023 - Participator",
-    "2023 GAMFORCE - Participator",
-    "g0v hackath58n - Attendee"
-  ],
-  "2022": [
-    "COSCUP 2022 - Attendee",
-    "2022 Taiwan AI EXPO - Attendee"
-  ]
+import {useTranslations} from 'next-intl';
+
+const EventsData = () => {
+  const t = useTranslations('eventData');
+  
+  const events: Record<string, string[]> = {
+    "2025": [
+      t("2025.sitcon"),
+      t("2025.cybersec"),
+      t("2025.twnog"),
+      t("2025.computex"),
+      t("2025.nvidiaKeynote"),
+      t("2025.sitconCamp"),
+      t("2025.coscup")
+    ],
+    "2024": [
+      t("2024.hitconCtf"),
+      t("2024.hitconCmt"),
+      t("2024.coscup"),
+      t("2024.sitconBof"),
+      t("2024.sitconCamp"),
+      t("2024.sitcon"),
+      t("2024.g0vSummit"),
+      t("2024.nvidiaKeynote"),
+      t("2024.computex"),
+      t("2024.cybersec")
+    ],
+    "2023": [
+      t("2023.coscup"),
+      t("2023.sitconBof"),
+      t("2023.gamforce"),
+      t("2023.g0vHackathon")
+    ],
+    "2022": [
+      t("2022.coscup"),
+      t("2022.taiwanAiExpo")
+    ]
+  };
+
+  return events;
 };
 
-export default events;
+export default EventsData;

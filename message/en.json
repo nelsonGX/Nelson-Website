@@ -259,5 +259,37 @@
       "waitingResponse": "Waiting for response...",
       "messagePlaceholder": "nMessage"
     }
+  },
+  "eventData": {
+    "2025": {
+      "sitcon": "SITCON 2025 - Developement Team - Member",
+      "cybersec": "CYBERSEC 2025 - Attendee",
+      "twnog": "TWNOG 6 - Attendee",
+      "computex": "COMPUTEX 2025 - Attendee",
+      "sitconCamp": "SITCON Camp 2025 - Event Coordination Team - Leader",
+      "coscup": "COSCUP 2025 - Attendee"
+    },
+    "2024": {
+      "hitconCtf": "HITCON CTF 2024 - Attendee",
+      "hitconCmt": "HITCON CMT 2024 - Attendee",
+      "coscup": "COSCUP 2024 - Attendee",
+      "sitconBof": "SITCON BoF 2024 - Participator",
+      "sitconCamp": "SITCON Camp 2024 - Instructor",
+      "sitcon": "SITCON 2024 - Attendee",
+      "g0vSummit": "g0v Summit 2024 Conference - Attendee",
+      "nvidiaKeynote": "NVIDIA Keynote - Attendee",
+      "computex": "COMPUTEX 2024 - Attendee",
+      "cybersec": "CYBERSEC 2024 - Attendee"
+    },
+    "2023": {
+      "coscup": "COSCUP 2023 - Attendee",
+      "sitconBof": "SITCON BoF 2023 - Participator",
+      "gamforce": "2023 GAMFORCE - Participator",
+      "g0vHackathon": "g0v hackath58n - Attendee"
+    },
+    "2022": {
+      "coscup": "COSCUP 2022 - Attendee",
+      "taiwanAiExpo": "2022 Taiwan AI EXPO - Attendee"
+    }
   }
 }
