@@ -42,7 +42,7 @@ const AppContentComponent = ({ app }: AppContentProps) => {
   } else {
     return (
       <div className="flex flex-col h-full">
-        <div className={`${app.color} text-white p-4 flex justify-between items-center`}>
+        <div className={`${app.color} ${app.name === "Slack" ? "text-zinc-800" : "text-white"} p-4 flex justify-between items-center`}>
           <h3 className="text-lg font-semibold">{app.name}</h3>
         </div>
         <div className="flex-1 bg-zinc-900 p-4 flex flex-col items-center justify-center pb-8">
@@ -50,10 +50,10 @@ const AppContentComponent = ({ app }: AppContentProps) => {
             {app.icon}
           </div>
           <div className="text-center mb-6">
-            <p className="font-semibold text-white text-xl">{app.name}</p>
+            <p className={`font-semibold text-white text-xl`}>{app.name}</p>
             <p className="text-sm text-gray-300">{app.content}</p>
           </div>
-          <ViewMyButton name={app.name} link={app.link} bgColor={app.color} />
+          <ViewMyButton name={app.name} link={app.link} bgColor={app.name === "Slack" ? "bg-zinc-500" : app.color} />
         </div>
       </div>
     );

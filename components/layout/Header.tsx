@@ -37,9 +37,17 @@ export default function Header() {
 
   function handleLanguageChange() {
     if (isEnglish) {
-      router.push("/zh")
+      if (isHomePage) {
+        router.push("/zh")
+      } else {
+        router.push("/zh/socials")
+      }
     } else {
-      router.push("/en")
+      if (isHomePage) {
+        router.push("/en")
+      } else {
+        router.push("/en/socials")
+      }
     }
   }
 
@@ -55,8 +63,8 @@ export default function Header() {
         </Link>
       </div>
       
-      <div className="flex space-x-4" onClick={handleLanguageChange}>
-        <div className="h-12 md:h-auto flex border-zinc-700 border px-3 rounded-2xl items-center space-x-2 text-orange-200/80 hover:text-orange-300 transition-all duration-150 cursor-pointer relative">
+      <div className="flex space-x-4">
+        <div className="h-12 md:h-auto flex border-zinc-700 border px-3 rounded-2xl items-center space-x-2 text-orange-200/80 hover:text-orange-300 transition-all duration-150 cursor-pointer relative" onClick={handleLanguageChange} >
           <Languages size={20} />
             {showLanguageHint && (
             <div 
@@ -77,14 +85,14 @@ export default function Header() {
         </div>
         <div className="flex items-center border-1 rounded-2xl border-zinc-600 h-12 md:h-auto">
           <Link 
-            href="/" 
+            href={isEnglish ? "/en" : "/zh"}
             className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
           >
             <User />
             <p className={isHomePage ? "hidden md:block" : ""}>{t('about')}</p>
           </Link>
           <Link 
-            href="/socials" 
+            href={isEnglish ? "/en/socials" : "/zh/socials"}
             className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
           >
             <LLink />

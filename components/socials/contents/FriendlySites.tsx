@@ -1,39 +1,41 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 export default function FriendlySiteContent() {
+  const t = useTranslations('socials.friendlySites');
   const FriendlySitesData = [
   {
     "name": "Yimang",
-    "content": "一個高中生",
+    "content": t('sites.yimang'),
     "icon": <Image src="/assets/images/socials/friendsites/yimang.png" alt="" width={64} height={64} />,
     "link": "https://yimang.tw/",
     "color": "bg-gray-600"
   },
   {
     "name": "BC",
-    "content": "分享酷東西的高品質網站",
+    "content": t('sites.bc'),
     "icon": <Image src="/assets/images/socials/friendsites/bc.png" alt="" width={64} height={64} />,
     "link": "https://bcxy.me/",
     "color": "bg-gray-700"
   },
   {
     "name": "Qian",
-    "content": "幫我想 幹 好啦 我想一下 好 就這樣 好謝謝你",
+    "content": t('sites.qian'),
     "icon": <Image src="/assets/images/socials/friendsites/qian.png" alt="" width={64} height={64} />,
     "link": "https://blog.qian30.net/",
     "color": "bg-zinc-800"
   },
   {
     "name": "n1cat",
-    "content": "n1cat's blog ><",
+    "content": t('sites.n1cat'),
     "icon": <Image src="/assets/images/socials/friendsites/n1cat.jpg" alt="" width={64} height={64} />,
     "link":"https://blog.nlcat.dpdns.org/",
     "color": "bg-zinc-900"
   },
   {
     "name": "Kason",
-    "content": "充滿著康喔不定時的小感動",
+    "content": t('sites.kason'),
     "icon": <Image src="/assets/images/socials/friendsites/kang.png" alt="" width={64} height={64} />,
     "link":"https://kangjw.me/",
     "color": "bg-zinc-800"
@@ -60,7 +62,7 @@ export default function FriendlySiteContent() {
   return (
     <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">
       <style jsx>{rgbBorderStyle}</style>
-      <h1 className="text-lg font-semibold text-white mb-4">Friendly Sites</h1>
+      <h1 className="text-lg font-semibold text-white mb-4">{t('title')}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {FriendlySitesData.map((site, index) => (
           <Link 

@@ -89,7 +89,7 @@
       },
       "viewMore": {
         "title": "更多...",
-        "link": "查看社群媒體頁面"
+        "link": "查看社群頁面"
       },
       "form": {
         "title": "傳訊息給我",
@@ -157,7 +157,7 @@
   "layout": {
     "header": {
       "about": "關於我",
-      "socials": "社群媒體",
+      "socials": "社群",
       "languageHint": "點擊切換英文版"
     },
     "footer": {
@@ -237,6 +237,27 @@
       "infrastructure": {
         "title": "Server Infrastructure & Homelab"
       }
+    }
+  },
+  "socials": {
+    "buttons": {
+      "viewMy": "查看我的"
+    },
+    "friendlySites": {
+      "title": "Friendly Sites",
+      "sites": {
+        "yimang": "一個高中生",
+        "bc": "分享酷東西的高品質網站",
+        "qian": "幫我想 幹 好啦 我想一下 好 就這樣 好謝謝你",
+        "n1cat": "n1cat's blog ><",
+        "kason": "充滿著康喔不定時的小感動"
+      }
+    },
+    "dockMessage": {
+      "initialMessage": "Hi, I am nelson. good morning",
+      "today": "Today",
+      "waitingResponse": "Waiting for response...",
+      "messagePlaceholder": "nMessage"
     }
   }
 }

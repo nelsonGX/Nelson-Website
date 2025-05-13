@@ -238,5 +238,26 @@
         "title": "Server Infrastructure & Homelab"
       }
     }
+  },
+  "socials": {
+    "buttons": {
+      "viewMy": "View My"
+    },
+    "friendlySites": {
+      "title": "Friendly Sites",
+      "sites": {
+        "yimang": "\"A highscool student\"",
+        "bc": "Sharing cool things",
+        "qian": "help me think...fuck, ok, let me think...ok thanks",
+        "n1cat": "n1cat's blog ><",
+        "kason": "I am gay"
+      }
+    },
+    "dockMessage": {
+      "initialMessage": "Hi, I am nelson. good morning",
+      "today": "Today",
+      "waitingResponse": "Waiting for response...",
+      "messagePlaceholder": "nMessage"
+    }
   }
 }
