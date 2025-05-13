@@ -55,20 +55,25 @@ body {
 @font-face {
   font-family: 'Minecraft';
   src: url('/assets/fonts/Minecraft.ttf') format('truetype');
+  font-display: swap;
 }
 
 .font-minecraft {
-  font-family: 'Minecraft', monospace;
+  font-family: 'Minecraft', 'Noto Sans TC', monospace;
 }
 
 @font-face {
   font-family: 'SFPro';
   src: url('/assets/fonts/SFPRO.ttf') format('truetype');
+  font-display: swap;
 }
 
 .font-sfpro {
-  font-family: 'SFPro', monospace;
+  font-family: 'SFPro', 'Noto Sans TC', monospace;
 }
+
+/* Import Noto Sans TC as fallback */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 
 /* Text reveal animation classes for global.css */
 
