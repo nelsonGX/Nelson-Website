@@ -2,74 +2,76 @@ import { FaPython, FaJava, FaJs, FaReact, FaLeaf, FaLinux } from 'react-icons/fa
 import { Globe, Server } from 'lucide-react';
 import Image from 'next/image';
 import { Key } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function CodingAndDev() {
+  const t = useTranslations('projects.codingAndDev');
   const techStack = [
     { 
       name: 'Python', 
       icon: <FaPython className="text-blue-300" />, 
       bg: "bg-zinc-700/50",
-      confidence: "Pretty confident" 
+      confidence: t('techStack.python') 
     },
     { 
       name: 'Java', 
       icon: <FaJava className="text-red-400" />, 
       bg: "bg-zinc-700/50",
-      confidence: "I do minecraft plugins" 
+      confidence: t('techStack.java') 
     },
     { 
       name: 'JavaScript', 
       icon: <FaJs className="text-yellow-400" />, 
       bg: "bg-zinc-700/50",
-      confidence: "Not bad, but I hate it"
+      confidence: t('techStack.javascript')
     },
     { 
       name: 'Next.JS', 
       icon: <Image src="/assets/images/nextjs.webp" alt="Next.js" width={20} height={20} className="text-white" />, 
       bg: "bg-yellow-400/15",
-      confidence: "Pretty confident"
+      confidence: t('techStack.nextjs')
     },
     { 
       name: 'React', 
       icon: <FaReact className="text-blue-400" />, 
       bg: "bg-yellow-400/15",
-      confidence: "It's just inside nextjs"
+      confidence: t('techStack.react')
     },
     { 
       name: 'Tailwind CSS', 
       icon: <Image src="/assets/images/tailwind.png" alt="Tailwind CSS" width={20} height={20} className="text-white" />, 
       bg: "bg-yellow-400/15",
-      confidence: "better than pure css"
+      confidence: t('techStack.tailwind')
     },
     { 
       name: 'MongoDB', 
       icon: <FaLeaf className="text-green-800" />, 
       bg: "bg-yellow-400/15",
-      confidence: "I use it (not really well)"
+      confidence: t('techStack.mongodb')
     },
     { 
       name: 'CraftBukkit',
       icon: <Image src="/assets/images/craftbukkit.png" alt="CraftBukkit" width={20} height={20} className="text-white" />,
       bg: "bg-yellow-400/15",
-      confidence: "the minecraft plugin api"
+      confidence: t('techStack.craftbukkit')
     },
     { 
       name: 'Linux', 
       icon: <FaLinux className="text-gray-400" />, 
       bg: "bg-yellow-400/15",
-      confidence: "I can read commands"
+      confidence: t('techStack.linux')
     },
     { 
       name: 'Networking', 
       icon: <Globe className="text-green-400" />, 
       bg: "bg-orange-400/15",
-      confidence: "not bad"
+      confidence: t('techStack.networking')
     },
     { 
       name: 'Infrastructure', 
       icon: <Server className="text-orange-400" />, 
       bg: "bg-orange-400/15",
-      confidence: "not bad"
+      confidence: t('techStack.infrastructure')
     }
   ];
   
@@ -100,7 +102,7 @@ export default function CodingAndDev() {
   return (
     <>
     <div className="mt-4">
-      <h4 className="text-lg font-medium text-orange-300 mb-2">Tech stack:</h4>
+      <h4 className="text-lg font-medium text-orange-300 mb-2">{t('techStack.title')}:</h4>
         <div className="flex flex-wrap gap-2 justify-center md:justify-start">
           {techStack.map((tech, index) => (
             <div 
@@ -119,26 +121,26 @@ export default function CodingAndDev() {
           ))}
       </div>
 
-      <h1 className="text-3xl font-bold py-4 pt-8">How it all started...</h1>
+      <h1 className="text-3xl font-bold py-4 pt-8">{t('sections.start.title')}</h1>
       <p className="mb-4 text-gray-300">
-        Started with Python like everyone else. The first real project was started from a Discord bot. I was interested and learnt how to use Discord APIs. About few years later, LLMs came out and I started making Discord chatbots. It was pretty fun.
+        {t('sections.start.description')}
       </p>
 
-      <h1 className="text-3xl font-bold py-4 pt-8">Web Development</h1>
+      <h1 className="text-3xl font-bold py-4 pt-8">{t('sections.webDev.title')}</h1>
       <p className="mb-4 text-gray-300">
-        About the website, I always wanted to make websites but I hated pure HTML and CSS. One time our team needed to make a web app for a project, and one of my friend bring me into Next.JS. I was like, omg its so better, and started to learn and use it. Now I have several projects using Next.JS.
+        {t('sections.webDev.description')}
       </p>
 
-      <h1 className="text-3xl font-bold py-4 pt-8">Java & Bukkit API</h1>
+      <h1 className="text-3xl font-bold py-4 pt-8">{t('sections.java.title')}</h1>
       <p className="mb-4 text-gray-300">
-        After opening FreeServer (please view the Server Managing & Networking part if you havn&apos;t), I waned to make a Minecraft server called FreeServer Network. I need custom plugins for the server, but I don&apos;t want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning.
+        {t('sections.java.description')}
       </p>
 
-      <h1 className="text-3xl font-bold py-4 pt-8">My Projects</h1>
+      <h1 className="text-3xl font-bold py-4 pt-8">{t('sections.projects.title')}</h1>
       <div className="space-y-8">
         {Object.keys(relativeProjects).map((tech) => (
           <div key={tech} className="relative">
-            <h4 className="text-xl font-medium text-orange-300 mb-3">{tech} Projects:</h4>
+            <h4 className="text-xl font-medium text-orange-300 mb-3">{tech} {t('sections.projects.projectsLabel')}:</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {relativeProjects[tech].map((project: { link: string | undefined; name: string | undefined; }, index: Key | null | undefined) => (
                 <a 
@@ -151,7 +153,7 @@ export default function CodingAndDev() {
                   <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-4 transition-all duration-300 hover:bg-zinc-700/70 hover:scale-105">
                     <h5 className="text-white font-medium group-hover:text-orange-300 transition-colors duration-300">{project.name}</h5>
                     <p className="text-gray-400 text-sm mt-1 flex items-center">
-                      <span className="underline text-gray-500">View project</span>
+                      <span className="underline text-gray-500">{t('sections.projects.viewProject')}</span>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>

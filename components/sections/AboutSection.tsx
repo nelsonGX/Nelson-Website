@@ -5,8 +5,10 @@ import TerminalComponent from '../ui/TerminalComponent';
 import Image from 'next/image';
 import { TextReveal } from '../ui/TextReveal';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 const AboutSection: React.FC = () => {
+  const t = useTranslations('home.about');
   const [viewMode, setViewMode] = useState<'gui' | 'terminal'>('gui');
 
   const toggleViewMode = () => {
@@ -18,89 +20,89 @@ const AboutSection: React.FC = () => {
       name: 'Python', 
       icon: <FaPython className="text-blue-300" />, 
       bg: "bg-zinc-700/50",
-      confidence: "Pretty confident" 
+      confidence: t('techStack.python.confidence')
     },
     { 
       name: 'Java', 
       icon: <FaJava className="text-red-400" />, 
       bg: "bg-zinc-700/50",
-      confidence: "I do minecraft plugins" 
+      confidence: t('techStack.java.confidence')
     },
     { 
       name: 'JavaScript', 
       icon: <FaJs className="text-yellow-400" />, 
       bg: "bg-zinc-700/50",
-      confidence: "Not bad, but I hate it"
+      confidence: t('techStack.javascript.confidence')
     },
     { 
       name: 'Next.JS', 
       icon: <Image src="/assets/images/nextjs.webp" alt="Next.js" width={20} height={20} className="text-white" />, 
       bg: "bg-yellow-400/15",
-      confidence: "Pretty confident"
+      confidence: t('techStack.nextjs.confidence')
     },
     { 
       name: 'React', 
       icon: <FaReact className="text-blue-400" />, 
       bg: "bg-yellow-400/15",
-      confidence: "It's just inside nextjs"
+      confidence: t('techStack.react.confidence')
     },
     { 
       name: 'Tailwind CSS', 
       icon: <Image src="/assets/images/tailwind.png" alt="Tailwind CSS" width={20} height={20} className="text-white" />, 
       bg: "bg-yellow-400/15",
-      confidence: "better than pure css"
+      confidence: t('techStack.tailwind.confidence')
     },
     { 
       name: 'MongoDB', 
       icon: <FaLeaf className="text-green-800" />, 
       bg: "bg-yellow-400/15",
-      confidence: "I use it (not really well)"
+      confidence: t('techStack.mongodb.confidence')
     },
     { 
       name: 'CraftBukkit',
       icon: <Image src="/assets/images/craftbukkit.png" alt="CraftBukkit" width={20} height={20} className="text-white" />,
       bg: "bg-yellow-400/15",
-      confidence: "the minecraft plugin api"
+      confidence: t('techStack.craftbukkit.confidence')
     },
     { 
       name: 'Linux', 
       icon: <FaLinux className="text-gray-400" />, 
       bg: "bg-yellow-400/15",
-      confidence: "I can read commands"
+      confidence: t('techStack.linux.confidence')
     },
     { 
       name: 'Networking', 
       icon: <Globe className="text-green-400" />, 
       bg: "bg-orange-400/15",
-      confidence: "not bad"
+      confidence: t('techStack.networking.confidence')
     },
     { 
       name: 'Infrastructure', 
       icon: <Server className="text-orange-400" />, 
       bg: "bg-orange-400/15",
-      confidence: "not bad"
+      confidence: t('techStack.infrastructure.confidence')
     }
   ];
 
   const pastProjects = [
     {
       title: 'CheapServer',
-      description: 'A hosting service for game servers based in Taiwan.',
-      since: '2022 - now',
+      description: t('projects.cheapserver.description'),
+      since: t('projects.cheapserver.since'),
       link: 'https://cheapserver.tw',
       tech: ["Networking", "Infrastructure", "Linux"]
     },
     {
       title: 'FreeServer v3',
-      description: 'A free hosting service community.',
-      since: '2023 - now',
+      description: t('projects.freeserver.description'),
+      since: t('projects.freeserver.since'),
       link: 'https://freeserver.tw',
       tech: ["Networking", "Linux", "Next.JS", "JavaScript"]
     },
     {
       title: 'FreeServer Network',
-      description: 'A Minecraft server focusing on map sharing for creators.',
-      since: '2024 - now',
+      description: t('projects.freeserverNetwork.description'),
+      since: t('projects.freeserverNetwork.since'),
       link: 'https://freeserver.network',
       tech: ["Networking", "Infrastructure", "Linux", "Java", "CraftBukkit", "Next.JS"]
     }
@@ -150,7 +152,7 @@ const AboutSection: React.FC = () => {
           <div className="text-6xl font-bold">
             <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
               <h2>
-                <span>Who Am</span>
+                <span>{t('title.whoAm')}</span>
                 <motion.span 
                   className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out"
                   whileHover={{ 
@@ -159,7 +161,7 @@ const AboutSection: React.FC = () => {
                     transition: { type: "spring", stiffness: 300 }
                   }}
                 >
-                  &nbsp;I&nbsp;
+                  &nbsp;{t('title.i')}&nbsp;
                 </motion.span>
                 <span>?</span>
               </h2>
@@ -219,7 +221,7 @@ const AboutSection: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                GUI
+                {t('buttons.gui')}
               </motion.button>
               <motion.button 
                 onClick={toggleViewMode}
@@ -229,7 +231,7 @@ const AboutSection: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Terminal
+                {t('buttons.terminal')}
               </motion.button>
             </div>
             
@@ -259,16 +261,16 @@ const AboutSection: React.FC = () => {
                   variants={itemVariants}
                 >
                   <TextReveal className="text-lg text-gray-300 mb-6">
-                    Hello! My name is Nelson, aka nelsonGX. I&apos;m a student from Taiwan, and I have a passion in field of computer related stuff.
+                    {t('description.intro')}
                   </TextReveal>
                   <TextReveal className="text-lg text-gray-300 mb-6">
-                    I currently own Very Fast Network LTD, a company based in Taiwan that operates CheapServer hosting services under AS152619. Alongside this main business, I run FreeServer, a free hosting service community. I also manage a Minecraft server called FreeServer Network, which focuses on map sharing for creators.
+                    {t('description.work')}
                   </TextReveal>
                   <TextReveal className="text-lg text-gray-300 mb-6">
-                    I&apos;m actively involved in tech communities, attending conferences like SITCON, HITCON, and COSCUP to learn and network with fellow enthusiasts.
+                    {t('description.community')}
                   </TextReveal>
                   <motion.div variants={itemVariants}>
-                    <h3 className="text-xl text-orange-400 font-semibold mb-4">Tech Stack</h3>
+                    <h3 className="text-xl text-orange-400 font-semibold mb-4">{t('sections.techStack')}</h3>
                     <motion.div 
                       className="flex flex-wrap gap-2"
                       variants={containerVariants}
@@ -308,7 +310,7 @@ const AboutSection: React.FC = () => {
                       className="text-xl text-orange-400 font-semibold mb-4"
                       variants={itemVariants}
                     >
-                      Projects / Services
+                      {t('sections.projects')}
                     </motion.h3>
                     <motion.div 
                       className="space-y-4"
@@ -346,7 +348,7 @@ const AboutSection: React.FC = () => {
                               className="text-xs text-orange-400 hover:text-orange-300 hover-lift"
                               whileHover={{ x: 5 }}
                             >
-                              Website →
+                              {t('buttons.website')} →
                             </motion.a>
                           </div>
                         </motion.div>

@@ -3,13 +3,19 @@ import Link from "next/link"
 import { User, Link as LLink, Languages } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useTranslations } from 'next-intl'
 
 export default function Header() {
+  const t = useTranslations('layout.header');
   const pathname = usePathname()
-  const isHomePage = pathname === "/"
+  const isHomePage = !pathname.includes("/socials")
+  const isEnglish = pathname.includes("/en")
   const [showLanguageHint, setShowLanguageHint] = useState(true)
   const [isExiting, setIsExiting] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+
+  const router = useRouter()
   
   useEffect(() => {
     setTimeout(() => {
@@ -29,6 +35,14 @@ export default function Header() {
     return () => clearTimeout(timer)
   }, [])
 
+  function handleLanguageChange() {
+    if (isEnglish) {
+      router.push("/zh")
+    } else {
+      router.push("/en")
+    }
+  }
+
   return (
     <header className="absolute flex w-full top-0 backdrop-blur-md px-8 py-2 md:py-4 justify-between z-50">
       <div>
@@ -41,7 +55,7 @@ export default function Header() {
         </Link>
       </div>
       
-      <div className="flex space-x-4">
+      <div className="flex space-x-4" onClick={handleLanguageChange}>
         <div className="h-12 md:h-auto flex border-zinc-700 border px-3 rounded-2xl items-center space-x-2 text-orange-200/80 hover:text-orange-300 transition-all duration-150 cursor-pointer relative">
           <Languages size={20} />
             {showLanguageHint && (
@@ -55,7 +69,7 @@ export default function Header() {
               }}
             >
               <div className="bg-zinc-800 px-3 py-1 rounded-lg text-sm text-white">
-              Also available in Chinese
+              {t('languageHint')}
               <div className="absolute -top-2 right-4 transform border-b-8 border-b-zinc-800 border-x-8 border-x-transparent"></div>
               </div>
             </div>
@@ -67,14 +81,14 @@ export default function Header() {
             className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
           >
             <User />
-            <p className={isHomePage ? "hidden md:block" : ""}>About</p>
+            <p className={isHomePage ? "hidden md:block" : ""}>{t('about')}</p>
           </Link>
           <Link 
             href="/socials" 
             className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
           >
             <LLink />
-            <p className={isHomePage ? "" : "hidden md:block"}>Socials</p>
+            <p className={isHomePage ? "" : "hidden md:block"}>{t('socials')}</p>
           </Link>
         </div>  
       </div>
