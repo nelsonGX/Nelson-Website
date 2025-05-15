@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function FriendlySiteContent() {
   const t = useTranslations('socials.friendlySites');
