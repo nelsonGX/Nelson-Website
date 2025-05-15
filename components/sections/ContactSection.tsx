@@ -5,6 +5,7 @@ import { Mail, Link as LLink, Check, Copy } from 'lucide-react';
 import { FaDiscord, FaTelegram } from 'react-icons/fa';
 import { TextReveal } from '../ui/TextReveal';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface ContactCardProps {
   icon: React.ReactNode;
@@ -43,6 +44,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ icon, title, value }) => {
 };
 
 const ContactSection: React.FC = () => {
+  const t = useTranslations('home.contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -90,7 +92,7 @@ const ContactSection: React.FC = () => {
         setSubmitSuccess(false);
       }, 5000);
     } catch (error) {
-      setSubmitError('There was an error submitting the form. Please try again.');
+      setSubmitError(t('form.errorMessage'));
       console.error('Form submission error:', error);
     } finally {
       setIsSubmitting(false);
@@ -103,7 +105,7 @@ const ContactSection: React.FC = () => {
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
             <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2><span>Contact</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;Me</span></h2>
+              <h2><span>{t('title.contact')}</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;{t('title.me')}</span></h2>
             </TextReveal>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
@@ -113,36 +115,36 @@ const ContactSection: React.FC = () => {
           <div>
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">Get In Touch</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">{t('getInTouch.title')}</h3>
                 <p className="text-gray-400">
-                  Want to talk to me?
+                  {t('getInTouch.subtitle')}
                 </p>
               </div>
               
               <div className="space-y-4">
                 <ContactCard 
                   icon={<Mail className="text-orange-400" size={24} />}
-                  title="Email"
+                  title={t('contact.email')}
                   value="hi@nelsongx.com"
                 />
                 
                 <ContactCard 
                   icon={<FaDiscord className="text-orange-400" size={24} />}
-                  title="Discord"
+                  title={t('contact.discord')}
                   value="@nelsonGX"
                 />
 
                 <ContactCard 
                   icon={<FaTelegram className="text-orange-400" size={24} />}
-                  title="Telegram"
+                  title={t('contact.telegram')}
                   value="@nelsonGX"
                 />
 
                 <div className="flex items-center gap-4 p-4 bg-zinc-800/40 backdrop-blur-sm rounded-lg border border-zinc-700">
                   <LLink className="text-orange-400" size={24} />
                   <div>
-                    <h4 className="text-gray-300 font-medium">View More...</h4>
-                    <Link href="/socials" className="text-orange-300 hover:underline">Go to the socials page</Link>
+                    <h4 className="text-gray-300 font-medium">{t('viewMore.title')}</h4>
+                    <Link href="/socials" className="text-orange-300 hover:underline">{t('viewMore.link')}</Link>
                   </div>
                 </div>
               </div>
@@ -150,56 +152,56 @@ const ContactSection: React.FC = () => {
           </div>
           
           <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700">
-            <h3 className="text-xl font-semibold text-white mb-6">Send Me a Message</h3>
+            <h3 className="text-xl font-semibold text-white mb-6">{t('form.title')}</h3>
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">{t('form.name.label')}</label>
                 <input 
                   type="text" 
                   id="name" 
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-500"
-                  placeholder="Your name"
+                  placeholder={t('form.name.placeholder')}
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">{t('form.email.label')}</label>
                 <input 
                   type="email" 
                   id="email" 
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-2 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-500"
-                  placeholder="Your email"
+                  placeholder={t('form.email.placeholder')}
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">{t('form.message.label')}</label>
                 <textarea 
                   id="message" 
                   rows={4} 
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-2 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-500 resize-none"
-                  placeholder="Your message"
+                  placeholder={t('form.message.placeholder')}
                   required
                 ></textarea>
               </div>
               
               {submitSuccess && (
                 <div className="px-4 py-3 bg-green-500/20 border border-green-600 rounded-lg">
-                  <p className="text-green-400 text-sm font-medium">Message sent successfully! I&apos;ll get back to you soon.</p>
+                  <p className="text-green-400 text-sm font-medium">{t('form.success')}</p>
                 </div>
               )}
               
               {submitError && (
                 <div className="px-4 py-3 bg-red-500/20 border border-red-600 rounded-lg">
-                  <p className="text-red-400 text-sm font-medium">{submitError}</p>
+                  <p className="text-red-400 text-sm font-medium">{t('form.error')}</p>
                 </div>
               )}
               
@@ -208,7 +210,7 @@ const ContactSection: React.FC = () => {
                 disabled={isSubmitting}
                 className="cursor-pointer w-full py-3 bg-gradient-to-r from-orange-600 to-yellow-600 text-white font-medium rounded-lg hover:from-orange-500 hover:to-yellow-500 transition-all shadow-lg shadow-orange-700/20 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? t('form.button.sending') : t('form.button.send')}
               </button>
             </form>
           </div>

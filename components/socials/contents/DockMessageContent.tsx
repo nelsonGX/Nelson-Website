@@ -1,8 +1,10 @@
 import { ArrowUp } from "lucide-react";
 import { RefObject, SetStateAction, useEffect, useRef, useState } from "react";
 import generateSmartReply from "./GenerateSmartReply";
+import { useTranslations } from 'next-intl';
 
 export default function DockMessageContent() {
+  const t = useTranslations('socials.dockMessage');
   const typingIndicatorCSS = `
     @keyframes bouncing {
       0% { transform: translateY(0); }
@@ -34,7 +36,7 @@ export default function DockMessageContent() {
   }
 
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hi, I am nelson. good morning", sent: false},
+    { id: 1, text: t('initialMessage'), sent: false},
   ]);
   
   const [newMessage, setNewMessage] = useState('');
@@ -131,7 +133,7 @@ export default function DockMessageContent() {
         
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4 bg-zinc-900" style={{ height: 'calc(100% - 120px)' }}>
-          <div className="text-center text-xs text-gray-500 mb-4">Today</div>
+          <div className="text-center text-xs text-gray-500 mb-4">{t('today')}</div>
           
           {messages.map((message) => (
             <div 
@@ -179,7 +181,7 @@ export default function DockMessageContent() {
               ref={inputRef}
               type="text"
               className={`w-full focus:outline-none bg-transparent text-white ${isResponding ? 'opacity-50 cursor-not-allowed' : ''}`}
-              placeholder={isResponding ? "Waiting for response..." : "nMessage"}
+              placeholder={isResponding ? t('waitingResponse') : t('messagePlaceholder')}
               value={newMessage}
               onChange={handleInputChange}
               disabled={isResponding}

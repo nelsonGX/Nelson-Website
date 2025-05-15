@@ -32,13 +32,11 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
     window3: { x: 90, y: 700 }
   });
   
-  // Reset window positions for small screens
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth < 768;
       if (isMobile) {
-        // Get window height to calculate proper spacing (aproximate without rendering)
-        const windowHeight = 450; // From DraggableWindow.tsx
+        const windowHeight = 450;
         const padding = 20;
         
         setWindowPositions({
@@ -49,13 +47,10 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
       }
     };
     
-    // Set initial positions
     handleResize();
     
-    // Add event listener
     window.addEventListener('resize', handleResize);
     
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
@@ -82,7 +77,6 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
   }, [window1Maximized, window2Maximized, window3Maximized]);
   
   useEffect(() => {
-    // Skip drag operations on mobile, windows are stacked
     const isMobile = window.innerWidth < 768;
     if (isMobile) return;
     
@@ -91,34 +85,27 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
       return;
     }
     
-    // Use requestAnimationFrame to reduce DOM operations
     let animationFrameId: number;
     
     const handleMouseMove = (e: MouseEvent) => {
       if (!draggedWindowRef.current) return;
       
-      // Cancel any existing animation frame
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
       
-      // Schedule position update
       animationFrameId = requestAnimationFrame(() => {
         const windowElement = document.getElementById(draggedWindowRef.current!);
         if (!windowElement) return;
         
-        // Get viewport dimensions
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         
-        // Calculate new position
         let newX = e.clientX - dragOffsetRef.current.x;
         let newY = e.clientY - dragOffsetRef.current.y;
         
-        // Make sure windows don't go off-screen
         const elementWidth = windowElement.offsetWidth;
         
-        // Keep at least 40px of the window visible
         const minVisible = 40;
         newX = Math.max(-elementWidth + minVisible, Math.min(newX, viewportWidth - minVisible));
         newY = Math.max(0, Math.min(newY, viewportHeight - minVisible));
@@ -136,7 +123,6 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
     
     const handleMouseUp = () => {
       if (draggedWindowRef.current) {
-        // Cancel any pending animation frame
         if (animationFrameId) {
           cancelAnimationFrame(animationFrameId);
         }
@@ -152,7 +138,6 @@ const useDraggableWindows = (): UseDraggableWindowsReturn => {
     window.addEventListener('mouseup', handleMouseUp);
     
     return () => {
-      // Clean up animation frame if component unmounts during animation
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }

@@ -1,12 +1,14 @@
 import React from 'react';
 import { TextReveal } from '../ui/TextReveal';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 interface EventsSectionProps {
   events: Record<string, string[]>;
 }
 
 const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
+  const t = useTranslations('home.events');
   let lineNumber = 1;
 
   // Animation variants
@@ -57,7 +59,7 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
           <div className="text-6xl font-bold">
             <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
               <h2>
-                <span>Events</span>
+                <span>{t('title.events')}</span>
                 <motion.span 
                   className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out"
                   whileHover={{ 
@@ -66,9 +68,9 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
                     transition: { type: "spring", stiffness: 300 }
                   }}
                 >
-                  &nbsp;I
+                  &nbsp;{t('title.i')}
                 </motion.span>
-                <span>&apos;ve Participated</span>
+                <span>{t('title.participated')}</span>
               </h2>
             </TextReveal>
           </div>
@@ -120,10 +122,10 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
             >
-              nelson@events:~/history
+              {t('terminal.prompt')}
             </motion.div>
             <div className="flex space-x-2 text-zinc-500 text-xs">
-              <span>vim events.md</span>
+              <span>{t('terminal.command')}</span>
             </div>
           </motion.div>
           
@@ -175,11 +177,11 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
                 ~<br/>
               </div>
               <div className="flex text-gray-500 mt-4 justify-between">
-                <span>&quot;events.md&quot; {lineNumber-1}L, 431B</span>
+                <span>{t('terminal.file')} {lineNumber-1}L, 431B</span>
                 <div className="flex space-x-12">
                   <span>0,0</span>
                   <div className="flex">
-                    <span>All</span>
+                    <span>{t('terminal.all')}</span>
                     <motion.span 
                       className="w-2 h-5 bg-gray-400 ml-1"
                       animate={{ opacity: [1, 0, 1] }}

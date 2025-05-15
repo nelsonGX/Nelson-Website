@@ -1,5 +1,7 @@
 "use client";
 
+export const runtime = 'edge';
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
@@ -25,7 +27,6 @@ export default function AppleDeviceUI() {
     closeApp 
   } = useAppAnimation();
   
-  // Update time
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -36,19 +37,14 @@ export default function AppleDeviceUI() {
     };
   }, []);
   
-  // Initialize loading animation only on first visit
   useEffect(() => {
-    console.log('Socials page - isFirstVisit:', isFirstVisit);
-    
     if (typeof window !== 'undefined') {
       if (isFirstVisit) {
-        console.log('Socials page - showing loading screen');
         setTimeout(() => {
           setLoading(false);
           setFadeOut(true);
         }, 800);
       } else {
-        console.log('Socials page - showing transition');
         setLoading(false);
       }
     }

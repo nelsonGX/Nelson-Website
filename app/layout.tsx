@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://nelsongx.com/assets/images/nelsongx.png',
-        width: 512,
-        height: 512,
+        width: 64,
+        height: 64,
         alt: '',
       },
     ],

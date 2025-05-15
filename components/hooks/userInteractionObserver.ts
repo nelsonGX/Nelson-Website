@@ -14,7 +14,6 @@ export function useIntersectionObserver(options: IntersectionObserverOptions = {
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      // If "once" is true, only trigger the animation once
       if (once && hasIntersected.current) {
         return;
       }
@@ -23,13 +22,10 @@ export function useIntersectionObserver(options: IntersectionObserverOptions = {
         setIsIntersecting(true);
         hasIntersected.current = true;
         
-        // If "once" is true and element has entered viewport,
-        // we can disconnect the observer since we won't need it anymore
         if (once && ref.current) {
           observer.unobserve(ref.current);
         }
       } else if (!once) {
-        // Only reset to false if "once" is false
         setIsIntersecting(false);
       }
     }, {

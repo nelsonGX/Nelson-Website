@@ -7,6 +7,7 @@ import ServerManager from './projects/ServerManage';
 import CodingAndDev from './projects/CodingAndDev';
 import Minecraft from './projects/Minecraft';
 import { TextReveal } from '../ui/TextReveal';
+import { useTranslations } from 'next-intl';
 
 interface ProjectsSectionProps {
   windowPositions: {
@@ -35,13 +36,14 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   startDrag,
   isSmallScreen
 }) => {
+  const t = useTranslations('home.projects');
   return (
     <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b z-15 from-zinc-800 to-zinc-900">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
             <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2><span>What can</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;I&nbsp;</span><span>do?</span></h2>
+              <h2><span>{t('title.whatCan')}</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;{t('title.i')}&nbsp;</span><span>{t('title.do')}</span></h2>
             </TextReveal>
           </div>
           <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
@@ -52,7 +54,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {/* Window 1 */}
           <DraggableWindow
             id="window1"
-            title="aboutme.exe - server_managing"
+            title={t('windows.serverManagement.title')}
             titleIcon={<Server size={24} />}
             position={windowPositions.window1}
             maximized={window1Maximized}
@@ -70,9 +72,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
               }
               <div className="w-fit items-center justify-center relative">
-                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">Server Managing & Networking</TextReveal>
+                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.serverManagement.heading')}</TextReveal>
                 <TextReveal as="p" className="text-gray-300 mb-4">
-                  I am the founder of several server hostings. I have experience in managing servers and hosting websites.
+                  {t('windows.serverManagement.description')}
                 </TextReveal>
                 {window1Maximized && (
                   <ServerManager />
@@ -83,7 +85,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
                     <path d="M14 12 L18 10 L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
-                  <div className="text-xs ">click to expand</div>
+                  <div className="text-xs ">{t('windows.expand')}</div>
                 </div>
                 )}
               </div>
@@ -93,7 +95,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {/* Window 2 */}
           <DraggableWindow
             id="window2"
-            title="aboutme.exe - coding_and_development"
+            title={t('windows.codingDevelopment.title')}
             titleIcon={<Code size={24} />}
             position={windowPositions.window2}
             maximized={window2Maximized}
@@ -104,9 +106,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-2/3">
-                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">Coding & Development</TextReveal>
+                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.codingDevelopment.heading')}</TextReveal>
                 <TextReveal as="p" className="text-gray-300 mb-4">
-                  As you can see, I do code. I have experience in Python, Java, Next.JS/React and more. In the most part, am still learning. You can find my projects on Github:
+                  {t('windows.codingDevelopment.description')}
                 </TextReveal>
                 <Link className="flex space-x-1 text-zinc-400 hover:text-zinc-200 transition-all duration-150" href="https://github.com/nelsonGX">
                   <Github /> <p>Github</p>
@@ -126,7 +128,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {/* Window 3 */}
           <DraggableWindow
             id="window3"
-            title="aboutme.exe - minecraft"
+            title={t('windows.minecraft.title')}
             titleIcon={<Box size={24} />}
             position={windowPositions.window3}
             maximized={window3Maximized}
@@ -142,9 +144,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </div>
               </div>
               <div className="w-full md:w-2/3">
-                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">Minecraft</TextReveal>
+                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.minecraft.heading')}</TextReveal>
                 <TextReveal as="p" className="text-gray-300 mb-4">
-                  I have been playing Minecraft for over 7 years. I have experience in creating custom plugins and stuff.
+                  {t('windows.minecraft.description')}
                 </TextReveal>
                 {window3Maximized && (
                   <Minecraft />
@@ -155,7 +157,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
                     <path d="M14 12 L18 10 L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   </svg>
-                  <div className="text-xs ">click to expand</div>
+                  <div className="text-xs ">{t('windows.expand')}</div>
                 </div>
                 )}
               </div>

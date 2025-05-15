@@ -1,72 +1,74 @@
 import Image from "next/image"
+import { useTranslations } from 'next-intl'
 
 export default function ServerManager() {
+  const t = useTranslations('projects.serverManage');
   return (
     <>
-    <h1 className="text-4xl py-10 text-center font-bold">Server Hosting I&apos;ve made</h1>
+    <h1 className="text-4xl py-10 text-center font-bold">{t('hosting.title')}</h1>
     {[
       { 
-        date: 'Mar 2022', 
+        date: t('hosting.freeserver.date'), 
         title: 'FreeServer', 
         imageSrc: "/assets/images/freeserver.png", 
         description: 
         <>
           <div>
             <span>
-              FreeServer was a project started by me and Mayboy. Initially, I noticed my friend Mayboy using Google Cloud Platform (GCP)&apos;s free 300 USD plan, and I wondered if we could use it for free hosting. So, we invited our friend Windless to join the project.
+              {t('hosting.freeserver.part1')}
               <br/><br/>
-              FreeServer provided free hosting for Minecraft servers and Discord bots. The free specs included 1 vCPU, 4 GB RAM, and 10 GB of disk space. The server was located in Taiwan. These specs were quite generous for free hosting in Asia.
+              {t('hosting.freeserver.part2')}
               <br/><br/>
-              The server faced a lot of DDoS traffic initially, until we met Alger Huang, the owner of Fast-Line, who offered free anti-DDoS service for us. After about 4 months, we encountered policy changes from GCP and the end of Fast-Line&apos;s free anti-DDoS service. Eventually, we decided to shut down FreeServer in August 2022.
+              {t('hosting.freeserver.part3')}
             </span>
           </div>
         </>
       },
       { 
-        date: 'Aug 2022', 
+        date: t('hosting.cheapserver.date'), 
         title: 'CheapServer', 
         imageSrc: "/assets/images/CheapServer_white.png", 
         description: 
         <>
           <div>
             <span>
-              With the earnings from FreeServer, we decided to launch a paid server hosting service called CheapServer. This time, we brought in our friend CH to join the business.
+              {t('hosting.cheapserver.part1')}
               <br/><br/>
-              When CheapServer started, there were no hosting services in Taiwan that could match our low prices (as we believed). We gained customers from the beginning.
+              {t('hosting.cheapserver.part2')}
               <br/><br/>
-              CheapServer is still operational today. We have a growing customer base and continuously strive to improve our service.
+              {t('hosting.cheapserver.part3')}
             </span>
           </div>
         </>
       },
       { 
-        date: 'Jan 2023', 
+        date: t('hosting.freeserverv2.date'), 
         title: 'FreeServer v2', 
         imageSrc: "/assets/images/freeserver.png", 
         description: 
         <>
           <div>
             <span>
-              After CheapServer, we missed the good old days of operating FreeServer. So, this time, we invested some money from CheapServer instead of relying on free trials from GCP to run FreeServer v2.
+              {t('hosting.freeserverv2.part1')}
               <br/><br/>
-              First, we purchased a VPS from Taipei 101 (one of my friends) and started the hosting. We reused the website components from FreeServer v1. However, we encountered some collaboration issues, so we switched to Hetzner as the server provider.
+              {t('hosting.freeserverv2.part2')}
               <br/><br/>
-              Unfortunately, we ran out of funds and became exhausted. As a result, we made the decision to shut down FreeServer v2 in July 2023.
+              {t('hosting.freeserverv2.part3')}
             </span>
           </div>
         </>
       },
       { 
-        date: 'Nov 2023', 
+        date: t('hosting.freeserverv3.date'), 
         title: 'FreeServer v3', 
         imageSrc: "/assets/images/freeserverv3.png", 
         description: 
         <>
           <div>
             <span>
-              During a Discord voice chat, my friend Ricky (aka Smitug) suggested reopening FreeServer. I had been considering it as well. So, we decided to relaunch it, this time using our own server infrastructure. Our goal is to make it even better than before.
+              {t('hosting.freeserverv3.part1')}
               <br/><br/>
-              FreeServer v3 is still in operation today. We have acquired over 7,000 users and 1,700+ active servers, and the numbers continue to grow.
+              {t('hosting.freeserverv3.part2')}
             </span>
           </div>
         </>
@@ -86,7 +88,7 @@ export default function ServerManager() {
       </div>
     ))}
 
-    <h1 className="text-4xl py-10 text-center font-bold">Server Infrastructure & Homelab</h1> 
+    <h1 className="text-4xl py-10 text-center font-bold">{t('infrastructure.title')}</h1> 
     </>
   )
 }

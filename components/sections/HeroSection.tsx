@@ -1,8 +1,11 @@
 import React from 'react';
 import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
+import {useTranslations} from 'next-intl';
 
 const HeroSection = ({}) => {
+  const t = useTranslations('home.hero');
+
   return (
     <section className="min-h-screen relative flex items-center justify-center px-6 overflow-hidden">
 
@@ -41,7 +44,7 @@ const HeroSection = ({}) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.8 }}
             >
-              Welcome to
+              {t('welcome')}
             </motion.p>
             <motion.h1 
               className="text-7xl md:text-9xl mb-4 flex font-minecraft md:left-[24%] md:absolute md:top-1/3"
@@ -90,7 +93,7 @@ const HeroSection = ({}) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 2.8 }}
       >
-        <span className="text-gray-500 text-sm mb-2">Scroll Down</span>
+        <span className="text-gray-500 text-sm mb-2">{t("scroll")}</span>
         <motion.div 
           className="w-5 h-9 border-2 border-gray-500 rounded-full flex justify-center"
           animate={{ 
