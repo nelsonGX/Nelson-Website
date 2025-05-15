@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback } from "react";
 
 export default function FriendlySiteContent() {
   const FriendlySitesData = [
@@ -39,6 +40,10 @@ export default function FriendlySiteContent() {
     "color": "bg-zinc-800"
   }
 ]
+  //嘻嘻
+  const handleKasonMouseEnter = useCallback(() => {
+    console.log("gay");
+  }, []);
 
   // Custom CSS for RGB border
   const rgbBorderStyle = `
@@ -68,6 +73,7 @@ export default function FriendlySiteContent() {
             href={site.link} 
             target="_blank" 
             className={`flex items-center p-3 hover:scale-[102%] transition-all duration-150 rounded-lg ${site.color} rgb-border-hover`}
+            onMouseEnter={site.name === "Kason" ? handleKasonMouseEnter : undefined}
           >
             <div className="w-10 h-10 rounded-full bg-zinc-700 flex items-center justify-center mr-3">
               {site.icon}
