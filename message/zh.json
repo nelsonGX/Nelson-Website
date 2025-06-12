@@ -209,29 +209,29 @@
     },
     "serverManage": {
       "hosting": {
-        "title": "Server Hosting I've made",
+        "title": "我所創建的伺服器託管",
         "freeserver": {
-          "date": "Mar 2022",
-          "part1": "FreeServer was a project started by me and Mayboy. Initially, I noticed my friend Mayboy using Google Cloud Platform (GCP)'s free 300 USD plan, and I wondered if we could use it for free hosting. So, we invited our friend Windless to join the project.",
-          "part2": "FreeServer provided free hosting for Minecraft servers and Discord bots. The free specs included 1 vCPU, 4 GB RAM, and 10 GB of disk space. The server was located in Taiwan. These specs were quite generous for free hosting in Asia.",
-          "part3": "The server faced a lot of DDoS traffic initially, until we met Alger Huang, the owner of Fast-Line, who offered free anti-DDoS service for us. After about 4 months, we encountered policy changes from GCP and the end of Fast-Line's free anti-DDoS service. Eventually, we decided to shut down FreeServer in August 2022."
+          "date": "2022年3月",
+          "part1": "FreeServer 是由我和 Mayboy 共同創立的專案。最初，我發現我的朋友 Mayboy 正在使用 Google Cloud Platform (GCP) 的免費 300 美元方案，我想知道我們是否可以將它用於免費託管。因此，我們邀請了朋友 Windless 加入這個專案。",
+          "part2": "FreeServer 為 Minecraft 伺服器和 Discord 機器人提供免費託管。免費規格包括 1 個 vCPU、4 GB 記憶體和 10 GB 硬碟空間。伺服器位於台灣。對於亞洲地區的免費託管來說，這些規格相當慷慨。",
+          "part3": "伺服器最初面臨大量的 DDoS 攻擊，直到我們遇到了台灣速連的擁有者 Alger Huang，他為我們提供了免費的 DDoS 防護服務。大約 4 個月後，因為 GCP 政策變更和台灣速連免費 DDoS 防護服務結束，我們最終決定在 2022 年 8 月關閉 FreeServer。"
         },
         "cheapserver": {
-          "date": "Aug 2022",
-          "part1": "With the earnings from FreeServer, we decided to launch a paid server hosting service called CheapServer. This time, we brought in our friend CH to join the business.",
-          "part2": "When CheapServer started, there were no hosting services in Taiwan that could match our low prices (as we believed). We gained customers from the beginning.",
-          "part3": "CheapServer is still operational today. We have a growing customer base and continuously strive to improve our service."
+          "date": "2022年8月",
+          "part1": "憑藉 FreeServer 的一些收入和經驗，我們決定推出一個付費伺服器託管服務，名為 CheapServer。這次，我們邀請了朋友 CH 加入這項業務。",
+          "part2": "當 CheapServer 開始營運時，在台灣沒有任何託管服務能夠匹配我們的低價（我們自信地認為）。從一開始，我們就獲得了客戶。",
+          "part3": "CheapServer 至今仍在運營中。我們擁有不斷增長的客戶群，並持續努力改善我們的服務。"
         },
         "freeserverv2": {
-          "date": "Jan 2023",
-          "part1": "After CheapServer, we missed the good old days of operating FreeServer. So, this time, we invested some money from CheapServer instead of relying on free trials from GCP to run FreeServer v2.",
-          "part2": "First, we purchased a VPS from Taipei 101 (one of my friends) and started the hosting. We reused the website components from FreeServer v1. However, we encountered some collaboration issues, so we switched to Hetzner as the server provider.",
-          "part3": "Unfortunately, we ran out of funds and became exhausted. As a result, we made the decision to shut down FreeServer v2 in July 2023."
+          "date": "2023年1月",
+          "part1": "在 CheapServer 之後，我們懷念經營 FreeServer 的美好時光。所以，這次我們投入了一些來自 CheapServer 的資金，而不是依靠 GCP 的免費試用來運行 FreeServer v2。",
+          "part2": "首先，我們從 Taipei 101（我的一個朋友）購買了一台 VPS，開始提供託管服務。我們重複使用了 FreeServer v1 的網站組件。然而，我們遇到了一些合作問題，因此我們將伺服器提供商換成了 Hetzner。",
+          "part3": "不幸的是，我們資金用盡且身心俱疲。因此，我們決定在 2023 年 7 月關閉 FreeServer v2。"
         },
         "freeserverv3": {
-          "date": "Nov 2023",
-          "part1": "During a Discord voice chat, my friend Ricky (aka Smitug) suggested reopening FreeServer. I had been considering it as well. So, we decided to relaunch it, this time using our own server infrastructure. Our goal is to make it even better than before.",
-          "part2": "FreeServer v3 is still in operation today. We have acquired over 7,000 users and 1,700+ active servers, and the numbers continue to grow."
+          "date": "2023年11月",
+          "part1": "在 Discord 語音聊天期間，我的朋友 Ricky（又名 Smitug）建議重新開放 FreeServer。我也一直在考慮這件事。於是，我們決定重新啟動它，這次使用我們自己的伺服器基礎設施。我們的目標是使它比以前更好。",
+          "part2": "FreeServer v3 至今仍在運營中。我們已經擁有超過 7,000 名用戶和 1,700+ 活躍伺服器，且數量持續增長。"
         }
       },
       "infrastructure": {
