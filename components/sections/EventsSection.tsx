@@ -26,7 +26,7 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
       opacity: 1,
       x: 0,
       transition: { 
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 12
       }
@@ -39,7 +39,7 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
       opacity: 1,
       x: 0,
       transition: { 
-        type: "spring",
+        type: "spring" as const,
         stiffness: 70,
         damping: 10
       }
