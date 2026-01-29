@@ -2,7 +2,7 @@
 
 export const runtime = 'edge';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Layout components
@@ -49,7 +49,7 @@ const NelsonPortfolio = () => {
     setWindow3Maximized
   } = useDraggableWindows();
   
-  useEffect(() => {   
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       if (isFirstVisit) {
         setTimeout(() => {
