@@ -2,7 +2,7 @@
 
 export const runtime = 'edge';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -59,7 +59,7 @@ export default function AppleDeviceUI() {
     <LoadingScreen loading={loading && isFirstVisit} fadeOut={fadeOut} />
     
     <motion.div 
-      className="flex flex-col items-center justify-center w-full h-screen bg-zinc-900 py-12 font-sfpro"
+      className="flex flex-col items-center justify-center w-full h-full md:h-screen bg-zinc-900 py-24 font-sfpro"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

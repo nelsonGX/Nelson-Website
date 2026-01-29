@@ -14,6 +14,7 @@ export default function Header() {
   const [showLanguageHint, setShowLanguageHint] = useState(true)
   const [isExiting, setIsExiting] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [hasScrolledDown, setHasScrolledDown] = useState(false)
 
   const router = useRouter()
   
@@ -35,6 +36,25 @@ export default function Header() {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    if (isHomePage) {
+      const handleScroll = () => {
+        if (window.scrollY > 600) {
+          setHasScrolledDown(true);
+        } else {
+          setHasScrolledDown(false);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } else {
+      setHasScrolledDown(true);
+    }
+  }, [isHomePage]);
+
   function handleLanguageChange() {
     if (isEnglish) {
       if (isHomePage) {
@@ -52,13 +72,15 @@ export default function Header() {
   }
 
   return (
-    <header className="absolute flex w-full top-0 backdrop-blur-md px-8 py-2 md:py-4 justify-between z-50">
+    <header className="fixed flex w-full top-0 backdrop-blur-md px-4 md:px-8 py-2 md:py-4 justify-between items-center z-50">
       <div>
         <Link href="/" className="cursor-pointer">
           <div className="flex items-center justify-center space-x-4">
             <Image src={"/assets/images/nelsongx.png"} alt="" height={32} width={32} />
-            <div className="relative text-xl font-bold md:hidden"><div className="flex"><p className="text-orange-300">Nelson</p><p className="text-zinc-300">&apos;s</p></div><p className="text-zinc-400">Website</p></div>
-            <div className="md:flex text-xl font-bold hidden"><p className="text-orange-300">Nelson</p><p className="text-zinc-200">&apos;s Website</p></div>
+            <div className={`flex flex-col transition-opacity duration-500 ${hasScrolledDown ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="relative text-sm font-bold md:hidden"><div className="flex"><p className="text-orange-300">Nelson</p><p className="text-zinc-300">&apos;s</p></div><p className="text-zinc-400">Website</p></div>
+              <div className="md:flex text-xl font-bold hidden"><p className="text-orange-300">Nelson</p><p className="text-zinc-200">&apos;s Website</p></div>
+            </div>
           </div>
         </Link>
       </div>
