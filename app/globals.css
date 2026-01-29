@@ -72,9 +72,6 @@ body {
   font-family: 'SFPro', 'Noto Sans TC', monospace;
 }
 
-/* Import Noto Sans TC as fallback */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
-
 /* Text reveal animation classes for global.css */
 
 /* Base class for text containers of any type */
