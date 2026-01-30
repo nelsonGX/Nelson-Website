@@ -4,6 +4,9 @@ const EventsData = () => {
   const t = useTranslations('eventData');
   
   const events: Record<string, string[]> = {
+    "2026": [
+      t("2026.sitcon"),
+    ],
     "2025": [
       t("2025.sitcon"),
       t("2025.cybersec"),
