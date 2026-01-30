@@ -104,7 +104,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       transition: { 
         delay: isSmallScreen ? 0.1 : 0.3,
         duration: isSmallScreen ? 0.3 : 0.8,
-        type: isSmallScreen ? "tween" : "spring",
+        type: isSmallScreen ? "tween" as const : "spring" as const,
         stiffness: isSmallScreen ? 50 : 100,
         damping: isSmallScreen ? 8 : 12
       }
@@ -125,7 +125,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       backgroundColor: "rgba(24, 24, 27, 0.9)",
       borderColor: "rgb(63, 63, 70)",
       transition: { 
-        type: isSmallScreen ? "tween" : "spring",
+        type: isSmallScreen ? "tween" as const : "spring" as const,
         stiffness: isSmallScreen ? 50 : 120,
         damping: isSmallScreen ? 8 : 12,
         duration: isSmallScreen ? 0.3 : 0.8
@@ -137,11 +137,11 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     <motion.div 
       id={id}
       ref={el => { windowRef.current = el; windowRef2.current = el; }}
-      className={`${maximized ? 'fixed inset-0 z-50' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden ${isSmallScreen && !maximized ? 'shadow-lg border border-zinc-700/50' : 'shadow-orange'}`}
+      className={`${maximized ? 'fixed inset-0 z-[9999]' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden ${isSmallScreen && !maximized ? 'shadow-lg border border-zinc-700/50' : 'shadow-orange'}`}
       style={{
-        left: !maximized ? position.x : undefined, 
-        top: !maximized ? position.y : undefined, 
-        width: !maximized ? (isSmallScreen ? '95%' : 'min(750px, 90vw)') : undefined, 
+        left: !maximized ? position.x : undefined,
+        top: !maximized ? position.y : undefined,
+        width: !maximized ? (isSmallScreen ? '95%' : 'min(750px, 90vw)') : undefined,
         height: !maximized ? (isSmallScreen ? '450px' : '400px') : undefined
       }}
       variants={cardVariants}

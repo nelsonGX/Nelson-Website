@@ -38,8 +38,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 }) => {
   const t = useTranslations('home.projects');
   return (
-    <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b z-15 from-zinc-800 to-zinc-900">
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
+      <div className="max-w-6xl mx-auto relative">
         <div className="flex items-center mb-16">
           <div className="text-6xl font-bold">
             <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
@@ -50,7 +50,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         </div>
         
         {/* Draggable Windows */}
-        <div className="relative h-[1500px] md:h-[800px]">
+        <div className="relative h-[1500px] md:h-[800px] z-110">
           {/* Window 1 */}
           <DraggableWindow
             id="window1"
