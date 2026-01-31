@@ -2,7 +2,8 @@ import React from 'react';
 import DraggableWindow from '../ui/DraggableWindow';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Server, Code, Box, Github } from 'lucide-react';
+import { Server, Code, Box } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import ServerManager from './projects/ServerManage';
 import CodingAndDev from './projects/CodingAndDev';
 import Minecraft from './projects/Minecraft';
@@ -111,7 +112,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   {t('windows.codingDevelopment.description')}
                 </TextReveal>
                 <Link className="flex space-x-1 text-zinc-400 hover:text-zinc-200 transition-all duration-150" href="https://github.com/nelsonGX">
-                  <Github /> <p>Github</p>
+                  <SiGithub /> <p>Github</p>
                 </Link>
                 {window2Maximized && (
                   <CodingAndDev />

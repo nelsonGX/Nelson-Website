@@ -1,5 +1,6 @@
 import React from 'react';
-import { Github, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
@@ -31,7 +32,7 @@ const Footer: React.FC = () => {
               <Mail size={20} />
             </a>
             <a href="https://github.com/nelsonGX" className="hover:text-orange-400 transition">
-              <Github size={20} />
+              <SiGithub size={20} />
             </a>
           </div>
         </div>
