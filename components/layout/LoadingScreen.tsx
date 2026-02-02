@@ -18,7 +18,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ loading, fadeOut }) => {
       >
         <div className="relative" itemProp=''>
           <h1 className="text-3xl minecraft left-1/4 top-0 relative font-minecraft text-white">Loading...</h1>
-          <Image src="/assets/images/loading.webp" alt='loading...' width={249} height={250}/>
+          <Image src="/assets/images/loading.webp" unoptimized alt='loading...' width={249} height={250}/>
         </div>
       </div>
   );
