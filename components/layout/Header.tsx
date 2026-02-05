@@ -72,7 +72,7 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed flex w-full top-0 backdrop-blur-md px-4 md:px-8 py-2 md:py-4 justify-between items-center z-50">
+    <header className="fixed flex w-full top-0 backdrop-blur-xs px-4 md:px-8 py-2 md:py-4 justify-between items-center z-50">
       <div>
         <Link href="/" className="cursor-pointer">
           <div className="flex items-center justify-center space-x-4">
