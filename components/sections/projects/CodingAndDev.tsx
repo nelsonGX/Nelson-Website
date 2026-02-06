@@ -3,6 +3,7 @@ import { Globe, Server } from 'lucide-react';
 import Image from 'next/image';
 import { Key } from 'react';
 import { useTranslations } from 'next-intl';
+import { ExternalLink } from 'lucide-react';
 
 export default function CodingAndDev() {
   const t = useTranslations('projects.codingAndDev');
@@ -76,19 +77,19 @@ export default function CodingAndDev() {
   ];
   
   interface RelativeProjects {
-    [key: string]: Array<{ name: string; link: string }>;
+    [key: string]: Array<{ name: string; link: string; image?: string }>;
   }
 
   const relativeProjects: RelativeProjects = {
     "Website": [
-      { name: "This personal website", link: "https://nelsongx.com" },
-      { name: "SITCON Tickets", link: "https://tickets.sitcon.org" },
-      { name: "SITCON 2026 Website (3D Modeling)", link: "https://sitcon.org/2026/info/academia-sinica/" },
-      { name: "FreeServer Website", link: "https://freeserver.tw" },
-      { name: "FreeServer Network Website", link: "https://freeserver.network" },
-      { name: "Simple Info. Website", link: "https://www.simple.taipei" },
-      { name: "Open Company LTD Website", link: "https://open-company-fork.pages.dev/" },
-      { name: "SITCON 2025 Website (contributor)", link: "https://sitcon.org/2025/venue" },
+      { name: "This personal website", link: "https://nelsongx.com", image: "nelson_website.png" },
+      { name: "SITCON Tickets", link: "https://tickets.sitcon.org", image: "sitcon_ticket.png" },
+      { name: "SITCON 2026 Website (3D Modeling)", link: "https://sitcon.org/2026/info/academia-sinica/", image: "sitcon_2026.png" },
+      { name: "FreeServer Website", link: "https://freeserver.tw", image: "freeserverv3.png" },
+      { name: "FreeServer Network Website", link: "https://freeserver.network", image: "freeserver_network.png" },
+      { name: "Simple Info. Website", link: "https://www.simple.taipei", image: "simple_info.png" },
+      { name: "Open Company LTD Website", link: "https://open-company-fork.pages.dev/", image: "open_company.png" },
+      { name: "SITCON 2025 Website (contributor)", link: "https://sitcon.org/2025/venue", image: "sitcon_2025.png" },
     ],
     "Python": [
       { name: "My first OpenSourced Bot", link: "https://github.com/nelsonGX/DiscordURLshortenBot" },
@@ -146,7 +147,7 @@ export default function CodingAndDev() {
             <div key={tech} className="relative">
               <h4 className="text-xl font-medium text-orange-300 mb-3">{tech} {t('sections.projects.projectsLabel')}:</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {relativeProjects[tech].map((project: { link: string | undefined; name: string | undefined; }, index: Key | null | undefined) => (
+                {relativeProjects[tech].map((project: { link: string | undefined; name: string | undefined; image?: string }, index: Key | null | undefined) => (
                   <a 
                     href={project.link} 
                     target="_blank" 
@@ -154,14 +155,17 @@ export default function CodingAndDev() {
                     key={index}
                     className="group block"
                   >
-                    <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-4 transition-all duration-300 hover:bg-zinc-700/70 hover:scale-105">
-                      <h5 className="text-white font-medium group-hover:text-orange-300 transition-colors duration-300">{project.name}</h5>
-                      <p className="text-gray-400 text-sm mt-1 flex items-center">
-                        <span className="underline text-gray-500">{t('sections.projects.viewProject')}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </p>
+                    <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-2 transition-all duration-300 hover:bg-zinc-700/70 hover:scale-105">
+                      {project.image && (
+                        <Image src={`/assets/images/coding_and_dev/${project.image}`} alt={project.name || ""} width={300} height={300} className="w-full h-48 object-cover rounded-t-lg" />
+                      )}
+                      <div className="p-2">
+                        <h5 className="text-white font-medium group-hover:text-orange-300 transition-colors duration-300">{project.name}</h5>
+                        <p className="text-gray-400 text-sm mt-1 flex items-center">
+                          <span className="underline text-gray-500">{t('sections.projects.viewProject')}</span>
+                          <ExternalLink className="inline-block w-4 h-4 ml-1 text-gray-500" />
+                        </p>
+                      </div>
                     </div>
                   </a>
                 ))}
