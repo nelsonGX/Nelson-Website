@@ -106,6 +106,11 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             startDrag={startDrag}
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="w-full justify-center md:hidden">
+                <div className="w-32 h-32 rounded-lg overflow-hidden">
+                  <Image src="/assets/images/coding-816x816.webp" height={816} width={816} alt="Coding and Development" className="w-full h-full object-cover" />
+                </div>
+              </div>
               <div className="w-full md:w-2/3">
                 <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.codingDevelopment.heading')}</TextReveal>
                 <TextReveal as="p" className="text-gray-300 mb-4">
@@ -118,11 +123,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <CodingAndDev />
                 )}
               </div>
-              <div className="w-full md:w-1/3 justify-center hidden md:flex">
-                <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
+              { !window2Maximized &&
+              <div className="w-1/3 justify-center hidden md:flex">
+                <div className="w-64 h-64 rounded-lg overflow-hidden">
                   <Image src="/assets/images/coding-816x816.webp" height={816} width={816} alt="Coding and Development" className="w-full h-full object-cover" />
                 </div>
               </div>
+              }
             </div>
           </DraggableWindow>
           

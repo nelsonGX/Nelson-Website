@@ -194,11 +194,11 @@
         },
         "webDev": {
           "title": "Web Development",
-          "description": "About the website, I always wanted to make websites but I hated pure HTML and CSS. One time our team needed to make a web app for a project, and one of my friend bring me into Next.JS. I was like, omg its so better, and started to learn and use it. Now I have several projects using Next.JS."
+          "description": "About the website, I always wanted to make websites but I hated pure HTML and CSS. One time our team needed to make a web app for a project, and one of my friend bring me into Next.JS. I was like, omg its good, and started to learn and use it. In 2024, I joined the development team of SITCON, then I built most of my website since then. Now I have several projects using Next.JS."
         },
         "java": {
           "title": "Java & Bukkit API",
-          "description": "After opening FreeServer (please view the Server Managing & Networking part if you havn't), I waned to make a Minecraft server called FreeServer Network. I need custom plugins for the server, but I don't want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning."
+          "description": "After starting FreeServer (please view the Server Managing & Networking part if you missed it), I waned to make a Minecraft server called FreeServer Network. I need custom plugins for the server, but I don't want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning. You can view more in the Minecraft window."
         },
         "projects": {
           "title": "My Projects",
