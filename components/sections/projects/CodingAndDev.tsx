@@ -105,7 +105,7 @@ export default function CodingAndDev() {
 
   return (
     <>
-    <div className="mt-4">
+    <div className="mt-4 mb-8">
       <h4 className="text-lg font-medium text-orange-300 mb-2">{t('techStack.title')}:</h4>
       <div className="flex flex-wrap gap-2 justify-center md:justify-start">
         {techStack.map((tech, index) => (

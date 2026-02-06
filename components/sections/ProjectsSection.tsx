@@ -155,10 +155,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.minecraft.heading')}</TextReveal>
                 <TextReveal as="p" className="text-gray-300 mb-4">
                   {t('windows.minecraft.description')}
+                  {window3Maximized && (
+                    <div className="mt-4 text-white max-w-5xl">
+                      <p>{t('windows.minecraft.content')}</p>
+                      <p>{t('windows.minecraft.quote')}</p>
+                    </div>
+                  )}
                 </TextReveal>
-                {window3Maximized && (
-                  <Minecraft />
-                )}
                 {!window3Maximized && !isSmallScreen && (
                 <div className="text-yellow-200 rotate-3 absolute right-10 top-20">
                   <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
@@ -170,6 +173,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 )}
               </div>
             </div>
+            {window3Maximized && (
+              <Minecraft />
+            )}
           </DraggableWindow>
         </div>
       </div>

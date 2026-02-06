@@ -148,8 +148,9 @@
         "minecraft": {
           "title": "aboutme.exe - minecraft",
           "heading": "Minecraft",
-          "description": "I have been playing Minecraft for over 7 years. I have experience in creating custom plugins and stuff.",
-          "content": "Minecraft has been a big part of my journey. I've been building servers, creating plugins, and designing experiences for players. My experience spans from simple automation scripts to complex multiplayer servers with custom game mechanics."
+          "description": "I have been playing Minecraft for over 8 years. I have experience in creating custom plugins and stuff.",
+          "content": "Minecraft has been a big part of my journey. I've been building servers, creating plugins, and designing experiences for players. My experience spans from simple automation scripts to complex multiplayer servers with custom game mechanics.",
+          "quote": "Just like a lot of Minecraft players, I started all of these coding stuff because of Minecraft. When I was a kid and playing it, I like to play around with command blocks and redstone, and I always want to do more than that. So I started to learn programming, and... here I am!"
         }
       }
     }
@@ -239,9 +240,33 @@
           "website": "Website",
           "discord": "Discord Server"
         }
-      },
-      "infrastructure": {
-        "title": "Server Infrastructure & Homelab"
+      }
+    },
+    "minecraft": {
+      "serversIHosted": "Servers I Created",
+      "servverDescription": "I actually learned most of the server mangement skills from operating these Minecraft servers. I rented some of these from server hosting providers and started thinking why whouldn't I just start a hosting company? anyway, These are the servers I created:",
+      "gallery": "Gallery",
+      "servers": {
+        "nelsonSMPv1": {
+          "title": "Nelson SMP v1",
+          "date": "2019 - 2021",
+          "description": "After playing some public servers, I wanted to create my own server and invite my friends to play. So I created a server on Aternos. I knew nothing about server at that time, it was just a vanilla potato server. After I learned about some hosting things, I moved the server to a server provider that the owner is a friend of mine now. But I was in junior high school and I was pretty poor, so I forgot to renew the server eventually the map was deleted. The server name was made after Nelson SMP v2 created, it didn't have a name at that time."
+        },
+        "nelsonSMPv2": {
+          "title": "Nelson SMP v2",
+          "date": "2021 - 2022",
+          "description": "What did I do after losing the map? just create another one. This time, I invited more friends to play and it went pretty well. Normally the server has about 10 players online, there are traders, builders, etc., and we even had a war. But just like most SMP servers, it died after a while, and this time the map was preserved."
+        },
+        "MLGRush": {
+          "title": "MLGRush",
+          "date": "2021 - 2021",
+          "description": "Aside from playing survival, I also like to play PVP servers like bedwars. There is a minigame called MLG Rush, but at the time there was barely any server not to say in asia. So I created this one and hosted it in Singapore. It was pretty fun, but I lost interest in it after a while and shut it down."
+        },
+        "highschoolSMP": {
+          "title": "Highschool SMP",
+          "date": "2021 - 2022",
+          "description": "This server was created for my high school friends. We had a lot of fun playing together, and it was a great way to stay connected during the pandemic. The server had a lot of custom plugins and features, and we even had some events and competitions. However, after we graduated, the server became less active and eventually shut down."
+        }
       }
     }
   },
