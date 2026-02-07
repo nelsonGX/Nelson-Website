@@ -70,7 +70,7 @@ const servers = [
   {
     translationKey: 'nelsonSMPv1',
     images: Array.from({ length: 5 }, (_, i) => `/assets/images/minecraft/smpv1/${i + 1}.png`),
-    autoplayDelay: 3000,
+    autoplayDelay: 3200,
     imageFirst: false,
   },
   {
@@ -82,7 +82,31 @@ const servers = [
   {
     translationKey: 'MLGRush',
     images: Array.from({ length: 2 }, (_, i) => `/assets/images/minecraft/mlgrush/${i + 1}.png`),
-    autoplayDelay: 3200,
+    autoplayDelay: 5000,
+    imageFirst: false,
+  },
+  {
+    translationKey: 'highschoolSMP',
+    images: Array.from({ length: 4 }, (_, i) => `/assets/images/minecraft/highschoolsmp/${i + 1}.png`),
+    autoplayDelay: 3000,
+    imageFirst: true,
+  },
+  {
+    translationKey: 'nelsonSMPv3',
+    images: Array.from({ length: 9 }, (_, i) => `/assets/images/minecraft/smpv3/${i + 1}.png`),
+    autoplayDelay: 2000,
+    imageFirst: false,
+  },
+  {
+    translationKey: 'nelsonSMPv4',
+    images: Array.from({ length: 4 }, (_, i) => `/assets/images/minecraft/smpv4/${i + 1}.png`),
+    autoplayDelay: 2700,
+    imageFirst: true,
+  },
+  {
+    translationKey: 'freeServerNetwork',
+    images: Array.from({ length: 5 }, (_, i) => `/assets/images/minecraft/fsn/${i + 1}.png`),
+    autoplayDelay: 4000,
     imageFirst: false,
   },
 ];
@@ -92,11 +116,11 @@ export default function Minecraft() {
 
   return (
     <>
-      <div className="pt-8 p-2 md:p-16 space-y-12">
+      <div className="pt-8 p-2 md:p-16">
         <h2 className="text-3xl font-bold text-white mb-4">{t('serversIHosted')}</h2>
         <p className="text-gray-300 mb-6">{t('servverDescription')}</p>
 
-        <div className="space-y-8">
+        <div className="space-y-8 pt-8">
           {servers.map((server) => (
             <ServerCard
               key={server.translationKey}

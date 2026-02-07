@@ -272,6 +272,11 @@
           "date": "2022 - Present",
           "description": "This is the current version of Nelson SMP. "
         },
+        "nelsonSMPv4": {
+          "title": "Nelson SMP v4",
+          "date": "2022 - 2022",
+          "description": "This was a short-lived server created for fun. We wanted to try out some new plugins and features, but it didn't last long due to lack of interest. However, it was a great learning experience for me in terms of server management and plugin development."
+        },
         "freeServerNetwork": {
           "title": "FreeServer Network",
           "date": "2024 - Present",
