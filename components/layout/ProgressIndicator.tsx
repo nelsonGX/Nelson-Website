@@ -32,7 +32,7 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({ scrollProgress })
   }, [scrollProgress]);
 
   return (
-    <div className={`fixed top-0 left-0 w-full h-1 z-100 transition-opacity duration-300 ${isScrolling ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`fixed top-0 left-0 w-full h-1 z-200 transition-opacity duration-300 ${isScrolling ? 'opacity-100' : 'opacity-0'}`}>
       <div 
         className="h-full bg-orange-400/70 relative"
         style={{ width: `${scrollProgress * 100}%`, transition: 'width 0.3s ease-out' }}
