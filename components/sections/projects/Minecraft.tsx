@@ -1,16 +1,18 @@
 import { useTranslations } from 'next-intl';
 import Stack from '@/components/Stack';
 import Image from 'next/image';
+import { ExternalLink } from 'lucide-react';
 
 interface ServerCardProps {
   translationKey: string;
   images: string[];
   autoplayDelay: number;
   imageFirst?: boolean;
+  link?: string;
   t: ReturnType<typeof useTranslations>;
 }
 
-function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false, t }: ServerCardProps) {
+function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false, link, t }: ServerCardProps) {
   const textContent = (
     <div>
       <div className="flex items-center space-x-4">
@@ -18,6 +20,16 @@ function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false,
         <p className="bg-zinc-700 py-1 px-2 rounded-md text-sm">{t(`servers.${translationKey}.date`)}</p>
       </div>
       <p className="text-gray-300 mt-2 max-w-4xl">{t(`servers.${translationKey}.description`)}</p>
+      {link && (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-orange-200 hover:underline mt-2 flex items-center gap-2"
+        >
+          {t(`servers.${translationKey}.link`)} <ExternalLink size={16} />
+        </a>
+      )}
     </div>
   );
 
@@ -96,18 +108,20 @@ const servers = [
     images: Array.from({ length: 9 }, (_, i) => `/assets/images/minecraft/smpv3/${i + 1}.png`),
     autoplayDelay: 2000,
     imageFirst: false,
+    link: 'https://smpmap.nelsongx.com/',
   },
   {
     translationKey: 'nelsonSMPv4',
-    images: Array.from({ length: 4 }, (_, i) => `/assets/images/minecraft/smpv4/${i + 1}.png`),
+    images: Array.from({ length: 5 }, (_, i) => `/assets/images/minecraft/smpv4/${i + 1}.png`),
     autoplayDelay: 2700,
     imageFirst: true,
   },
   {
     translationKey: 'freeServerNetwork',
-    images: Array.from({ length: 5 }, (_, i) => `/assets/images/minecraft/fsn/${i + 1}.png`),
+    images: Array.from({ length: 3 }, (_, i) => `/assets/images/minecraft/fsn/${i + 1}.png`),
     autoplayDelay: 4000,
     imageFirst: false,
+    link: 'https://freeserver.network/',
   },
 ];
 
@@ -128,6 +142,7 @@ export default function Minecraft() {
               images={server.images}
               autoplayDelay={server.autoplayDelay}
               imageFirst={server.imageFirst}
+              link={server.link}
               t={t}
             />
           ))}

@@ -265,22 +265,24 @@
         "highschoolSMP": {
           "title": "Highschool SMP",
           "date": "2021 - 2022",
-          "description": "This server was created for my high school friends. We had a lot of fun playing together, and it was a great way to stay connected during the pandemic. The server had a lot of custom plugins and features, and we even had some events and competitions. However, after we graduated, the server became less active and eventually shut down."
+          "description": "As the time going I went to high school. I found that a lot of new high school students are lack of friends both online and irl. And I saw that a lot of them are playing Minecraft. So, I created this SMP server for high school students to play and make friends. It was pretty successful, we had about 40 players online at the peak time. But just like most of my servers, it died after a while."
         },
         "nelsonSMPv3": {
           "title": "Nelson SMP v3",
           "date": "2022 - Present",
-          "description": "This is the current version of Nelson SMP. "
+          "description": "This is the most long-lived server I've ever own. After creating several servers, I went back to create a new private SMP server. This time I invited even more friends and recruited more players on facebook. I spent a lot of money renting an OVH dedicated server to run this (later on I got some money to build and host server myself, it was at that time I started my hosting business). Even this server is pure vanilla and we have ~20 players online at peak, it's quite peaceful. We built a lot of stuff on the server, as you can see in the gallery. The server actually has two seasons, which Nelson SMP v4 is in between. After SMP v4 I decided to go back to v3 because I think consistenly creating new servers is just not good. The server is still running now, but we only have ~10 active players now (the whitelist has over 100 players).",
+          "link": "View the online map"
         },
         "nelsonSMPv4": {
           "title": "Nelson SMP v4",
           "date": "2022 - 2022",
-          "description": "This was a short-lived server created for fun. We wanted to try out some new plugins and features, but it didn't last long due to lack of interest. However, it was a great learning experience for me in terms of server management and plugin development."
+          "description": "This server only lasted for about 3 months. We we're just get bored of the old map and fired up a new server. All players are the same from v3. After playing for a while and the builders built a lot of cool buildings, I thought it was a good idea just to go back to v3 map. The buildings were really good tho."
         },
         "freeServerNetwork": {
           "title": "FreeServer Network",
           "date": "2024 - Present",
-          "description": "FreeServer Network is a Minecraft server focusing on map sharing for creators. We provide a platform for creators to share their maps and for players to enjoy them. The server has a lot of custom plugins and features to enhance the experience. We also have a great community of players and creators who are passionate about Minecraft."
+          "description": "I've seen a lot of Minecraft map sharing site, and I wonder why can't I just play map inside the game? therefore, I created this server. FreeServer Network is a Minecraft server focusing on map sharing for creators. We provide a platform for creators to share their maps and for players to enjoy them. The server has a lot of custom plugins and features to enhance the experience. We also have a great community of players and creators who are passionate about Minecraft.",
+          "link": "View the server website"
         }
       }
     }
