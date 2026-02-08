@@ -304,9 +304,9 @@
       }
     },
     "dockMessage": {
-      "initialMessage": "Hi, I am nelson. good morning",
-      "today": "Today",
-      "waitingResponse": "Waiting for response...",
+      "initialMessage": "你好，我是 Nelson，早安",
+      "today": "今天",
+      "waitingResponse": "等待回應中...",
       "messagePlaceholder": "nMessage"
     }
   },
