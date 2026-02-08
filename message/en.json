@@ -204,7 +204,8 @@
         "projects": {
           "title": "My Projects",
           "projectsLabel": "Projects",
-          "viewProject": "View project"
+          "viewProject": "View project",
+          "website": "Website"
         }
       }
     },
@@ -245,7 +246,6 @@
     "minecraft": {
       "serversIHosted": "Servers I Created",
       "servverDescription": "I actually learned most of the server mangement skills from operating these Minecraft servers. I rented some of these from server hosting providers and started thinking why whouldn't I just start a hosting company? anyway, These are the servers I created:",
-      "gallery": "Gallery",
       "servers": {
         "nelsonSMPv1": {
           "title": "Nelson SMP v1",
@@ -298,7 +298,9 @@
         "bc": "Sharing cool things",
         "qian": "help me think...fuck, ok, let me think...ok thanks",
         "n1cat": "n1cat's blog ><",
-        "kason": "I am gay"
+        "kason": "I am gay",
+        "add_me_here_title": "Add Me Here",
+        "add_me_here": "Contact me if you want to be added here!"
       }
     },
     "dockMessage": {

@@ -16,6 +16,7 @@ const Footer: React.FC = () => {
           width={1920}
           height={100}
           className="w-full h-auto"
+          draggable={false}
         />
       </div>
       

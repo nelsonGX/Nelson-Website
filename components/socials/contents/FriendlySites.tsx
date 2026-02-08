@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
 import { useCallback } from "react";
+import { Plus } from "lucide-react";
 
 export default function FriendlySiteContent() {
   const t = useTranslations('socials.friendlySites');
@@ -42,6 +43,13 @@ export default function FriendlySiteContent() {
     "icon": <Image src="/assets/images/socials/friendsites/kang.png" alt="" width={64} height={64} />,
     "link":"https://kangjw.me/",
     "color": "bg-zinc-800"
+  },
+  {
+    "name": t('sites.add_me_here_title'),
+    "content": t('sites.add_me_here'),
+    "icon": <Plus size={32} className="text-gray-400" />,
+    "link": "mailto:your-email@example.com",
+    "color": "bg-zinc-700/50"
   }
 ]
   //嘻嘻

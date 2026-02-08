@@ -106,8 +106,8 @@
           "placeholder": "輸入訊息..."
         },
         "success": "訊息成功傳送ㄌ！",
-        "error": "There was an error submitting the form. Please try again.",
-        "errorMessage": "There was an error submitting the form. Please try again.",
+        "error": "噢不...出現了一點問題，你可以再按一次嗎?",
+        "errorMessage": "噢不...出現了一點問題，你可以再按一次嗎?",
         "button": {
           "send": "傳送!",
           "sending": "傳送中..."
@@ -143,14 +143,14 @@
         "codingDevelopment": {
           "title": "aboutme.exe - coding_and_development",
           "heading": "程式設計 & 開發",
-          "description": "如你所見，我會寫 code，我曾寫過 Python、Java、JS...等等語言，大部分情況下，我仍在邊做邊學。你可以在下面找到我的 Github："
+          "description": "如你所見，我會寫 code，我會用 Python、Java、JS...等等語言，大部分情況下，我仍在邊做邊學。你可以在下面找到我的 Github："
         },
         "minecraft": {
           "title": "aboutme.exe - minecraft",
           "heading": "Minecraft",
           "description": "我已經遊玩 Minecraft 8 年了，我在這個遊戲中學會了很多東西。我會寫插件之類的東西。",
-          "content": "Minecraft has been a big part of my journey. I've been building servers, creating plugins, and designing experiences for players. My experience spans from simple automation scripts to complex multiplayer servers with custom game mechanics.",
-          "quote": "Just like a lot of Minecraft players, I started all of these coding stuff because of Minecraft. When I was a kid and playing it, I like to play around with command blocks and redstone, and I always want to do more than that. So I started to learn programming, and... here I am!"
+          "content": "Minecraft 在我的人生(?)中佔有重要地位。我開過伺服器、寫過插件，並為玩家設計過各種體驗。我的經驗涵蓋從簡單的自動化腳本到具有自訂遊戲機制的複雜多人伺服器。",
+          "quote": "就像許多 Minecraft 玩家一樣，我開始接觸程式設計也是因為 Minecraft。小時候玩這款遊戲時，我喜歡玩指令方塊和紅石，並且總想做更多。因此，我開始學習程式設計，然後...我就來到了這裡！"
         }
       }
     }
@@ -175,36 +175,37 @@
   "projects": {
     "codingAndDev": {
       "techStack": {
-        "title": "Tech stack",
-        "python": "Pretty confident",
-        "java": "I do minecraft plugins",
-        "javascript": "Not bad, but I hate it",
-        "nextjs": "Pretty confident",
-        "react": "It's just inside nextjs",
-        "tailwind": "better than pure css",
-        "mongodb": "I use it (not really well)",
-        "craftbukkit": "the minecraft plugin api",
-        "linux": "I can read commands",
-        "networking": "not bad",
-        "infrastructure": "not bad"
+        "title": "技術棧",
+        "python": "相當有自信",
+        "java": "我寫 Minecraft 插件",
+        "javascript": "不錯但我討厭他",
+        "nextjs": "相當有自信",
+        "react": "它就額...在 nextjs 裡面。",
+        "tailwind": "比純 CSS 好用",
+        "mongodb": "我會用（但不太熟練）",
+        "craftbukkit": "Minecraft 插件 API",
+        "linux": "我會看指令",
+        "networking": "還不錯",
+        "infrastructure": "還不錯"
       },
       "sections": {
         "start": {
-          "title": "How it all started...",
-          "description": "Started with Python like everyone else. The first real project was started from a Discord bot. I was interested and learnt how to use Discord APIs. About few years later, LLMs came out and I started making Discord chatbots. It was pretty fun."
+          "title": "一切是怎麼開始的...",
+          "description": "就像大家一樣，我的第一個語言是 Python。我第一個開發的東西是一個 Discord 機器人，當時還蠻有興趣的，所以就學習了一下 Discord API 怎麼用。過了幾年之後現在有了大語言模型(LLM)，然後我就開始做一些聊天機器人。還蠻有趣的"
         },
         "webDev": {
-          "title": "Web Development",
-          "description": "About the website, I always wanted to make websites but I hated pure HTML and CSS. One time our team needed to make a web app for a project, and one of my friend bring me into Next.JS. I was like, omg its good, and started to learn and use it. In 2024, I joined the development team of SITCON, then I built most of my website since then. Now I have several projects using Next.JS."
+          "title": "網頁開發",
+          "description": "關於網站開發的部分，我一直很想學怎麼做網站，但我討厭純 HTML 和 CSS。有一次我們團隊需要為一個專案做個網站，然後有個朋友就叫我用 Next.JS。我當時覺得這框架真棒，於是開始學習並使用它。在 2024 年的時候，我加入了 SITCON 的開發組，從那時起我開發了大量的網站。現在我有好幾個使用 Next.JS 的專案。"
         },
         "java": {
           "title": "Java & Bukkit API",
-          "description": "After starting FreeServer (please view the Server Managing & Networking part if you missed it), I waned to make a Minecraft server called FreeServer Network. I need custom plugins for the server, but I don't want to pay others to do it. So I started to learn Java and Bukkit API. I made several plugins for the server, and it was a great experience. I am still learning. You can view more in the Minecraft window."
+          "description": "在開了 FreeServer 之後（如果不知道這在講什麼可以看一下伺服器 & 網路維運的視窗），我想開一個叫 FreeServer Network 的 Minecraft 伺服器。但因為需求太特殊了，所以我要自己寫插件，但我不想付錢給別人做，所以我就開始學 Java 和 Bukkit API。我為伺服器製作了幾個插件，挺不錯的的。我仍在學習中，你可以在 Minecraft 視窗中查看更多。"
         },
         "projects": {
-          "title": "My Projects",
-          "projectsLabel": "Projects",
-          "viewProject": "View project"
+          "title": "我的專案",
+          "projectsLabel": "專案",
+          "viewProject": "查看專案",
+          "website": "網頁"
         }
       }
     },
@@ -213,76 +214,75 @@
         "title": "我所創建的伺服器託管",
         "freeserver": {
           "date": "2022年3月 - 2022年8月",
-          "part1": "FreeServer 是由我和 Mayboy 共同創立的專案。最初，我發現我的朋友 Mayboy 正在使用 Google Cloud Platform (GCP) 的免費 300 美元方案，我想知道我們是否可以將它用於免費託管。因此，我們邀請了朋友 Windless 加入這個專案。",
+          "part1": "FreeServer 是由我和 Mayboy 共同創立的專案。最初，我發現我的朋友 Mayboy 一直白嫖 GCP 的免費 300 美元方案，我想說拿來開免費託管應該蠻有趣的。因此，我們邀請了朋友 Windless 加入這個專案。",
           "part2": "FreeServer 為 Minecraft 伺服器和 Discord 機器人提供免費託管。免費規格包括 1 個 vCPU、4 GB 記憶體和 10 GB 硬碟空間。伺服器位於台灣。對於亞洲地區的免費託管來說，這些規格相當慷慨。",
           "part3": "伺服器最初面臨大量的 DDoS 攻擊，直到我們遇到了台灣速連的擁有者 Alger Huang，他為我們提供了免費的 DDoS 防護服務。大約 4 個月後，因為 GCP 政策變更和台灣速連免費 DDoS 防護服務結束，我們最終決定在 2022 年 8 月關閉 FreeServer。",
-          "internet_archive_website": "Website on Internet Archive",
-          "discord": "Discord Server (Archived)"
+          "internet_archive_website": "Internet Archive 上的舊官網",
+          "discord": "Discord 伺服器 (Archived)"
         },
         "cheapserver": {
           "date": "2022年8月 - 現在",
           "part1": "憑藉 FreeServer 的一些收入和經驗，我們決定推出一個付費伺服器託管服務，名為 CheapServer。這次，我們邀請了朋友 CH 加入這項業務。",
-          "part2": "當 CheapServer 開始營運時，在台灣沒有任何託管服務能夠匹配我們的低價（我們自信地認為）。從一開始，我們就獲得了客戶。",
+          "part2": "當 CheapServer 開始營運時，在台灣沒有任何託管服務能夠匹配我們的低價（我們自信地認為）。從一開始，我們就獲得了許多客戶。",
           "part3": "CheapServer 至今仍在運營中。我們擁有不斷增長的客戶群，並持續努力改善我們的服務。",
-          "website": "Website",
-          "discord": "Discord Server"
+          "website": "官網",
+          "discord": "Discord 伺服器"
         },
         "freeserverv2": {
           "date": "2023年1月 - 2023年7月",
-          "part1": "在 CheapServer 之後，我們懷念經營 FreeServer 的美好時光。所以，這次我們投入了一些來自 CheapServer 的資金，而不是依靠 GCP 的免費試用來運行 FreeServer v2。",
-          "part2": "首先，我們從 Taipei 101（我的一個朋友）購買了一台 VPS，開始提供託管服務。我們重複使用了 FreeServer v1 的網站組件。然而，我們遇到了一些合作問題，因此我們將伺服器提供商換成了 Hetzner。",
+          "part1": "在開啟 CheapServer 之後，我們懷念經營 FreeServer 的美好時光。所以，這次我們投入了一些來自 CheapServer 的資金，而不是依靠 GCP 的免費試用來運行 FreeServer v2。",
+          "part2": "首先，我們從 Taipei 101（我的一個朋友）購買了一台 VPS，開始提供託管服務，然後重用了 FreeServer v1 的網站。然而之後我們遇到了一些合作問題，因此我們將伺服器提供商換成了 Hetzner。",
           "part3": "不幸的是，我們資金用盡且身心俱疲。因此，我們決定在 2023 年 7 月關閉 FreeServer v2。"
         },
         "freeserverv3": {
           "date": "2023年11月 - 現在",
-          "part1": "在 Discord 語音聊天期間，我的朋友 Ricky（又名 Smitug）建議重新開放 FreeServer。我也一直在考慮這件事。於是，我們決定重新啟動它，這次使用我們自己的伺服器基礎設施。我們的目標是使它比以前更好。",
+          "part1": "在 Discord 語音聊天期間，我的朋友 Ricky（aka Smitug）說他想開新的 FreeServer。我也一直在考慮這件事。於是，我們決定重新啟動它，這次使用我們自己的伺服器基礎設施。我們的目標是使它比以前更好。",
           "part2": "FreeServer v3 至今仍在運營中。我們已經擁有超過 7,000 名用戶和 1,700+ 活躍伺服器，且數量持續增長。",
-          "website": "Website",
-          "discord": "Discord Server"
+          "website": "官網",
+          "discord": "Discord 伺服器"
         }
       }
     },
     "minecraft": {
-      "serversIHosted": "Servers I Created",
-      "servverDescription": "I actually learned most of the server mangement skills from operating these Minecraft servers. I rented some of these from server hosting providers and started thinking why whouldn't I just start a hosting company? anyway, These are the servers I created:",
-      "gallery": "Gallery",
+      "serversIHosted": "我開過的伺服器",
+      "servverDescription": "其實我大部分的伺服器管理技能都是從開這些 Minecraft 伺服器中學到的。我從伺服器託管租了一些伺服器，然後開始思考為什麼我不自己開一家託管公司呢？無論如何，這些是我創建的伺服器：",
       "servers": {
         "nelsonSMPv1": {
           "title": "Nelson SMP v1",
           "date": "2019 - 2021",
-          "description": "After playing some public servers, I wanted to create my own server and invite my friends to play. So I created a server on Aternos. I knew nothing about server at that time, it was just a vanilla potato server. After I learned about some hosting things, I moved the server to a server provider that the owner is a friend of mine now. But I was in junior high school and I was pretty poor, so I forgot to renew the server eventually the map was deleted. The server name was made after Nelson SMP v2 created, it didn't have a name at that time."
+          "description": "在玩了一些公共伺服器後，我想創建自己的伺服器並邀請朋友一起玩。所以我在 Aternos 上創建了一個伺服器。當時我對伺服器一無所知，它只是一個普通的原版伺服器。學到一些託管知識後，我將伺服器搬到了現在是我朋友的伺服器提供商。但當時我還在初中，經濟狀況不佳，所以最終忘記續費，地圖被刪除了。伺服器名稱是在 Nelson SMP v2 創建後才定的，當時沒有名稱。"
         },
         "nelsonSMPv2": {
           "title": "Nelson SMP v2",
           "date": "2021 - 2022",
-          "description": "What did I do after losing the map? just create another one. This time, I invited more friends to play and it went pretty well. Normally the server has about 10 players online, there are traders, builders, etc., and we even had a war. But just like most SMP servers, it died after a while, and this time the map was preserved."
+          "description": "在地圖丟失後，我做了什麼？只是創建了另一個伺服器。這次，我邀請了更多的朋友一起玩，效果相當不錯。通常伺服器有大約 10 名玩家在線，有商人、建築師等，我們甚至還進行了一場戰爭。但就像大多數 SMP 伺服器一樣，它在一段時間後就消亡了，這次地圖得以保留。"
         },
         "MLGRush": {
           "title": "MLGRush",
           "date": "2021 - 2021",
-          "description": "Aside from playing survival, I also like to play PVP servers like bedwars. There is a minigame called MLG Rush, but at the time there was barely any server not to say in asia. So I created this one and hosted it in Singapore. It was pretty fun, but I lost interest in it after a while and shut it down."
+          "description": "除了玩生存模式，我也喜歡玩 PVP 伺服器，比如床戰。有一個名為 MLG Rush 的迷你遊戲，但當時幾乎沒有伺服器，更不用說在亞洲了。所以我創建了這個伺服器並在新加坡託管。這很有趣，但過了一段時間我對它失去了興趣，最終關閉了它。"
         },
         "highschoolSMP": {
           "title": "Highschool SMP",
           "date": "2021 - 2022",
-          "description": "As the time going I went to high school. I found that a lot of new high school students are lack of friends both online and irl. And I saw that a lot of them are playing Minecraft. So, I created this SMP server for high school students to play and make friends. It was pretty successful, we had about 40 players online at the peak time. But just like most of my servers, it died after a while."
+          "description": "隨著時間的推移，我上了高中。我發現很多新來的高中生在網上和現實生活中都缺乏朋友。而且我看到他們很多人都在玩 Minecraft。所以，我創建了這個 SMP 伺服器，讓高中生可以玩遊戲並結交朋友。這個伺服器相當成功，我們在高峰時期有大約 40 名玩家在線。但就像我大多數的伺服器一樣，它在一段時間後就消亡了。"
         },
         "nelsonSMPv3": {
           "title": "Nelson SMP v3",
           "date": "2022 - Present",
-          "description": "This is the most long-lived server I've ever own. After creating several servers, I went back to create a new private SMP server. This time I invited even more friends and recruited more players on facebook. I spent a lot of money renting an OVH dedicated server to run this (later on I got some money to build and host server myself, it was at that time I started my hosting business). Even this server is pure vanilla and we have ~20 players online at peak, it's quite peaceful. We built a lot of stuff on the server, as you can see in the gallery. The server actually has two seasons, which Nelson SMP v4 is in between. After SMP v4 I decided to go back to v3 because I think consistenly creating new servers is just not good. The server is still running now, but we only have ~10 active players now (the whitelist has over 100 players).",
-          "link": "View the online map"
+          "description": "這是我擁有過的最長壽的伺服器。在創建了幾個伺服器後，我回過頭來創建一個新的私人 SMP 伺服器。這次我邀請了更多的朋友，並在 Facebook 上招募了更多玩家。我花了很多錢租用 OVH 專用伺服器來運行這個伺服器（後來我有了一些資金來自己建設和託管伺服器，那時我開始了我的託管業務）。即使這個伺服器是純原版的，我們在高峰時期也有約 20 名玩家在線，相當和平。我們在伺服器上建造了很多東西，如你在畫廊中所見。伺服器實際上有兩個賽季，Nelson SMP v4 就在其中。SMP v4 之後，我決定回到 v3，因為我認為持續創建新伺服器並不是一個好主意。伺服器仍在運行，但現在我們只有約 10 名活躍玩家（白名單上有超過 100 名玩家）。",
+          "link": "查看線上地圖"
         },
         "nelsonSMPv4": {
           "title": "Nelson SMP v4",
           "date": "2022 - 2022",
-          "description": "This server only lasted for about 3 months. We we're just get bored of the old map and fired up a new server. All players are the same from v3. After playing for a while and the builders built a lot of cool buildings, I thought it was a good idea just to go back to v3 map. The buildings were really good tho."
+          "description": "這個伺服器只持續了大約 3 個月。我們只是對舊地圖感到厭倦，於是啟動了一個新伺服器。所有玩家都是來自 v3 的。在玩了一段時間並且建築師建造了很多很酷的建築後，我認為回到 v3 地圖是一個好主意。建築真的很棒。"
         },
         "freeServerNetwork": {
           "title": "FreeServer Network",
           "date": "2024 - Present",
-          "description": "I've seen a lot of Minecraft map sharing site, and I wonder why can't I just play map inside the game? therefore, I created this server. FreeServer Network is a Minecraft server focusing on map sharing for creators. We provide a platform for creators to share their maps and for players to enjoy them. The server has a lot of custom plugins and features to enhance the experience. We also have a great community of players and creators who are passionate about Minecraft.",
-          "link": "View the server website"
+          "description": "我看到很多 Minecraft 地圖分享網站，然後我想，為什麼不能直接在遊戲中玩地圖呢？因此，我創建了這個伺服器。FreeServer Network 是一個專注於創作者地圖分享的 Minecraft 伺服器。我們提供一個平台，讓創作者分享他們的地圖，玩家可以享受這些地圖。伺服器有很多自定義插件和功能來增強體驗。我們還有一個熱情的玩家和創作者社群，他們對 Minecraft 充滿熱情。",
+          "link": "查看伺服器網站"
         }
       }
     }
@@ -298,7 +298,9 @@
         "bc": "分享酷東西的高品質網站",
         "qian": "幫我想 幹 好啦 我想一下 好 就這樣 好謝謝你",
         "n1cat": "n1cat's blog ><",
-        "kason": "充滿著康喔不定時的小感動"
+        "kason": "充滿著康喔不定時的小感動",
+        "add_me_here_title": "我也想在這！",
+        "add_me_here": "如果你也想被放在這裡的話，歡迎聯絡我！"
       }
     },
     "dockMessage": {

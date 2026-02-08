@@ -81,7 +81,7 @@ export default function CodingAndDev() {
   }
 
   const relativeProjects: RelativeProjects = {
-    "Website": [
+    [t('sections.projects.website')]: [
       { name: "This personal website", link: "https://nelsongx.com", image: "nelson_website.png" },
       { name: "SITCON Tickets", link: "https://tickets.sitcon.org", image: "sitcon_ticket.png" },
       { name: "SITCON 2026 Website (3D Modeling)", link: "https://sitcon.org/2026/info/academia-sinica/", image: "sitcon_2026.png" },
