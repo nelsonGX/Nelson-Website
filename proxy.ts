@@ -1,11 +1,10 @@
 import createMiddleware from 'next-intl/middleware';
 import {routing} from './i18n/routing';
 
-// Required for Cloudflare Workers
-export const runtime = 'experimental-edge';
-
+export const runtime = 'edge';
+ 
 export default createMiddleware(routing);
-
+ 
 export const config = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
