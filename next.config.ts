@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.discordapp.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'yimang.tw',
+        pathname: '/images/avatar.webp',
+      }
     ],
   },
 };

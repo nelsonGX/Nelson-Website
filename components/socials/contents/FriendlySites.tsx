@@ -12,7 +12,7 @@ export default function FriendlySiteContent() {
   {
     "name": "Yimang",
     "content": t('sites.yimang'),
-    "icon": <Image src="/assets/images/socials/friendsites/yimang.webp" alt="" width={64} height={64} />,
+    "icon": <Image src="https://yimang.tw/images/avatar.webp" alt="" width={64} height={64} />,
     "link": "https://yimang.tw/",
     "color": "bg-gray-600"
   },
