@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'Hi, nice to meet you, this is Nelson\'s Website. Click to view more!',
     images: [
       {
-        url: 'https://nelsongx.com/assets/images/nelsongx.png',
+        url: 'https://nelsongx.com/assets/images/banner.webp',
         width: 64,
         height: 64,
         alt: '',

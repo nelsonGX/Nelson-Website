@@ -12,7 +12,7 @@ export default function ServerManager() {
       { 
         date: t('hosting.freeserver.date'), 
         title: 'FreeServer', 
-        imageSrc: "/assets/images/freeserver.png", 
+        imageSrc: "/assets/images/freeserver.webp", 
         links: [
           { name: t('hosting.freeserver.internet_archive_website'), url: 'https://web.archive.org/web/20220703070209/https://freeserver.fun/' },
           { name: t('hosting.freeserver.discord'), url: 'https://discord.gg/nNyn7EK9PC' }
@@ -33,7 +33,7 @@ export default function ServerManager() {
       { 
         date: t('hosting.cheapserver.date'), 
         title: 'CheapServer', 
-        imageSrc: "/assets/images/CheapServer_white.png", 
+        imageSrc: "/assets/images/CheapServer_white.webp", 
         links: [
           { name: t('hosting.cheapserver.website'), url: 'https://cheapserver.tw/' },
           { name: t('hosting.cheapserver.discord'), url: 'https://discord.gg/cheapserver' }
@@ -54,7 +54,7 @@ export default function ServerManager() {
       { 
         date: t('hosting.freeserverv2.date'), 
         title: 'FreeServer v2', 
-        imageSrc: "/assets/images/freeserver.png", 
+        imageSrc: "/assets/images/freeserver.webp", 
         description: 
         <>
           <div>
@@ -71,7 +71,7 @@ export default function ServerManager() {
       { 
         date: t('hosting.freeserverv3.date'), 
         title: 'FreeServer v3', 
-        imageSrc: "/assets/images/freeserverv3.png", 
+        imageSrc: "/assets/images/freeserverv3.webp", 
         links: [
           { name: t('hosting.freeserverv3.website'), url: 'https://freeserver.tw/' },
           { name: t('hosting.freeserverv3.discord'), url: 'https://discord.gg/k5GgFFxN2Q' }

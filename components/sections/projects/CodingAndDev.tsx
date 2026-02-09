@@ -40,7 +40,7 @@ export default function CodingAndDev() {
     },
     { 
       name: 'Tailwind CSS', 
-      icon: <Image src="/assets/images/tailwind.png" alt="Tailwind CSS" width={20} height={20} className="text-white" />, 
+      icon: <Image src="/assets/images/tailwind.webp" alt="Tailwind CSS" width={20} height={20} className="text-white" />, 
       bg: "bg-yellow-400/15",
       confidence: t('techStack.tailwind')
     },
@@ -52,7 +52,7 @@ export default function CodingAndDev() {
     },
     { 
       name: 'CraftBukkit',
-      icon: <Image src="/assets/images/craftbukkit.png" alt="CraftBukkit" width={20} height={20} className="text-white" />,
+      icon: <Image src="/assets/images/craftbukkit.webp" alt="CraftBukkit" width={20} height={20} className="text-white" />,
       bg: "bg-yellow-400/15",
       confidence: t('techStack.craftbukkit')
     },
@@ -82,14 +82,14 @@ export default function CodingAndDev() {
 
   const relativeProjects: RelativeProjects = {
     [t('sections.projects.website')]: [
-      { name: "This personal website", link: "https://nelsongx.com", image: "nelson_website.png" },
-      { name: "SITCON Tickets", link: "https://tickets.sitcon.org", image: "sitcon_ticket.png" },
-      { name: "SITCON 2026 Website (3D Modeling)", link: "https://sitcon.org/2026/info/academia-sinica/", image: "sitcon_2026.png" },
-      { name: "FreeServer Website", link: "https://freeserver.tw", image: "freeserverv3.png" },
-      { name: "FreeServer Network Website", link: "https://freeserver.network", image: "freeserver_network.png" },
-      { name: "Simple Info. Website", link: "https://www.simple.taipei", image: "simple_info.png" },
-      { name: "Open Company LTD Website", link: "https://open-company-fork.pages.dev/", image: "open_company.png" },
-      { name: "SITCON 2025 Website (contributor)", link: "https://sitcon.org/2025/venue", image: "sitcon_2025.png" },
+      { name: "This personal website", link: "https://nelsongx.com", image: "nelson_website.webp" },
+      { name: "SITCON Tickets", link: "https://tickets.sitcon.org", image: "sitcon_ticket.webp" },
+      { name: "SITCON 2026 Website (3D Modeling)", link: "https://sitcon.org/2026/info/academia-sinica/", image: "sitcon_2026.webp" },
+      { name: "FreeServer Website", link: "https://freeserver.tw", image: "freeserverv3.webp" },
+      { name: "FreeServer Network Website", link: "https://freeserver.network", image: "freeserver_network.webp" },
+      { name: "Simple Info. Website", link: "https://www.simple.taipei", image: "simple_info.webp" },
+      { name: "Open Company LTD Website", link: "https://open-company-fork.pages.dev/", image: "open_company.webp" },
+      { name: "SITCON 2025 Website (contributor)", link: "https://sitcon.org/2025/venue", image: "sitcon_2025.webp" },
     ],
     "Python": [
       { name: "My first OpenSourced Bot", link: "https://github.com/nelsonGX/DiscordURLshortenBot" },

@@ -12,21 +12,21 @@ export default function FriendlySiteContent() {
   {
     "name": "Yimang",
     "content": t('sites.yimang'),
-    "icon": <Image src="/assets/images/socials/friendsites/yimang.png" alt="" width={64} height={64} />,
+    "icon": <Image src="/assets/images/socials/friendsites/yimang.webp" alt="" width={64} height={64} />,
     "link": "https://yimang.tw/",
     "color": "bg-gray-600"
   },
   {
     "name": "BC",
     "content": t('sites.bc'),
-    "icon": <Image src="/assets/images/socials/friendsites/bc.png" alt="" width={64} height={64} />,
+    "icon": <Image src="/assets/images/socials/friendsites/bc.webp" alt="" width={64} height={64} />,
     "link": "https://bcxy.me/",
     "color": "bg-gray-700"
   },
   {
     "name": "Qian",
     "content": t('sites.qian'),
-    "icon": <Image src="/assets/images/socials/friendsites/qian.png" alt="" width={64} height={64} />,
+    "icon": <Image src="/assets/images/socials/friendsites/qian.webp" alt="" width={64} height={64} />,
     "link": "https://blog.qian30.net/",
     "color": "bg-zinc-800"
   },
@@ -40,7 +40,7 @@ export default function FriendlySiteContent() {
   {
     "name": "Kason",
     "content": t('sites.kason'),
-    "icon": <Image src="/assets/images/socials/friendsites/kang.png" alt="" width={64} height={64} />,
+    "icon": <Image src="/assets/images/socials/friendsites/kang.webp" alt="" width={64} height={64} />,
     "link":"https://kangjw.me/",
     "color": "bg-zinc-800"
   },

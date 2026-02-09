@@ -140,8 +140,8 @@ export default function DiscordContent() {
 
     const { discord_user, activities, discord_status, listening_to_spotify, spotify } = userData;
     const avatarUrl = discord_user.avatar 
-      ? `https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png?size=128` 
-      : 'https://cdn.discordapp.com/embed/avatars/0.png';
+      ? `https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.webp?size=128` 
+      : 'https://cdn.discordapp.com/embed/avatars/0.webp';
 
     const nonCustomActivities = activities.filter(activity => activity.type !== 4);
     const customStatus = activities.find(activity => activity.type === 4);
