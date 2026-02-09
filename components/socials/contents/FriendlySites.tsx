@@ -31,11 +31,18 @@ export default function FriendlySiteContent() {
     "color": "bg-zinc-800"
   },
   {
+    "name": "OsGa",
+    "content": t('sites.osga'),
+    "icon": <Image src="/assets/images/socials/friendsites/osga.webp" alt="" width={64} height={64} />,
+    "link": "https://osga.me/",
+    "color": "bg-gray-800"
+  },
+  {
     "name": "n1cat",
     "content": t('sites.n1cat'),
     "icon": <Image src="/assets/images/socials/friendsites/n1cat.jpg" alt="" width={64} height={64} />,
     "link":"https://blog.nlcat.dpdns.org/",
-    "color": "bg-zinc-900"
+    "color": "bg-zinc-950"
   },
   {
     "name": "Kason",
