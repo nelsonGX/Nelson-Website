@@ -15,12 +15,12 @@
         "website": "Website"
       },
       "description": {
-        "intro": "哈囉！我是 Nelson，aka nelsonGX，是一位來自台灣的學生，對資訊相關領域充滿熱情。",
-        "work": "我目前經營超級快網路有限公司 (ASN: 152619)，營運 CheapServer 託管服務。除了這個主要業務外，我還經營 FreeServer，一個免費託管服務社群。我也管理一個名為 FreeServer Network 的 Minecraft 伺服器，主要專注於地圖創作者的分享平台。",
-        "community": "我會參與社群活動，會在像是 SITCON、HITCON 和 COSCUP 之類的活動裡出現，藉此學習並與其他好朋友交流。"
+        "intro": "泥好，我是 Nelson，是一位台灣的學生，會寫點小破程式跟開點小伺服器。",
+        "work": "我目前經營超級快網路有限公司 (ASN: 152619)，營運 CheapServer 託管服務，也跟朋友開了一間公司叫我想開一間有限公司，主要內容是幫別人開公司。除了這些之外，我還經營 FreeServer，一個免費託管服務社群，跟其之下的 Minecraft 伺服器，叫做 FreeServer Network，主要專注於地圖創作者的分享平台。",
+        "community": "我會參加一些社群，像是 SITCON、HITCON 和 COSCUP 之類的活動裡我都會出現，藉此學習並與其他好朋友交流。"
       },
       "sections": {
-        "techStack": "Tech Stack",
+        "techStack": "Tech Stack (技術棧)",
         "projects": "我的專案 / 服務"
       },
       "techStack": {
@@ -34,7 +34,7 @@
           "confidence": "Not bad, but I hate it"
         },
         "nextjs": {
-          "confidence": "Pretty confident"
+          "confidence": "Pretty confident (這個網站就是用他寫的?)"
         },
         "react": {
           "confidence": "It's just inside nextjs"
@@ -149,8 +149,8 @@
           "title": "aboutme.exe - minecraft",
           "heading": "Minecraft",
           "description": "我已經遊玩 Minecraft 8 年了，我在這個遊戲中學會了很多東西。我會寫插件之類的東西。",
-          "content": "Minecraft 在我的人生(?)中佔有重要地位。我開過伺服器、寫過插件，並為玩家設計過各種體驗。我的經驗涵蓋從簡單的自動化腳本到具有自訂遊戲機制的複雜多人伺服器。",
-          "quote": "就像許多 Minecraft 玩家一樣，我開始接觸程式設計也是因為 Minecraft。小時候玩這款遊戲時，我喜歡玩指令方塊和紅石，並且總想做更多。因此，我開始學習程式設計，然後...我就來到了這裡！"
+          "content": "Minecraft 在我的人生(?)中佔有重要地位。我開過伺服器、寫過插件；我的經驗涵蓋從簡單的自動化腳本到具有自訂遊戲機制的複雜多人伺服器。",
+          "quote": "就像許多玩 Minecraft 的一樣，我開始寫程式也是因為 Minecraft。小時候玩的時候我喜歡玩指令方塊跟紅石，但總覺得太少了，所以我就開始學程式，然後..."
         }
       }
     }
@@ -214,7 +214,7 @@
         "title": "我所創建的伺服器託管",
         "freeserver": {
           "date": "2022年3月 - 2022年8月",
-          "part1": "FreeServer 是由我和 Mayboy 共同創立的專案。最初，我發現我的朋友 Mayboy 一直白嫖 GCP 的免費 300 美元方案，我想說拿來開免費託管應該蠻有趣的。因此，我們邀請了朋友 Windless 加入這個專案。",
+          "part1": "FreeServer 是由我和 Mayboy 共同創立的專案。一開始我發現我的朋友 Mayboy 一直白嫖 GCP 的免費 300 美元方案，我想說拿來開免費託管應該蠻有趣的。因此，我們邀請了朋友 Windless 加入這個專案。",
           "part2": "FreeServer 為 Minecraft 伺服器和 Discord 機器人提供免費託管。免費規格包括 1 個 vCPU、4 GB 記憶體和 10 GB 硬碟空間。伺服器位於台灣。對於亞洲地區的免費託管來說，這些規格相當慷慨。",
           "part3": "伺服器最初面臨大量的 DDoS 攻擊，直到我們遇到了台灣速連的擁有者 Alger Huang，他為我們提供了免費的 DDoS 防護服務。大約 4 個月後，因為 GCP 政策變更和台灣速連免費 DDoS 防護服務結束，我們最終決定在 2022 年 8 月關閉 FreeServer。",
           "internet_archive_website": "Internet Archive 上的舊官網",
@@ -223,7 +223,7 @@
         "cheapserver": {
           "date": "2022年8月 - 現在",
           "part1": "憑藉 FreeServer 的一些收入和經驗，我們決定推出一個付費伺服器託管服務，名為 CheapServer。這次，我們邀請了朋友 CH 加入這項業務。",
-          "part2": "當 CheapServer 開始營運時，在台灣沒有任何託管服務能夠匹配我們的低價（我們自信地認為）。從一開始，我們就獲得了許多客戶。",
+          "part2": "CheapServer 開始營運時，當時台灣沒有任何託管友我們低價（我們自信的認為），一開始我們就獲得了許多客戶。",
           "part3": "CheapServer 至今仍在運營中。我們擁有不斷增長的客戶群，並持續努力改善我們的服務。",
           "website": "官網",
           "discord": "Discord 伺服器"

@@ -48,7 +48,7 @@ export default function FriendlySiteContent() {
     "name": t('sites.add_me_here_title'),
     "content": t('sites.add_me_here'),
     "icon": <Plus size={32} className="text-gray-400" />,
-    "link": "mailto:your-email@example.com",
+    "link": "mailto:hi@nelsongx.com",
     "color": "bg-zinc-700/50"
   }
 ]
