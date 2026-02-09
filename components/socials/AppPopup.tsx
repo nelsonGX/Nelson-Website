@@ -67,7 +67,7 @@ export const AppPopup: React.FC<AppPopupProps> = ({
   return (
     <div 
       ref={popupRef}
-      className={`absolute top-0 left-0 w-full h-full bg-black z-50 
+      className={`absolute top-0 left-0 w-full h-full bg-black z-40 
                 transition-all duration-300 ease-out`}
       style={getAnimationStyle()}
     >
