@@ -29,7 +29,7 @@ export const IphoneDevice: React.FC<IphoneDeviceProps> = ({
   return (
     <div className="relative md:hidden w-[350px] h-[700px] rounded-4xl overflow-hidden bg-black border-4 border-zinc-700 shadow-2xl">
       {/* Dynamic Island */}
-      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-black rounded-2xl z-50"></div>
+      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-black rounded-2xl z-30"></div>
       
       {/* Screen */}
       <div className="relative w-full h-full bg-cover bg-center bg-gradient-to-b from-blue-700/20 to-pink-600/40" >
