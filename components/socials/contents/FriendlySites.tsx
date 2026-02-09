@@ -41,7 +41,7 @@ export default function FriendlySiteContent() {
     "name": "n1cat",
     "content": t('sites.n1cat'),
     "icon": <Image src="/assets/images/socials/friendsites/n1cat.jpg" alt="" width={64} height={64} />,
-    "link":"https://blog.nlcat.dpdns.org/",
+    "link":"https://n1cat.xyz/",
     "color": "bg-zinc-950"
   },
   {
