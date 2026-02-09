@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://nelsongx.com/assets/images/banner.webp',
-        width: 64,
-        height: 64,
+        width: 2800,
+        height: 1080,
         alt: '',
       },
     ],
