@@ -27,7 +27,7 @@ export default function FriendlySiteContent() {
     "name": "Qian",
     "content": t('sites.qian'),
     "icon": <Image src="/assets/images/socials/friendsites/qian.webp" alt="" width={64} height={64} />,
-    "link": "https://blog.qian30.net/",
+    "link": "https://www.chien.dev/",
     "color": "bg-zinc-800"
   },
   {
