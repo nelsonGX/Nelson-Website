@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'yimang.tw',
         pathname: '/images/avatar.webp',
+      },
+      {
+        protocol: 'https',
+        hostname: 'owen0924.com',
+        pathname: '/assets/home/home.png',
       }
     ],
   },

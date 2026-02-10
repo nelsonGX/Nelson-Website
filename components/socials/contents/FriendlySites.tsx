@@ -52,6 +52,13 @@ export default function FriendlySiteContent() {
     "color": "bg-zinc-800"
   },
   {
+    "name": "owen0924",
+    "content": t('sites.owen0924'),
+    "icon": <Image src="https://owen0924.com/assets/home/home.png" alt="" width={64} height={64} />,
+    "link":"https://owen0924.com/",
+    "color": "bg-gray-800"
+  },
+  {
     "name": t('sites.add_me_here_title'),
     "content": t('sites.add_me_here'),
     "icon": <Plus size={32} className="text-gray-400" />,
