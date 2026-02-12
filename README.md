@@ -13,7 +13,7 @@ It's quite complicated, but I can help you:
 4. Select your forked repo
 5. At "Framework preset", choose "Next.js" (Not static HTML!) with default settings
 6. Click "Save and Deploy" then watch it build
-7. It will build success but the site won't work because you didn't set nodejs_compact setting. To fix this, go to "Settings" -> "Runtime" -> edit "Compatibility flags" -> add "nodejs_compact" flag -> save
+7. It will build success but the site won't work because you didn't set nodejs_compact setting. To fix this, go to "Settings" -> "Runtime" -> edit "Compatibility flags" -> add "nodejs_compat" flag -> save
 8. Then you will have to redeploy the site by going to "Deployments" tab and find the latest build, then click "Retry Deployment"
 9. It should work!
 ## License
