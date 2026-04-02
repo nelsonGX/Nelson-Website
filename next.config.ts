@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'owen0924.com',
         pathname: '/assets/home/home.png',
+      },
+      {
+        protocol: 'https',
+        hostname: 'gravatar.com',
+        pathname: '/avatar/**',
       }
     ],
   },

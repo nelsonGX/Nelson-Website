@@ -66,6 +66,13 @@ export default function FriendlySiteContent() {
     "color": "bg-zinc-800"
   },
   {
+    "name": "CH",
+    "content": t('sites.ch'),
+    "icon": <Image src="https://gravatar.com/avatar/989c60c32fc12d590b20b557d05d5094ab65909ced27541e045f6d005d113a94" alt="" width={64} height={64} />,
+    "link":"https://blog.thisisch.net/",
+    "color": "bg-zinc-800"
+  },
+  {
     "name": t('sites.add_me_here_title'),
     "content": t('sites.add_me_here'),
     "icon": <Plus size={32} className="text-gray-400" />,
