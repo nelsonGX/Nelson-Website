@@ -1,5 +1,7 @@
 import { motion, useMotionValue, useTransform, type PanInfo } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const EMPTY_CARDS: React.ReactNode[] = [];
 
 interface CardRotateProps {
   children: React.ReactNode;
@@ -65,7 +67,7 @@ interface StackProps {
 export default function Stack({
   randomRotation = false,
   sensitivity = 200,
-  cards = [],
+  cards = EMPTY_CARDS,
   animationConfig = { stiffness: 260, damping: 20 },
   sendToBackOnClick = false,
   autoplay = false,
@@ -75,7 +77,8 @@ export default function Stack({
   mobileBreakpoint = 768
 }: StackProps) {
   const [isMobile, setIsMobile] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const isPausedRef = useRef(false);
+  const rotationMap = useRef<Record<number, number>>({});
 
   useEffect(() => {
     const checkMobile = () => {
@@ -114,16 +117,26 @@ export default function Stack({
     });
   };
 
+  const getRotation = (id: number) => {
+    if (!randomRotation) return 0;
+    if (!(id in rotationMap.current)) {
+      rotationMap.current[id] = Math.random() * 10 - 5;
+    }
+    return rotationMap.current[id];
+  };
+
   useEffect(() => {
-    if (autoplay && stack.length > 1 && !isPaused) {
-      const interval = setInterval(() => {
+    if (!autoplay || stack.length <= 1) return;
+
+    const interval = setInterval(() => {
+      if (!isPausedRef.current) {
         const topCardId = stack[stack.length - 1].id;
         sendToBack(topCardId);
-      }, autoplayDelay);
+      }
+    }, autoplayDelay);
 
-      return () => clearInterval(interval);
-    }
-  }, [autoplay, autoplayDelay, stack, isPaused]);
+    return () => clearInterval(interval);
+  }, [autoplay, autoplayDelay, stack]);
 
   return (
     <div
@@ -131,11 +144,11 @@ export default function Stack({
       style={{
         perspective: 600
       }}
-      onMouseEnter={() => pauseOnHover && setIsPaused(true)}
-      onMouseLeave={() => pauseOnHover && setIsPaused(false)}
+      onMouseEnter={() => { if (pauseOnHover) isPausedRef.current = true; }}
+      onMouseLeave={() => { if (pauseOnHover) isPausedRef.current = false; }}
     >
       {stack.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
+        const randomRotate = getRotation(card.id);
         return (
           <CardRotate
             key={card.id}

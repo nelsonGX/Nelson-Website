@@ -191,28 +191,28 @@ const AboutSection: React.FC = () => {
         >
           {/* Mac-style window header */}
           <div className="bg-zinc-800 px-4 py-2 flex items-center justify-between">
-            <div className="flex space-x-2">
-              <motion.div 
-                className="w-3 h-3 rounded-full bg-red-500"
+            <div className="flex gap-2">
+              <motion.div
+                className="size-3 rounded-full bg-red-500"
                 variants={dotVariants}
                 initial="initial"
                 whileHover="hover"
               ></motion.div>
               <motion.div 
-                className="w-3 h-3 rounded-full bg-yellow-500"
+                className="size-3 rounded-full bg-yellow-500"
                 variants={dotVariants}
                 initial="initial"
                 whileHover="hover"
               ></motion.div>
               <motion.div 
-                className="w-3 h-3 rounded-full bg-green-500"
+                className="size-3 rounded-full bg-green-500"
                 variants={dotVariants}
                 initial="initial"
                 whileHover="hover"
               ></motion.div>
             </div>
             
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center gap-2">
               <motion.button 
                 onClick={toggleViewMode}
                 className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
@@ -275,9 +275,9 @@ const AboutSection: React.FC = () => {
                       className="flex flex-wrap gap-2"
                       variants={containerVariants}
                     >
-                      {techStack.map((tech, index) => (
-                        <motion.div 
-                          key={index} 
+                      {techStack.map((tech) => (
+                        <motion.div
+                          key={tech.name}
                           className={`flex items-center gap-3 px-2 py-1 rounded-lg max-w-fit ${tech.bg} transition-all duration-300 hover:scale-105 relative group cursor-pointer`}
                           variants={itemVariants}
                           whileHover={{ 
@@ -292,7 +292,7 @@ const AboutSection: React.FC = () => {
                           <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1 bg-zinc-900 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
                             <span className="font-medium">{tech.confidence}</span>
                             {/* Triangle pointer */}
-                            <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-zinc-900"></div>
+                            <div className="absolute left-1/2 -translate-x-1/2 top-full size-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-zinc-900"></div>
                           </div>
                         </motion.div>
                       ))}
@@ -316,9 +316,9 @@ const AboutSection: React.FC = () => {
                       className="space-y-4"
                       variants={containerVariants}
                     >
-                      {pastProjects.map((project, index) => (
-                        <motion.div 
-                          key={index} 
+                      {pastProjects.map((project) => (
+                        <motion.div
+                          key={project.title}
                           className="bg-zinc-700/50 p-4 rounded-lg"
                           variants={itemVariants}
                           whileHover={{ 
@@ -330,9 +330,9 @@ const AboutSection: React.FC = () => {
                           <h4 className="text-lg font-medium text-white">{project.title}</h4>
                           <p className="text-zinc-300 text-sm mt-1">{project.description}</p>
                           <div className="flex flex-wrap gap-2 mt-2">
-                            {project.tech.map((tech, index) => (
-                              <motion.span 
-                                key={index} 
+                            {project.tech.map((tech) => (
+                              <motion.span
+                                key={tech}
                                 className="bg-zinc-600/50 text-xs px-2 py-1 rounded-full"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}

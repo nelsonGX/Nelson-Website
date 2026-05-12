@@ -16,24 +16,23 @@ export default function Header() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasScrolledDown, setHasScrolledDown] = useState(false)
 
-  const router = useRouter()
-  
+  const { push } = useRouter()
+
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoaded(true)
-    }, 300)
-    
+    let hideTimer: ReturnType<typeof setTimeout>;
+
+    const loadTimer = setTimeout(() => setIsLoaded(true), 300);
+
     const timer = setTimeout(() => {
-      setIsExiting(true)
-      
-      const hideTimer = setTimeout(() => {
-        setShowLanguageHint(false)
-      }, 500)
-      
-      return () => clearTimeout(hideTimer)
-    }, 3000)
-    
-    return () => clearTimeout(timer)
+      setIsExiting(true);
+      hideTimer = setTimeout(() => setShowLanguageHint(false), 500);
+    }, 3000);
+
+    return () => {
+      clearTimeout(loadTimer);
+      clearTimeout(timer);
+      clearTimeout(hideTimer);
+    };
   }, [])
 
   useEffect(() => {
@@ -46,7 +45,7 @@ export default function Header() {
         }
       };
 
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
@@ -57,17 +56,9 @@ export default function Header() {
 
   function handleLanguageChange() {
     if (isEnglish) {
-      if (isHomePage) {
-        router.push("/zh")
-      } else {
-        router.push("/zh/socials")
-      }
+      push(isHomePage ? "/zh" : "/zh/socials")
     } else {
-      if (isHomePage) {
-        router.push("/en")
-      } else {
-        router.push("/en/socials")
-      }
+      push(isHomePage ? "/en" : "/en/socials")
     }
   }
 
@@ -75,7 +66,7 @@ export default function Header() {
     <header className="fixed flex w-full top-0 backdrop-blur-xs px-4 md:px-8 py-2 md:py-4 justify-between items-center z-50">
       <div>
         <Link href="/" className="cursor-pointer">
-          <div className="flex items-center justify-center space-x-4">
+          <div className="flex items-center justify-center gap-4">
             <Image src={"/assets/images/nelsongx.png"} alt="" height={32} width={32} />
             <div className={`flex flex-col transition-opacity duration-500 ${hasScrolledDown ? 'opacity-100' : 'opacity-0'}`}>
               <div className="relative text-sm font-bold font-minecraft md:hidden"><div className="flex"><p className="text-orange-300">Nelson</p><p className="text-zinc-300">&apos;s</p></div><p className="text-zinc-400">Website</p></div>
@@ -85,8 +76,8 @@ export default function Header() {
         </Link>
       </div>
       
-      <div className="flex space-x-4">
-        <div className="h-12 md:h-auto flex border-zinc-700 border px-3 rounded-2xl items-center space-x-2 text-orange-200/80 hover:text-orange-300 transition-all duration-150 cursor-pointer relative" onClick={handleLanguageChange} >
+      <div className="flex gap-4">
+        <button type="button" className="h-12 md:h-auto flex border-zinc-700 border px-3 rounded-2xl items-center gap-2 text-orange-200/80 hover:text-orange-300 transition-all duration-150 relative" onClick={handleLanguageChange}>
           <Languages size={20} />
             {showLanguageHint && (
             <div 
@@ -104,18 +95,18 @@ export default function Header() {
               </div>
             </div>
             )}
-        </div>
+        </button>
         <div className="flex items-center border-1 rounded-2xl border-zinc-600 h-12 md:h-auto">
           <Link 
             href={isEnglish ? "/en" : "/zh"}
-            className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
+            className={`flex items-center gap-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
           >
             <User />
             <p className={isHomePage ? "hidden md:block" : ""}>{t('about')}</p>
           </Link>
           <Link 
             href={isEnglish ? "/en/socials" : "/zh/socials"}
-            className={`flex items-center space-x-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
+            className={`flex items-center gap-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
           >
             <LLink />
             <p className={isHomePage ? "" : "hidden md:block"}>{t('socials')}</p>

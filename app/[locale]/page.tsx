@@ -52,10 +52,11 @@ const NelsonPortfolio = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (isFirstVisit) {
-        setTimeout(() => {
+        const id = setTimeout(() => {
           setLoading(false);
           setFadeOut(true);
         }, 800);
+        return () => clearTimeout(id);
       } else {
         setLoading(false);
       }

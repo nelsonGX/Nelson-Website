@@ -80,42 +80,23 @@ export default function FriendlySiteContent() {
     "color": "bg-zinc-700/50"
   }
 ]
-  //嘻嘻
   const handleKasonMouseEnter = useCallback(() => {
     console.log("gay");
   }, []);
 
-  // Custom CSS for RGB border
-  const rgbBorderStyle = `
-    @keyframes rgbBorderAnimation {
-      0% { border-color: #ff0000; }
-      16.666% { border-color: #ffff00; }
-      33.333% { border-color: #00ff00; }
-      50% { border-color: #00ffff; }
-      66.666% { border-color: #0000ff; }
-      83.333% { border-color: #ff00ff; }
-      100% { border-color: #ff0000; }
-    }
-    .rgb-border-hover:hover {
-      border: 2px solid #ff0000;
-      animation: rgbBorderAnimation 2s linear infinite;
-    }
-  `;
-
   return (
     <div className="flex-1 bg-zinc-900 p-4 overflow-y-auto">
-      <style jsx>{rgbBorderStyle}</style>
       <h1 className="text-lg font-semibold text-white mb-4">{t('title')}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {FriendlySitesData.map((site, index) => (
-          <Link 
-            key={index} 
+        {FriendlySitesData.map((site) => (
+          <Link
+            key={site.link}
             href={site.link} 
             target="_blank" 
             className={`flex items-center p-3 hover:scale-[102%] transition-all duration-150 rounded-lg ${site.color} rgb-border-hover`}
             onMouseEnter={site.name === "Kason" ? handleKasonMouseEnter : undefined}
           >
-            <div className="w-10 h-10 rounded-full bg-zinc-700 flex items-center justify-center mr-3">
+            <div className="size-10 rounded-full bg-zinc-700 flex items-center justify-center mr-3">
               {site.icon}
             </div>
             <div>

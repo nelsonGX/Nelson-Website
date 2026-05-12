@@ -15,7 +15,7 @@ interface ServerCardProps {
 function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false, link, t }: ServerCardProps) {
   const textContent = (
     <div>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center gap-4">
         <h3 className="text-2xl font-semibold text-orange-300">{t(`servers.${translationKey}.title`)}</h3>
         <p className="bg-zinc-700 py-1 px-2 rounded-md text-sm">{t(`servers.${translationKey}.date`)}</p>
       </div>
@@ -41,11 +41,12 @@ function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false,
           sensitivity={170}
           sendToBackOnClick={true}
           cards={images.map((src, i) => (
-            <div key={i} className="relative w-full h-full">
+            <div key={src} className="relative w-full h-full">
               <Image
                 src={src}
                 alt={`card-${i + 1}`}
                 fill
+                sizes="(max-width: 640px) 300px, 450px"
                 style={{ objectFit: 'cover' }}
                 draggable={false}
               />
@@ -131,10 +132,10 @@ export default function Minecraft() {
   return (
     <>
       <div className="pt-8 p-2 md:p-16">
-        <h2 className="text-3xl font-bold text-white mb-4">{t('serversIHosted')}</h2>
+        <h2 className="text-3xl font-semibold text-white mb-4">{t('serversIHosted')}</h2>
         <p className="text-gray-300 mb-6">{t('servverDescription')}</p>
 
-        <div className="space-y-8 pt-8">
+        <div className="flex flex-col gap-8 pt-8">
           {servers.map((server) => (
             <ServerCard
               key={server.translationKey}

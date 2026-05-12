@@ -1,10 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+
+type OutputLine = { id: number; text: string };
 
 const Terminal = () => {
   const now = new Date();
   const time = now.toLocaleString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'UTC' });
+  const nextId = useRef(0);
+  const line = useCallback((text: string): OutputLine => ({ id: nextId.current++, text }), []);
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState([
+  const [output, setOutput] = useState<OutputLine[]>(() => [
     "Welcome to Nelson Linux 1.0 LTS. (GNU/Linux 6.9.8-generic x86_64)",
     " ",
     "_   _      _                  __          __  _         _ _       ",
@@ -22,8 +26,8 @@ const Terminal = () => {
     " ",
     "Type 'help' for available commands.",
     " ",
-  ]);
-  const [history, setHistory] = useState<string[]>([]); 
+  ].map(text => ({ id: nextId.current++, text })));
+  const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [isTyping, setIsTyping] = useState(false);
   const outputRef = useRef<HTMLDivElement | null>(null);
@@ -218,24 +222,24 @@ const Terminal = () => {
         response = `Command not found: ${command}. Type 'help' for available commands.`;
     }
 
-    setOutput((prevOutput) => [...prevOutput, `root@nelsongx.com~# ${cmd}`, response]);
+    setOutput((prevOutput) => [...prevOutput, line(`root@nelsongx.com~# ${cmd}`), line(response)]);
   };
 
   return (
     <div className="bg-zinc-900 text-green-500 p-4 font-mono flex flex-col w-full h-full">
       <div ref={outputRef} className="flex-grow overflow-y-auto mb-2 scrollbar-thin scrollbar-thumb-green-900 scrollbar-track-zinc-800">
-        {output.map((line, index) => (
-          <div key={index} className="whitespace-pre-wrap">
-            {line.startsWith('root@nelsongx.com~# ') ? (
+        {output.map((entry) => (
+          <div key={entry.id} className="whitespace-pre-wrap">
+            {entry.text.startsWith('root@nelsongx.com~# ') ? (
               <>
                 <span className="text-yellow-400">root</span>
                 <span className="text-white">@</span>
                 <span className="text-blue-400">nelsongx.com</span>
                 <span className="text-white">~# </span>
-                <span>{line.substring('root@nelsongx.com~# '.length)}</span>
+                <span>{entry.text.substring('root@nelsongx.com~# '.length)}</span>
               </>
             ) : (
-              line
+              entry.text
             )}
           </div>
         ))}
