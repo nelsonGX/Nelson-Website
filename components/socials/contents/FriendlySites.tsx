@@ -73,6 +73,13 @@ export default function FriendlySiteContent() {
     "color": "bg-zinc-800"
   },
   {
+    "name": "Pan",
+    "content": t('sites.pan'),
+    "icon": <Image src="/assets/images/socials/friendsites/pan93412.webp" alt="" width={64} height={64} />,
+    "link":"https://pan93.com",
+    "color": "bg-zinc-800"
+  },
+  {
     "name": t('sites.add_me_here_title'),
     "content": t('sites.add_me_here'),
     "icon": <Plus size={32} className="text-gray-400" />,
