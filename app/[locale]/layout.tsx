@@ -1,4 +1,5 @@
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { Geist, Geist_Mono } from "next/font/google";
@@ -15,6 +16,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
  
 export default async function LocaleLayout({
   children,
@@ -28,6 +35,7 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  setRequestLocale(locale);
  
   let messages;
   try {
