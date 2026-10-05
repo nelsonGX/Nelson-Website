@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
+import { TextReveal } from './TextReveal';
 
 interface SectionHeadingProps {
   index: string;
@@ -40,11 +41,13 @@ export default function SectionHeading({
           <span className="h-px w-8 bg-zinc-700" />
           {label}
         </p>
-        <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-zinc-50">
-          {before && <>{before}{gap}</>}
-          <span className="text-orange-300">{accent}</span>
-          {after && <>{spaceAfterAccent ? gap : ''}{after}</>}
-        </h2>
+        <TextReveal as="div" className="w-fit">
+          <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-zinc-50">
+            {before && <>{before}{gap}</>}
+            <span className="text-orange-300">{accent}</span>
+            {after && <>{spaceAfterAccent ? gap : ''}{after}</>}
+          </h2>
+        </TextReveal>
       </motion.div>
       {aside}
     </div>

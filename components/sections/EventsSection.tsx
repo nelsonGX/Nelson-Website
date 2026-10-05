@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import SectionHeading from '../ui/SectionHeading';
+import { TextReveal } from '../ui/TextReveal';
 
 interface EventsSectionProps {
   events: Record<string, string[]>;
@@ -102,12 +103,14 @@ const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
                       >
                         <span className={`${gutter} group-hover:text-zinc-400`}>{lineNumber++}</span>
                         <span className="text-zinc-600">-&nbsp;</span>
-                        <span className="text-zinc-200">{name}</span>
-                        {role && (
-                          <span className={highlighted ? 'text-orange-300' : 'text-zinc-500'}>
-                            &nbsp;- {role}
-                          </span>
-                        )}
+                        <TextReveal as="span">
+                          <span className="text-zinc-200">{name}</span>
+                          {role && (
+                            <span className={highlighted ? 'text-orange-300' : 'text-zinc-500'}>
+                              &nbsp;- {role}
+                            </span>
+                          )}
+                        </TextReveal>
                       </motion.div>
                     );
                   })}
