@@ -176,12 +176,12 @@ const AboutSection: React.FC = () => {
         ) : (
           <motion.div
             key="terminal-view"
-            className="h-[560px] overflow-hidden rounded-2xl border border-white/[0.08] bg-black/60 p-4 md:p-6"
+            className="h-[560px] overflow-hidden rounded-2xl border border-white/10 bg-black/80 shadow-2xl shadow-black/50 backdrop-blur"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <TerminalComponent />
+            <TerminalComponent onExit={() => setViewMode('gui')} />
           </motion.div>
         )}
       </div>

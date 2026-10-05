@@ -183,3 +183,17 @@ a.text-reveal {
     @apply bg-background text-foreground;
   }
 }
+/* Terminal (components/ui/TerminalComponent.tsx) */
+.term-cursor-active {
+  animation: term-blink 1.06s step-end infinite;
+}
+
+@keyframes term-blink {
+  0%, 50% { background-color: #fdba74; color: #0a0a0b; }
+  50.01%, 100% { background-color: transparent; color: inherit; }
+}
+
+.term-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.12) transparent;
+}
