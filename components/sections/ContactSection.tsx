@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Mail, Link as LLink, Check, Copy } from 'lucide-react';
+import { Mail, Link as LLink, Check, Copy, ArrowRight, Send } from 'lucide-react';
 import { FaDiscord, FaTelegram } from 'react-icons/fa';
-import { TextReveal } from '../ui/TextReveal';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import SectionHeading, { cardClass } from '../ui/SectionHeading';
 
 interface ContactCardProps {
   icon: React.ReactNode;
@@ -26,18 +26,21 @@ const ContactCard: React.FC<ContactCardProps> = ({ icon, title, value }) => {
   };
   
   return (
-    <div className="flex items-center gap-4 p-4 bg-zinc-800/40 backdrop-blur-sm rounded-lg border border-zinc-700 relative group">
-      {icon}
-      <div className="flex-grow">
-        <h4 className="text-gray-300 font-medium">{title}</h4>
-        <p className="text-gray-500">{value}</p>
+    <div className="group flex items-center gap-4 rounded-xl px-4 py-3.5 transition-colors hover:bg-white/[0.04]">
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-orange-300">
+        {icon}
+      </span>
+      <div className="min-w-0 flex-grow">
+        <p className="text-xs text-zinc-500">{title}</p>
+        <p className="truncate text-zinc-100">{value}</p>
       </div>
       <button 
+        type="button"
         onClick={copyToClipboard}
-        className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-zinc-700/70 cursor-pointer"
+        className="rounded-full p-2 text-zinc-500 transition-all hover:bg-white/10 hover:text-zinc-100 focus-visible:opacity-100 md:opacity-0 md:group-hover:opacity-100 cursor-pointer"
         aria-label={`Copy ${title}`}
       >
-        {copied ? <Check className="text-green-400" size={18} /> : <Copy className="text-gray-400" size={18} />}
+        {copied ? <Check className="text-emerald-400" size={16} /> : <Copy size={16} />}
       </button>
     </div>
   );
@@ -45,6 +48,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ icon, title, value }) => {
 
 const ContactSection: React.FC = () => {
   const t = useTranslations('home.contact');
+  const locale = useLocale();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -99,126 +103,108 @@ const ContactSection: React.FC = () => {
     }
   };
 
+  const inputClass = "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-zinc-100 placeholder-zinc-600 transition-colors focus:border-orange-300/60 focus:outline-none focus:ring-2 focus:ring-orange-300/20";
+
   return (
-    <section id="contact" className="min-h-screen pt-20 px-6 relative bg-black pb-20 md:pb-0">
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="flex items-center mb-16">
-          <div className="text-6xl font-bold">
-            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2><span>{t('title.contact')}</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;{t('title.me')}</span></h2>
-            </TextReveal>
-          </div>
-          <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
-        </div>
+    <section id="contact" className="relative scroll-mt-20 px-4 py-24 md:px-6 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          index="04"
+          label="contact"
+          before={t('title.contact')}
+          accent={t('title.me')}
+        />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4">{t('getInTouch.title')}</h3>
-                <p className="text-gray-400">
-                  {t('getInTouch.subtitle')}
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <ContactCard 
-                  icon={<Mail className="text-orange-400" size={24} />}
-                  title={t('contact.email')}
-                  value="hi@nelsongx.com"
-                />
-                
-                <ContactCard 
-                  icon={<FaDiscord className="text-orange-400" size={24} />}
-                  title={t('contact.discord')}
-                  value="@nelsonGX"
-                />
-
-                <ContactCard 
-                  icon={<FaTelegram className="text-orange-400" size={24} />}
-                  title={t('contact.telegram')}
-                  value="@nelsonGX"
-                />
-
-                <div className="flex items-center gap-4 p-4 bg-zinc-800/40 backdrop-blur-sm rounded-lg border border-zinc-700">
-                  <LLink className="text-orange-400" size={24} />
-                  <div>
-                    <h4 className="text-gray-300 font-medium">{t('viewMore.title')}</h4>
-                    <Link href="/socials" className="text-orange-300 hover:underline">{t('viewMore.link')}</Link>
-                  </div>
-                </div>
-              </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+          <div className={`${cardClass} p-3 md:col-span-5`}>
+            <div className="px-4 pb-4 pt-3">
+              <h3 className="text-xl font-semibold text-zinc-50">{t('getInTouch.title')}</h3>
+              <p className="mt-1 text-zinc-400">{t('getInTouch.subtitle')}</p>
             </div>
+            <ContactCard icon={<Mail size={18} />} title={t('contact.email')} value="hi@nelsongx.com" />
+            <ContactCard icon={<FaDiscord size={18} />} title={t('contact.discord')} value="@nelsonGX" />
+            <ContactCard icon={<FaTelegram size={18} />} title={t('contact.telegram')} value="@nelsonGX" />
+            <Link
+              href={`/${locale}/socials`}
+              className="group mt-1 flex items-center gap-4 rounded-xl border-t border-white/[0.06] px-4 py-3.5 transition-colors hover:bg-white/[0.04]"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-orange-300">
+                <LLink size={18} />
+              </span>
+              <div className="flex-grow">
+                <p className="text-xs text-zinc-500">{t('viewMore.title')}</p>
+                <p className="text-zinc-100">{t('viewMore.link')}</p>
+              </div>
+              <ArrowRight size={16} className="text-zinc-500 transition-transform group-hover:translate-x-1 group-hover:text-orange-300" />
+            </Link>
           </div>
           
-          <div className="bg-zinc-800/40 backdrop-blur-sm rounded-xl p-6 border border-zinc-700">
-            <h3 className="text-xl font-semibold text-white mb-6">{t('form.title')}</h3>
+          <div className={`${cardClass} p-6 md:col-span-7 md:p-8`}>
+            <h3 className="mb-6 text-xl font-semibold text-zinc-50">{t('form.title')}</h3>
             <form className="space-y-4" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">{t('form.name.label')}</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-500"
-                  placeholder={t('form.name.placeholder')}
-                  required
-                />
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className="mb-1.5 block text-sm text-zinc-400">{t('form.name.label')}</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder={t('form.name.placeholder')}
+                    autoComplete="name"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="mb-1.5 block text-sm text-zinc-400">{t('form.email.label')}</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={inputClass}
+                    placeholder={t('form.email.placeholder')}
+                    autoComplete="email"
+                    required
+                  />
+                </div>
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">{t('form.email.label')}</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-500"
-                  placeholder={t('form.email.placeholder')}
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">{t('form.message.label')}</label>
+                <label htmlFor="message" className="mb-1.5 block text-sm text-zinc-400">{t('form.message.label')}</label>
                 <textarea 
                   id="message" 
-                  rows={4} 
+                  rows={6} 
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 bg-zinc-700/50 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-gray-500 resize-none"
+                  className={`${inputClass} resize-none`}
                   placeholder={t('form.message.placeholder')}
                   required
                 ></textarea>
               </div>
               
               {submitSuccess && (
-                <div className="px-4 py-3 bg-green-500/20 border border-green-600 rounded-lg">
-                  <p className="text-green-400 text-sm font-medium">{t('form.success')}</p>
-                </div>
+                <p role="status" className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">{t('form.success')}</p>
               )}
               
               {submitError && (
-                <div className="px-4 py-3 bg-red-500/20 border border-red-600 rounded-lg">
-                  <p className="text-red-400 text-sm font-medium">{t('form.error')}</p>
-                </div>
+                <p role="alert" className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">{t('form.error')}</p>
               )}
               
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="cursor-pointer w-full py-3 bg-gradient-to-r from-orange-600 to-yellow-600 text-white font-medium rounded-lg hover:from-orange-500 hover:to-yellow-500 transition-all shadow-lg shadow-orange-700/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-orange-300 py-3 font-medium text-zinc-950 transition-colors hover:bg-orange-200 disabled:cursor-not-allowed disabled:opacity-60"
               >
+                <Send size={16} />
                 {isSubmitting ? t('form.button.sending') : t('form.button.send')}
               </button>
             </form>
           </div>
         </div>
       </div>
-      
-      {/* Background elements */}
-      <div className="absolute bottom-1/4 left-1/4 w-1/3 h-1/3 bg-gradient-to-br from-orange-600/5 to-yellow-600/5 rounded-full filter blur-3xl"></div>
     </section>
   );
 };

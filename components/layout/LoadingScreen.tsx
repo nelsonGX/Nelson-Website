@@ -13,7 +13,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ loading, fadeOut }) => {
   if (!loading) return null;
   
   return (
-      <div className={`fixed inset-0 z-50 flex items-center justify-center transform ease-linear bg-zinc-900 ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+      <div className={`fixed inset-0 z-50 flex items-center justify-center transform ease-linear bg-ink ${fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"}`}
           style={{ transition: `opacity ${isSmallScreen ? 200 : 300}ms` }}
       >
         <div className="relative" itemProp=''>

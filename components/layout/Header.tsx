@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from 'next-intl'
+import { AnimatePresence, motion } from "framer-motion"
 
 export default function Header() {
   const t = useTranslations('layout.header');
@@ -12,45 +13,28 @@ export default function Header() {
   const isHomePage = !pathname.includes("/socials")
   const isEnglish = pathname.includes("/en")
   const [showLanguageHint, setShowLanguageHint] = useState(true)
-  const [isExiting, setIsExiting] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
   const [hasScrolledDown, setHasScrolledDown] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const { push } = useRouter()
 
   useEffect(() => {
-    let hideTimer: ReturnType<typeof setTimeout>;
-
-    const loadTimer = setTimeout(() => setIsLoaded(true), 300);
-
-    const timer = setTimeout(() => {
-      setIsExiting(true);
-      hideTimer = setTimeout(() => setShowLanguageHint(false), 500);
-    }, 3000);
-
-    return () => {
-      clearTimeout(loadTimer);
-      clearTimeout(timer);
-      clearTimeout(hideTimer);
-    };
+    const timer = setTimeout(() => setShowLanguageHint(false), 3500);
+    return () => clearTimeout(timer);
   }, [])
 
   useEffect(() => {
-    if (isHomePage) {
-      const handleScroll = () => {
-        if (window.scrollY > 600) {
-          setHasScrolledDown(true);
-        } else {
-          setHasScrolledDown(false);
-        }
-      };
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+      setHasScrolledDown(window.scrollY > 600);
+    };
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [isHomePage]);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   function handleLanguageChange() {
     if (isEnglish) {
@@ -60,56 +44,75 @@ export default function Header() {
     }
   }
 
+  const showWordmark = !isHomePage || hasScrolledDown;
+  const navItem = "flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm transition-colors duration-200";
+
   return (
-    <header className="fixed flex w-full top-0 backdrop-blur-xs px-4 md:px-8 py-2 md:py-4 justify-between items-center z-50">
-      <div>
-        <Link href="/" className="cursor-pointer">
-          <div className="flex items-center justify-center gap-4">
-            <Image src={"/assets/images/nelsongx.png"} alt="" height={32} width={32} />
-            <div className={`flex flex-col transition-opacity duration-500 ${!isHomePage || hasScrolledDown ? 'opacity-100' : 'opacity-0'}`}>
-              <div className="relative text-sm font-bold font-minecraft md:hidden"><div className="flex"><p className="text-orange-300">Nelson</p><p className="text-zinc-300">&apos;s</p></div><p className="text-zinc-400">Website</p></div>
-              <div className="md:flex text-xl font-bold font-minecraft hidden"><p className="text-orange-300">Nelson</p><p className="text-zinc-200">&apos;s Website</p></div>
-            </div>
-          </div>
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-4">
+      <div
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-2.5 py-2 transition-all duration-300 ${
+          isScrolled || !isHomePage
+            ? "border-white/10 bg-zinc-950/70 shadow-lg shadow-black/30 backdrop-blur-xl"
+            : "border-transparent bg-transparent"
+        }`}
+      >
+        <Link href={isEnglish ? "/en" : "/zh"} className="flex items-center gap-3 rounded-xl pr-2">
+          <Image src={"/assets/images/nelsongx.png"} alt="" height={32} width={32} className="rounded-lg" />
+          <span
+            className={`font-minecraft text-base md:text-lg transition-all duration-500 ${
+              showWordmark ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"
+            }`}
+          >
+            <span className="text-orange-300">Nelson</span>
+            <span className="text-zinc-200">&apos;s</span>
+            <span className="hidden sm:inline text-zinc-200"> Website</span>
+          </span>
         </Link>
-      </div>
-      
-      <div className="flex gap-4">
-        <button type="button" className="h-12 md:h-auto flex border-zinc-700 border px-3 rounded-2xl items-center gap-2 text-orange-200/80 hover:text-orange-300 transition-all duration-150 relative" onClick={handleLanguageChange}>
-          <Languages size={20} />
-            {showLanguageHint && (
-            <div 
-              className={`absolute top-full mt-2 right-0 whitespace-nowrap transition-all duration-500 ${isExiting ? 'animate-slideOutDown opacity-0' : ''} ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`} 
-              style={{
-              transform: isExiting ? 'translateY(10px)' : 'translateY(0)', 
-              zIndex: 50,
-              transition: 'opacity 0.5s, transform 0.5s, scale 0.5s',
-              animation: isLoaded && !isExiting ? 'bounce 0.2s' : 'none'
-              }}
+
+        <div className="flex items-center gap-2">
+          <nav className="flex items-center rounded-full border border-white/10 bg-white/[0.03] p-1">
+            <Link
+              href={isEnglish ? "/en" : "/zh"}
+              aria-current={isHomePage ? "page" : undefined}
+              className={`${navItem} ${isHomePage ? "bg-white/10 text-zinc-50" : "text-zinc-400 hover:text-zinc-100"}`}
             >
-              <div className="bg-zinc-800 px-3 py-1 rounded-lg text-sm text-white">
-              {t('languageHint')}
-              <div className="absolute -top-2 right-4 transform border-b-8 border-b-zinc-800 border-x-8 border-x-transparent"></div>
-              </div>
-            </div>
-            )}
-        </button>
-        <div className="flex items-center border-1 rounded-2xl border-zinc-600 h-12 md:h-auto">
-          <Link 
-            href={isEnglish ? "/en" : "/zh"}
-            className={`flex items-center gap-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-l-3xl ${isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
-          >
-            <User />
-            <p className={isHomePage ? "hidden md:block" : ""}>{t('about')}</p>
-          </Link>
-          <Link 
-            href={isEnglish ? "/en/socials" : "/zh/socials"}
-            className={`flex items-center gap-1 cursor-pointer hover:bg-zinc-800 px-3 md:py-2 transition-all duration-200 rounded-lg rounded-r-3xl ${!isHomePage ? "text-zinc-100" : "text-zinc-400"}`}
-          >
-            <LLink />
-            <p className={isHomePage ? "" : "hidden md:block"}>{t('socials')}</p>
-          </Link>
-        </div>  
+              <User size={16} />
+              <span className={isHomePage ? "" : "hidden sm:inline"}>{t('about')}</span>
+            </Link>
+            <Link
+              href={isEnglish ? "/en/socials" : "/zh/socials"}
+              aria-current={!isHomePage ? "page" : undefined}
+              className={`${navItem} ${!isHomePage ? "bg-white/10 text-zinc-50" : "text-zinc-400 hover:text-zinc-100"}`}
+            >
+              <LLink size={16} />
+              <span className={!isHomePage ? "" : "hidden sm:inline"}>{t('socials')}</span>
+            </Link>
+          </nav>
+
+          <div className="relative">
+            <button
+              type="button"
+              onClick={handleLanguageChange}
+              aria-label={t('languageHint')}
+              className="flex h-[38px] items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 text-sm text-zinc-300 transition-colors hover:border-orange-300/40 hover:text-orange-200"
+            >
+              <Languages size={16} />
+              <span className="font-mono text-xs">{isEnglish ? "中" : "EN"}</span>
+            </button>
+            <AnimatePresence>
+              {showLanguageHint && (
+                <motion.div
+                  className="absolute right-0 top-full mt-2 whitespace-nowrap rounded-lg border border-white/10 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 shadow-lg"
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0, transition: { delay: 0.6 } }}
+                  exit={{ opacity: 0, y: -4 }}
+                >
+                  {t('languageHint')}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </header>
   )

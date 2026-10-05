@@ -54,7 +54,7 @@ export default function AppleDeviceUI() {
     <LoadingScreen loading={loading && isFirstVisit} fadeOut={fadeOut} />
     
     <motion.div 
-      className="flex flex-col items-center justify-center w-full h-full md:h-screen bg-zinc-900 py-24 font-sfpro"
+      className="flex flex-col items-center justify-center w-full h-full md:h-screen bg-ink py-24 font-sfpro"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

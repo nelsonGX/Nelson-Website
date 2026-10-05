@@ -8,6 +8,7 @@ import ServerManager from './projects/ServerManage';
 import CodingAndDev from './projects/CodingAndDev';
 import Minecraft from './projects/Minecraft';
 import { TextReveal } from '../ui/TextReveal';
+import SectionHeading from '../ui/SectionHeading';
 import { useTranslations } from 'next-intl';
 
 interface ProjectsSectionProps {
@@ -39,19 +40,24 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 }) => {
   const t = useTranslations('home.projects');
   return (
-    <section id="projects" className="min-h-screen pb-40 md:pb-96 pt-10 px-4 md:px-6 relative bg-gradient-to-b from-zinc-800 to-zinc-900">
+    <section id="projects" className="relative scroll-mt-20 px-4 pt-24 pb-40 md:px-6 md:pt-32 md:pb-56">
       <div className="max-w-6xl mx-auto relative">
-        <div className="flex items-center mb-16">
-          <div className="text-6xl font-bold">
-            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2><span>{t('title.whatCan')}</span><span className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out">&nbsp;{t('title.i')}&nbsp;</span><span>{t('title.do')}</span></h2>
-            </TextReveal>
-          </div>
-          <div className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"></div>
-        </div>
+        <SectionHeading
+          index="02"
+          label="skills"
+          before={t('title.whatCan')}
+          accent={t('title.i')}
+          after={t('title.do')}
+          spaceAfterAccent
+          aside={!isSmallScreen && (
+            <p className="font-mono text-xs text-zinc-500">
+              <span className="text-orange-300">*</span> {t('windows.dragHint')}
+            </p>
+          )}
+        />
         
         {/* Draggable Windows */}
-        <div className="relative h-[1500px] md:h-[800px] z-110">
+        <div className="relative h-[1500px] md:h-[800px]">
           {/* Window 1 */}
           <DraggableWindow
             id="window1"
@@ -67,21 +73,21 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
               { !window1Maximized &&
               <div className="w-full md:w-1/3 flex justify-center">
-                <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
+                <div className="w-32 h-32 md:w-64 md:h-64 rounded-xl overflow-hidden ring-1 ring-white/10">
                   <Image src="/assets/images/server-1080x1080.webp" height={1080} width={1080} alt="Server Management" className="w-full h-full object-cover" />
                 </div>
               </div>
               }
               <div className="w-fit items-center justify-center relative">
-                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.serverManagement.heading')}</TextReveal>
-                <TextReveal as="p" className="text-gray-300 mb-4">
+                <TextReveal as="h3" className="text-2xl font-semibold text-zinc-50 mb-3">{t('windows.serverManagement.heading')}</TextReveal>
+                <TextReveal as="p" className="text-zinc-400 leading-relaxed mb-4">
                   {t('windows.serverManagement.description')}
                 </TextReveal>
                 {window1Maximized && (
                   <ServerManager />
                 )}
                 {!window1Maximized && !isSmallScreen && (
-                <div className="text-yellow-200 rotate-3 absolute right-5 -top-14">
+                <div className="text-orange-200 rotate-3 absolute right-5 -top-14">
                   <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
                     <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
                     <path d="M14 12 L18 10 L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -107,13 +113,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full justify-center md:hidden">
-                <div className="w-32 h-32 rounded-lg overflow-hidden">
+                <div className="w-32 h-32 rounded-xl overflow-hidden ring-1 ring-white/10">
                   <Image src="/assets/images/coding-816x816.webp" height={816} width={816} alt="Coding and Development" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="w-full md:w-2/3">
-                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.codingDevelopment.heading')}</TextReveal>
-                <TextReveal as="p" className="text-gray-300 mb-4">
+                <TextReveal as="h3" className="text-2xl font-semibold text-zinc-50 mb-3">{t('windows.codingDevelopment.heading')}</TextReveal>
+                <TextReveal as="p" className="text-zinc-400 leading-relaxed mb-4">
                   {t('windows.codingDevelopment.description')}
                 </TextReveal>
                 <Link className="flex space-x-1 text-zinc-400 hover:text-zinc-200 transition-all duration-150" href="https://github.com/nelsonGX">
@@ -125,7 +131,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
               { !window2Maximized &&
               <div className="w-1/3 justify-center hidden md:flex">
-                <div className="w-64 h-64 rounded-lg overflow-hidden">
+                <div className="w-64 h-64 rounded-xl overflow-hidden ring-1 ring-white/10">
                   <Image src="/assets/images/coding-816x816.webp" height={816} width={816} alt="Coding and Development" className="w-full h-full object-cover" />
                 </div>
               </div>
@@ -147,23 +153,23 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-1/3 flex justify-center">
-                <div className="w-32 h-32 md:w-64 md:h-64 rounded-lg overflow-hidden">
+                <div className="w-32 h-32 md:w-64 md:h-64 rounded-xl overflow-hidden ring-1 ring-white/10">
                   <Image src="/assets/images/minecraft-1080x1080.webp" height={1080} width={1080} alt="Minecraft" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="w-full md:w-2/3">
-                <TextReveal as="h3" className="text-2xl font-bold text-white mb-3">{t('windows.minecraft.heading')}</TextReveal>
-                <TextReveal as="p" className="text-gray-300 mb-4">
+                <TextReveal as="h3" className="text-2xl font-semibold text-zinc-50 mb-3">{t('windows.minecraft.heading')}</TextReveal>
+                <TextReveal as="p" className="text-zinc-400 leading-relaxed mb-4">
                   {t('windows.minecraft.description')}
                   {window3Maximized && (
-                    <div className="mt-4 text-white max-w-5xl">
+                    <div className="mt-4 space-y-3 text-zinc-300 max-w-5xl">
                       <p>{t('windows.minecraft.content')}</p>
                       <p>{t('windows.minecraft.quote')}</p>
                     </div>
                   )}
                 </TextReveal>
                 {!window3Maximized && !isSmallScreen && (
-                <div className="text-yellow-200 rotate-3 absolute right-10 top-20">
+                <div className="text-orange-200 rotate-3 absolute right-10 top-20">
                   <svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="-rotate-12 absolute right-4 -top-8">
                     <path d="M1 27 C12 22, 15 15, 18 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 2" />
                     <path d="M14 12 L18 10 L20 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

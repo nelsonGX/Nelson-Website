@@ -104,13 +104,13 @@ export default function CodingAndDev() {
 
   return (
     <>
-    <div className="mt-4 mb-8">
-      <h4 className="text-lg font-medium text-orange-300 mb-2">{t('techStack.title')}:</h4>
+    <div className="mt-10 mb-4">
+      <h3 className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">{t('techStack.title')}</h3>
       <div className="flex flex-wrap gap-2 justify-center md:justify-start">
         {techStack.map((tech) => (
           <div
             key={tech.name}
-            className={`flex items-center gap-3 px-2 py-1 rounded-lg max-w-fit ${tech.bg} transition-all duration-300 hover:scale-105 relative group cursor-pointer`}
+            className="relative group flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-sm transition-colors hover:border-orange-300/40"
           >
             {tech.icon}
             <span className="text-gray-200 text-sm">{tech.name}</span>
@@ -124,27 +124,27 @@ export default function CodingAndDev() {
         ))}
       </div>
 
-      <div className="px-4">
-        <h1 className="text-3xl font-semibold py-4 pt-8">{t('sections.start.title')}</h1>
-        <p className="mb-4 text-gray-300">
+      <div>
+        <h3 className="mt-12 mb-3 text-2xl font-semibold text-zinc-50">{t('sections.start.title')}</h3>
+        <p className="max-w-3xl leading-relaxed text-zinc-400">
           {t('sections.start.description')}
         </p>
 
-        <h1 className="text-3xl font-semibold py-4 pt-8">{t('sections.webDev.title')}</h1>
-        <p className="mb-4 text-gray-300">
+        <h3 className="mt-12 mb-3 text-2xl font-semibold text-zinc-50">{t('sections.webDev.title')}</h3>
+        <p className="max-w-3xl leading-relaxed text-zinc-400">
           {t('sections.webDev.description')}
         </p>
 
-        <h1 className="text-3xl font-semibold py-4 pt-8">{t('sections.java.title')}</h1>
-        <p className="mb-4 text-gray-300">
+        <h3 className="mt-12 mb-3 text-2xl font-semibold text-zinc-50">{t('sections.java.title')}</h3>
+        <p className="max-w-3xl leading-relaxed text-zinc-400">
           {t('sections.java.description')}
         </p>
 
-        <h1 className="text-3xl font-semibold py-4 pt-8">{t('sections.projects.title')}</h1>
+        <h3 className="mt-12 mb-3 text-2xl font-semibold text-zinc-50">{t('sections.projects.title')}</h3>
         <div className="space-y-8">
           {Object.keys(relativeProjects).map((tech) => (
             <div key={tech} className="relative">
-              <h4 className="text-xl font-medium text-orange-300 mb-3">{tech} {t('sections.projects.projectsLabel')}:</h4>
+              <h4 className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-orange-300">{tech} {t('sections.projects.projectsLabel')}</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {relativeProjects[tech].map((project: { link: string | undefined; name: string | undefined; image?: string }) => (
                   <a
@@ -154,14 +154,14 @@ export default function CodingAndDev() {
                     key={project.link ?? project.name}
                     className="group block"
                   >
-                    <div className="bg-zinc-800/60 border border-zinc-700/50 rounded-lg p-2 transition-all duration-300 hover:bg-zinc-700/70 hover:scale-105">
+                    <div className="h-full overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.025] transition-colors duration-300 group-hover:border-white/20">
                       {project.image && (
-                        <Image src={`/assets/images/coding_and_dev/${project.image}`} alt={project.name || ""} width={300} height={300} className="w-full h-48 object-cover rounded-t-lg" />
+                        <Image src={`/assets/images/coding_and_dev/${project.image}`} alt={project.name || ""} width={300} height={300} className="w-full h-44 object-cover" />
                       )}
-                      <div className="p-2">
-                        <h5 className="text-white font-medium group-hover:text-orange-300 transition-colors duration-300">{project.name}</h5>
+                      <div className="p-4">
+                        <h5 className="text-zinc-100 font-medium group-hover:text-orange-200 transition-colors duration-300">{project.name}</h5>
                         <p className="text-gray-400 text-sm mt-1 flex items-center">
-                          <span className="underline text-gray-500">{t('sections.projects.viewProject')}</span>
+                          <span className="text-zinc-500">{t('sections.projects.viewProject')}</span>
                           <ExternalLink className="inline-block size-4 ml-1 text-gray-500" />
                         </p>
                       </div>

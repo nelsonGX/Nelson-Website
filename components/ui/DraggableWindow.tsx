@@ -116,14 +116,14 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     hidden: { 
       rotateY: isSmallScreen ? 0 : 180, // Disable flip on mobile
       opacity: isSmallScreen ? 0 : 1,
-      backgroundColor: "#111",
-      borderColor: "#111"
+      backgroundColor: "#0a0a0b",
+      borderColor: "rgba(255, 255, 255, 0)"
     },
     visible: { 
       rotateY: 0,
       opacity: 1,
-      backgroundColor: "rgba(24, 24, 27, 0.9)",
-      borderColor: "rgb(63, 63, 70)",
+      backgroundColor: "rgba(17, 17, 19, 0.88)",
+      borderColor: "rgba(255, 255, 255, 0.1)",
       transition: { 
         type: isSmallScreen ? "tween" as const : "spring" as const,
         stiffness: isSmallScreen ? 50 : 120,
@@ -137,8 +137,10 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
     <motion.div 
       id={id}
       ref={el => { windowRef.current = el; windowRef2.current = el; }}
-      className={`${maximized ? 'fixed inset-0 z-150' : 'absolute z-30'} backdrop-blur-md rounded-lg overflow-hidden ${isSmallScreen && !maximized ? 'shadow-lg border border-zinc-700/50' : 'shadow-orange'}`}
+      className={`${maximized ? 'fixed inset-0 z-150' : 'absolute z-30 rounded-xl border shadow-2xl shadow-black/60'} backdrop-blur-xl overflow-hidden`}
       style={{
+        // Inline so it beats the z-index startDrag writes when a window is brought to front
+        zIndex: maximized ? 150 : undefined,
         left: !maximized ? position.x : undefined,
         top: !maximized ? position.y : undefined,
         width: !maximized ? (isSmallScreen ? '95%' : 'min(750px, 90vw)') : undefined,
@@ -151,7 +153,7 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       {/* Simplified overlay animation for mobile */}
       {!isSmallScreen && (
         <motion.div 
-          className="absolute inset-0 bg-black rounded-lg"
+          className="absolute inset-0 bg-ink"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           transition={{ 
@@ -169,33 +171,35 @@ const DraggableWindow: React.FC<DraggableWindowProps> = ({
       >
         {/* Window header - Windows-style title bar */}
         <div 
-          className={`bg-zinc-800/70 px-4 py-2 flex justify-between items-center ${!isSmallScreen && !maximized ? 'cursor-move' : ''} select-none`}
+          className={`h-11 border-b border-white/[0.08] bg-white/[0.04] pl-4 pr-2 flex justify-between items-center ${!isSmallScreen && !maximized ? 'cursor-grab active:cursor-grabbing' : ''} select-none`}
           onMouseDown={(e) => !maximized && !isSmallScreen && startDrag(id, e)}
         >
-          <div className="flex space-x-2">
-            {titleIcon && titleIcon}
-            <h3 className="text-zinc-300 font-mono truncate hidden md:block">{title}</h3>
+          <div className="flex min-w-0 items-center gap-2.5">
+            <span className="text-orange-300 [&>svg]:size-4">{titleIcon}</span>
+            <h3 className="text-sm text-zinc-400 font-mono truncate">{title}</h3>
           </div>
-          <div className="flex gap-3 ml-4">
-            <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
+          <div className="flex ml-4 text-zinc-400 [&_svg]:size-4">
+            <button type="button" tabIndex={-1} aria-hidden className="px-3 py-2 hover:bg-white/10 rounded-md cursor-default">
               <Minus />
             </button>
-            <button onClick={handleMaximize} className="p-1 hover:bg-zinc-600 rounded">
+            <button type="button" onClick={handleMaximize} aria-label={maximized ? "Restore" : "Maximize"} className="px-3 py-2 hover:bg-white/10 hover:text-zinc-100 rounded-md">
               {maximized ? 
                 <MaxSquare />
                 :
                 <Square />
               }
             </button>
-            <button className="p-1 hover:bg-zinc-600 rounded cursor-default">
+            <button type="button" onClick={maximized ? handleMaximize : undefined} aria-label={maximized ? "Close" : undefined} tabIndex={maximized ? 0 : -1} className={`px-3 py-2 rounded-md ${maximized ? 'hover:bg-red-500/80 hover:text-white' : 'cursor-default hover:bg-white/10'}`}>
               <X/>
             </button>
           </div>
         </div>
         
         {/* Window content */}
-        <div className="p-4 h-[calc(100%-40px)] overflow-auto">
+        <div className={`h-[calc(100%-44px)] overflow-auto ${maximized ? "px-4 py-8 md:px-10 md:py-12" : "p-5 md:p-6"}`}>
+          <div className={maximized ? "mx-auto max-w-6xl" : ""}>
           {children}
+          </div>
         </div>
       </motion.div>
     </motion.div>

@@ -151,7 +151,8 @@
           "description": "I have been playing Minecraft for over 8 years. I have experience in creating custom plugins and stuff.",
           "content": "Minecraft has been a big part of my journey. I've been building servers, creating plugins, and designing experiences for players. My experience spans from simple automation scripts to complex multiplayer servers with custom game mechanics.",
           "quote": "Just like a lot of Minecraft players, I started all of these coding stuff because of Minecraft. When I was a kid and playing it, I like to play around with command blocks and redstone, and I always want to do more than that. So I started to learn programming, and... here I am!"
-        }
+        },
+        "dragHint": "drag the title bars around"
       }
     }
   },

@@ -1,204 +1,151 @@
 import React from 'react';
-import { TextReveal } from '../ui/TextReveal';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import SectionHeading from '../ui/SectionHeading';
 
 interface EventsSectionProps {
   events: Record<string, string[]>;
+}
+
+// Roles that just mean "I was there" — anything else (organiser, instructor...) gets highlighted
+const PLAIN_ROLES = new Set(['Attendee', 'Participator', '會眾', '參與者']);
+
+function splitEvent(event: string) {
+  const idx = event.lastIndexOf(' - ');
+  if (idx === -1) return { name: event, role: '' };
+  return { name: event.slice(0, idx), role: event.slice(idx + 3) };
 }
 
 const EventsSection: React.FC<EventsSectionProps> = ({ events }) => {
   const t = useTranslations('home.events');
   let lineNumber = 1;
 
+  // Integer-like object keys iterate in ascending order, so sort newest first explicitly
+  const years = Object.entries(events).sort(([a], [b]) => Number(b) - Number(a));
+  const byteCount = new TextEncoder().encode(
+    years.map(([year, list]) => `# ${year}\n${list.join('\n')}\n`).join('\n')
+  ).length;
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.05 }
+      transition: { staggerChildren: 0.03 }
     }
   };
 
-  const yearVariants = {
-    hidden: { opacity: 0, x: -20 },
+  const lineVariants = {
+    hidden: { opacity: 0, x: -8 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { 
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 12
-      }
+      transition: { duration: 0.35, ease: [0.2, 0.7, 0.2, 1] as const }
     }
   };
 
-  const eventVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { 
-        type: "spring" as const,
-        stiffness: 70,
-        damping: 10
-      }
-    }
-  };
+  const gutter = "w-8 md:w-10 shrink-0 select-none pr-3 text-right text-zinc-700";
 
   return (
-    <section id="events" className="min-h-screen py-20 px-6 relative bg-gradient-to-b from-zinc-900 to-black overflow-hidden">
-      <motion.div 
-        className="max-w-6xl mx-auto relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="flex items-center mb-16">
-          <div className="text-6xl font-bold">
-            <TextReveal as="div" className="flex items-center text-white hover:text-zinc-400 duration-500 ease-in-out">
-              <h2>
-                <span>{t('title.events')}</span>
-                <motion.span 
-                  className="text-yellow-100 hover:text-yellow-400 duration-500 ease-in-out"
-                  whileHover={{ 
-                    scale: 1.1, 
-                    textShadow: "0 0 8px rgba(251, 191, 36, 0.7)",
-                    transition: { type: "spring", stiffness: 300 }
-                  }}
-                >
-                  &nbsp;{t('title.i')}
-                </motion.span>
-                <span>{t('title.participated')}</span>
-              </h2>
-            </TextReveal>
-          </div>
-          <motion.div 
-            className="h-px bg-gradient-to-r from-orange-500/50 to-transparent flex-grow ml-6"
-            initial={{ scaleX: 0, originX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-          ></motion.div>
-        </div>
-        
-        <motion.div 
-          className="bg-black rounded-lg border border-zinc-800 overflow-hidden shadow-custom"
-          initial={{ opacity: 0, y: 50 }}
+    <section id="events" className="relative scroll-mt-20 px-4 py-24 md:px-6 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          index="03"
+          label="events"
+          before={t('title.events')}
+          accent={t('title.i')}
+          after={t('title.participated')}
+        />
+
+        <motion.div
+          className="overflow-hidden rounded-2xl border border-white/10 bg-black/80 shadow-2xl shadow-black/50 backdrop-blur"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ 
-            type: "spring",
-            stiffness: 50,
-            damping: 15,
-            delay: 0.2
-          }}
+          transition={{ duration: 0.7, ease: [0.2, 0.7, 0.2, 1] }}
         >
           {/* Terminal top bar */}
-          <motion.div 
-            className="bg-zinc-900 px-4 py-2 border-b border-zinc-800 flex items-center justify-between"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            <div className="flex space-x-2">
-              <motion.div 
-                className="w-3 h-3 rounded-full bg-red-500"
-                whileHover={{ scale: 1.2 }}
-              ></motion.div>
-              <motion.div 
-                className="w-3 h-3 rounded-full bg-yellow-500"
-                whileHover={{ scale: 1.2 }}
-              ></motion.div>
-              <motion.div 
-                className="w-3 h-3 rounded-full bg-green-500"
-                whileHover={{ scale: 1.2 }}
-              ></motion.div>
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-white/[0.08] bg-white/[0.03] px-4 py-2.5">
+            <div className="flex gap-2">
+              <span className="size-3 rounded-full bg-[#ff5f57]" />
+              <span className="size-3 rounded-full bg-[#febc2e]" />
+              <span className="size-3 rounded-full bg-[#28c840]" />
             </div>
-            <motion.div 
-              className="text-center text-zinc-400 text-xs"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-            >
-              {t('terminal.prompt')}
-            </motion.div>
-            <div className="flex space-x-2 text-zinc-500 text-xs">
-              <span>{t('terminal.command')}</span>
-            </div>
-          </motion.div>
-          
-          <div className="p-6 md:p-8">
-            <motion.div 
-              className="font-mono"
+            <div className="font-mono text-xs text-zinc-400">{t('terminal.prompt')}</div>
+            <div className="hidden justify-self-end font-mono text-xs text-zinc-600 sm:block">{t('terminal.command')}</div>
+          </div>
+
+          <div className="overflow-x-auto px-2 py-5 md:px-4 md:py-6">
+            <motion.div
+              className="min-w-fit font-mono text-[13px] leading-7 md:text-sm"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
             >
-              {Object.entries(events).map(([year, eventList]) => (
+              {years.map(([year, eventList]) => (
                 <React.Fragment key={year}>
-                  <motion.div 
-                    className="flex font-bold text-purple-700"
-                    variants={yearVariants}
-                  >
-                    <span className="text-orange-800 w-8 py-1">{lineNumber++}</span>
-                    <motion.span 
-                      className="text-xl"
-                      whileHover={{ 
-                        color: "#c084fc", 
-                        x: 5,
-                        transition: { duration: 0.2 } 
-                      }}
-                    >
-                      # {year}
-                    </motion.span>
+                  <motion.div className="flex" variants={lineVariants}>
+                    <span className={gutter}>{lineNumber++}</span>
+                    <span className="font-bold text-violet-400">
+                      <span className="text-violet-400/60"># </span>{year}
+                    </span>
                   </motion.div>
-                  {eventList.map((event) => (
-                    <motion.div 
-                      key={event} 
-                      className="flex"
-                      variants={eventVariants}
-                    >
-                      <span className="text-orange-800 w-8">{lineNumber++}</span>
-                      <TextReveal as="span" className="text-gray-300 hover-glow">{event}</TextReveal>
-                    </motion.div>
-                  ))}
-                  <div>
-                    <span className="text-orange-800 w-8">{lineNumber++}</span>
+                  {eventList.map((event) => {
+                    const { name, role } = splitEvent(event);
+                    const highlighted = role !== '' && !PLAIN_ROLES.has(role);
+                    return (
+                      <motion.div
+                        key={event}
+                        className="group flex whitespace-nowrap hover:bg-white/[0.03]"
+                        variants={lineVariants}
+                      >
+                        <span className={`${gutter} group-hover:text-zinc-400`}>{lineNumber++}</span>
+                        <span className="text-zinc-600">-&nbsp;</span>
+                        <span className="text-zinc-200">{name}</span>
+                        {role && (
+                          <span className={highlighted ? 'text-orange-300' : 'text-zinc-500'}>
+                            &nbsp;- {role}
+                          </span>
+                        )}
+                      </motion.div>
+                    );
+                  })}
+                  <div className="flex">
+                    <span className={gutter}>{lineNumber++}</span>
                   </div>
                 </React.Fragment>
               ))}
-              
-              <div className="text-blue-700 mt-6">
-                ~<br/>
-                ~<br/>
-                ~<br/>
-              </div>
-              <div className="flex text-gray-500 mt-4 justify-between">
-                <span>{t('terminal.file')} {lineNumber-1}L, 431B</span>
-                <div className="flex space-x-12">
-                  <span>0,0</span>
-                  <div className="flex">
-                    <span>{t('terminal.all')}</span>
-                    <motion.span 
-                      className="w-2 h-5 bg-gray-400 ml-1"
-                      animate={{ opacity: [1, 0, 1] }}
-                      transition={{
-                        duration: 1,
-                        repeat: Infinity,
-                        repeatType: "loop"
-                      }}
-                    ></motion.span>
-                  </div>
-                </div>
+
+              <div className="flex flex-col pl-2 text-sky-700">
+                <span>~</span>
+                <span>~</span>
+                <span>~</span>
               </div>
             </motion.div>
           </div>
+
+          {/* Status line */}
+          <div className="flex items-center justify-between gap-4 border-t border-white/[0.08] bg-white/[0.03] px-4 py-2 font-mono text-xs text-zinc-500">
+            <span className="truncate">{t('terminal.file')} {lineNumber - 1}L, {byteCount}B</span>
+            <div className="flex shrink-0 items-center gap-8 md:gap-12">
+              <span>1,1</span>
+              <span className="flex items-center">
+                {t('terminal.all')}
+                <motion.span
+                  className="ml-1 inline-block h-4 w-2 bg-zinc-400"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    repeatType: "loop"
+                  }}
+                />
+              </span>
+            </div>
+          </div>
         </motion.div>
-      </motion.div>
-      
+      </div>
     </section>
   );
 };

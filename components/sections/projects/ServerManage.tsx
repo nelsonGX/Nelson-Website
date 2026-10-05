@@ -7,7 +7,7 @@ export default function ServerManager() {
   const t = useTranslations('projects.serverManage');
   return (
     <>
-    <h1 className="text-4xl py-10 md:px-16 font-semibold text-orange-50">{t('hosting.title')}</h1>
+    <h3 className="mt-12 mb-6 text-2xl font-semibold text-zinc-50">{t('hosting.title')}</h3>
     {[
       { 
         date: t('hosting.freeserver.date'), 
@@ -88,19 +88,17 @@ export default function ServerManager() {
         </>
       },
     ].map((data) => (
-      <div className="mb-8 md:flex md:gap-6 gap-y-4 md:gap-y-0 items-center justify-center" key={data.title}>
-        <div className="relative flex bg-zinc-800 shadow-xl w-fit h-fit rounded-lg">
-          <h1 className="p-4 text-lg text-white">{data.date}</h1>
-        </div>
-        <div className="md:flex bg-zinc-800 rounded-lg shadow-xl w-full md:max-w-[66%] px-6 py-4">
-          <Image src={data.imageSrc} alt={'Image'} width={100} height={10} className="object-cover h-20 w-auto mx-auto md:mx-0 my-4 md:my-auto" />
-          <div className="relative px-4 space-y-4">
-            <h3 className="font-semibold text-white text-xl">{data.title}</h3>
-            <div className="text-sm leading-snug tracking-wide text-zinc-300 text-opacity-100">{data.description}</div>
+      <div className="relative mb-4 grid grid-cols-1 gap-3 md:grid-cols-[200px_1fr] md:gap-8" key={data.title}>
+        <p className="font-mono text-sm text-orange-300 md:pt-5">{data.date}</p>
+        <div className="md:flex md:items-start gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.025] px-6 py-5">
+          <Image src={data.imageSrc} alt="" width={100} height={10} className="object-contain h-16 w-24 shrink-0 mb-4 md:mb-0 md:mt-1" />
+          <div className="relative min-w-0 flex-1 md:px-4 space-y-3">
+            <h4 className="font-semibold text-zinc-50 text-xl">{data.title}</h4>
+            <div className="text-sm leading-relaxed text-zinc-400">{data.description}</div>
             {data.links &&
-              <div className="bottom-4 right-6 flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 {data.links.map((link, linkIdx) => (
-                  <Link key={linkIdx} href={link.url} target="_blank" className="items-center flex text-sm text-orange-300 hover:text-orange-400 transition-all duration-150">
+                  <Link key={linkIdx} href={link.url} target="_blank" className="items-center flex text-sm text-orange-300 hover:text-orange-200 transition-all duration-150">
                     {link.name} <ExternalLink className="inline-block size-4 ml-1" />
                   </Link>
                 ))}

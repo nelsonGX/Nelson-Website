@@ -47,31 +47,19 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* Page Transitions */
-.page-transition-enter {
-  opacity: 0;
+@theme {
+  --color-ink: #0a0a0b;
 }
 
-.page-transition-enter-active {
-  opacity: 1;
-  transition: opacity 300ms, transform 300ms;
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  background-color: var(--color-ink);
 }
 
-.page-transition-exit {
-  opacity: 1;
-}
-
-.page-transition-exit-active {
-  opacity: 0;
-  transition: opacity 300ms, transform 300ms;
-}
-
-/* Apply faster transitions on mobile */
-@media (max-width: 768px) {
-  .page-transition-enter-active,
-  .page-transition-exit-active {
-    transition: opacity 200ms, transform 200ms;
-  }
+::selection {
+  background: rgb(253 186 116 / 0.3);
+  color: #fff;
 }
 
 @font-face {
@@ -94,12 +82,48 @@
   font-family: 'SFPro', 'Noto Sans TC', monospace;
 }
 
-/* Text reveal animation classes for global.css */
+/* Faint dot grid used as the page backdrop */
+.bg-dots {
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
 
-/* Base class for text containers of any type */
+/* Scroll-triggered fade-up used by <TextReveal> */
 .text-reveal {
-  position: relative;
-  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(6px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.text-reveal.visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+span.text-reveal,
+a.text-reveal {
+  display: inline-block;
+}
+
+.text-reveal-flex {
+  display: flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .text-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }
 
 @keyframes rgbBorderAnimation {
@@ -116,193 +140,9 @@
   animation: rgbBorderAnimation 2s linear infinite;
 }
 
-/* Maintain display properties based on element type */
-span.text-reveal, 
-a.text-reveal {
-  display: inline-block;
-}
-
-/* For flex containers */
-.text-reveal-flex {
-  display: flex;
-}
-
-/* Black mask overlay for the reveal effect */
-.text-reveal::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(207, 207, 207);
-  backdrop-filter: blur(100px);
-  z-index: 2; /* Higher than content */
-  transform: translateX(0);
-  transform-origin: left;
-}
-
-/* Add a cool gradient highlight effect */
-.text-reveal::after {
-  content: '';
-  position: absolute;
-  top: -10%;
-  left: -100%;
-  width: 50%;
-  height: 120%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.15),
-    transparent
-  );
-  transform: skewX(-15deg);
-  z-index: 3;
-  opacity: 0;
-  transition: left 0.8s ease-out, opacity 0.5s ease-out;
-}
-
-/* Ensure content stays visible */
-.text-reveal > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Auto-animate version */
-.text-reveal.animate::before {
-  animation: revealTextMask 0.8s ease-in-out forwards;
-}
-
-/* Scroll-triggered version (starts paused) */
-.text-reveal.on-scroll::before {
-  animation: revealTextMask 0.6s cubic-bezier(0.6, 0.01, 0.05, 0.95) forwards paused;
-}
-
-/* Class added when element is in view */
-.text-reveal.visible::before {
-  animation-play-state: running;
-}
-
-/* Add shimmer effect when visible - only once on scroll */
-.text-reveal.visible::after {
-  animation: shimmerEffect 1.2s ease-out 0.6s forwards; /* forwards ensures it stays at the end state */
-}
-
-/* Animation keyframes - moving the mask right */
-@keyframes revealTextMask {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(101%);
-  }
-}
-
-/* Animation for shimmer effect - runs once */
-@keyframes shimmerEffect {
-  0% {
-    left: -100%;
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    left: 150%;
-    opacity: 0; /* Completely disappears at the end */
-  }
-}
-
-/* Cool hover animations for interactive elements */
-.hover-glow {
-  transition: all 0.3s ease;
-}
-
-.hover-glow:hover {
-  text-shadow: 0 0 8px rgba(249, 115, 22, 0.7);
-  transform: scale(1.02);
-}
-
-.hover-lift {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-5px);
-}
-
-/* Custom shadow animations */
-.shadow-custom {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.shadow-custom:hover {
-  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.3), 0 8px 10px -6px rgba(249, 115, 22, 0.2);
-  transform: translateY(-5px);
-}
-
-.shadow-orange {
-  transition: box-shadow 0.3s ease;
-}
-
-.shadow-orange:hover {
-  box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
-}
-
-/* Pulse animation */
-.pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: scale(1.05);
-  }
-}
-
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
-}
-
-.dark {
-  --background: oklch(0.141 0.005 285.823);
+  --background: #0a0a0b;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);

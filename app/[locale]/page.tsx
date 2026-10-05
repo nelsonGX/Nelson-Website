@@ -32,7 +32,7 @@ import EventsData from '@/components/data/eventsData';
 const NelsonPortfolio = () => {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
-  
+
   // Using custom hooks
   const { isSmallScreen } = useWindowDimensions();
   const scrollProgress = useScrollProgress();
@@ -47,7 +47,7 @@ const NelsonPortfolio = () => {
     setWindow2Maximized,
     setWindow3Maximized
   } = useDraggableWindows();
-  
+
   useEffect(() => {
     if (!isFirstVisit) return;
     const id = setTimeout(() => {
@@ -56,53 +56,45 @@ const NelsonPortfolio = () => {
     }, 800);
     return () => clearTimeout(id);
   }, [isFirstVisit]);
-  
+
   return (
-    <motion.div 
-      className="min-h-screen bg-zinc-900 text-gray-100 overflow-x-hidden"
+    <motion.div
+      className="relative min-h-screen bg-ink text-zinc-100 overflow-x-clip"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: isSmallScreen ? 0.3 : 0.5 }}
     >
+      {/* Page backdrop */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 bg-dots [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
+
       {/* Page transition effect - only show when navigating between pages */}
       {!isFirstVisit && <TransitionEffect />}
-      
-      {/* Progress indicator */}
+
       <ProgressIndicator scrollProgress={scrollProgress} />
-      
-      {/* Loading screen */}
+
       <LoadingScreen loading={loading && isFirstVisit} fadeOut={fadeOut} />
-  
-      {/* Header */}
+
       <Header />
-      
-      {/* Hero section */}
-      <HeroSection />
-      
-      {/* About section */}
-      <AboutSection />
-      
-      {/* Projects section */}
-      <ProjectsSection 
-        windowPositions={windowPositions}
-        window1Maximized={window1Maximized}
-        window2Maximized={window2Maximized}
-        window3Maximized={window3Maximized}
-        setWindow1Maximized={setWindow1Maximized}
-        setWindow2Maximized={setWindow2Maximized}
-        setWindow3Maximized={setWindow3Maximized}
-        startDrag={startDrag}
-        isSmallScreen={isSmallScreen}
-      />
-      
-      {/* Events section */}
-      <EventsSection events={EventsData()} />
-      
-      {/* Contact section */}
-      <ContactSection />
-      
-      {/* Footer */}
+
+      <main className="relative">
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection 
+          windowPositions={windowPositions}
+          window1Maximized={window1Maximized}
+          window2Maximized={window2Maximized}
+          window3Maximized={window3Maximized}
+          setWindow1Maximized={setWindow1Maximized}
+          setWindow2Maximized={setWindow2Maximized}
+          setWindow3Maximized={setWindow3Maximized}
+          startDrag={startDrag}
+          isSmallScreen={isSmallScreen}
+        />
+        <EventsSection events={EventsData()} />
+        <ContactSection />
+      </main>
+
       <Footer />
     </motion.div>
   );

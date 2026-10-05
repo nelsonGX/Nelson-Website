@@ -16,16 +16,16 @@ function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false,
   const textContent = (
     <div>
       <div className="flex items-center gap-4">
-        <h3 className="text-2xl font-semibold text-orange-300">{t(`servers.${translationKey}.title`)}</h3>
-        <p className="bg-zinc-700 py-1 px-2 rounded-md text-sm">{t(`servers.${translationKey}.date`)}</p>
+        <h4 className="text-xl font-semibold text-zinc-50">{t(`servers.${translationKey}.title`)}</h4>
+        <p className="rounded-full border border-orange-300/30 bg-orange-300/10 px-2.5 py-0.5 font-mono text-xs text-orange-200">{t(`servers.${translationKey}.date`)}</p>
       </div>
-      <p className="text-gray-300 mt-2 max-w-4xl">{t(`servers.${translationKey}.description`)}</p>
+      <p className="text-zinc-400 leading-relaxed mt-3 max-w-2xl">{t(`servers.${translationKey}.description`)}</p>
       {link && (
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-orange-200 hover:underline mt-2 flex items-center gap-2"
+          className="text-orange-300 hover:text-orange-200 mt-3 flex w-fit items-center gap-2 text-sm"
         >
           {t(`servers.${translationKey}.link`)} <ExternalLink size={16} />
         </a>
@@ -62,7 +62,7 @@ function ServerCard({ translationKey, images, autoplayDelay, imageFirst = false,
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className={`relative flex flex-col lg:flex-row`}>
+      <div className="relative flex flex-col items-center gap-8 lg:flex-row">
         {imageFirst ? (
           <>
             {imageContent}
@@ -131,11 +131,11 @@ export default function Minecraft() {
 
   return (
     <>
-      <div className="pt-8 p-2 md:p-16">
-        <h2 className="text-3xl font-semibold text-white mb-4">{t('serversIHosted')}</h2>
-        <p className="text-gray-300 mb-6">{t('servverDescription')}</p>
+      <div className="pt-12">
+        <h3 className="text-2xl font-semibold text-zinc-50 mb-3">{t('serversIHosted')}</h3>
+        <p className="max-w-3xl leading-relaxed text-zinc-400 mb-6">{t('servverDescription')}</p>
 
-        <div className="flex flex-col gap-8 pt-8">
+        <div className="flex flex-col gap-12 pt-8">
           {servers.map((server) => (
             <ServerCard
               key={server.translationKey}

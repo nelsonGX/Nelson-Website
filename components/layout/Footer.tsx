@@ -6,45 +6,36 @@ import { useTranslations } from 'next-intl';
 
 const Footer: React.FC = () => {
   const t = useTranslations('layout.footer');
+  const iconLink = "flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-zinc-400 transition-colors hover:border-orange-300/40 hover:text-orange-300";
+
   return (
-    <footer className="bg-zinc-950 text-zinc-400 pb-8 relative">
-      {/* SVG positioned as an overlay at the top of the footer */}
-      <div className="absolute top-0 left-0 w-full transform -translate-y-full">
-        <Image 
-          src="/assets/images/footer-trans.svg" 
-          alt="" 
-          width={1920}
-          height={100}
-          className="w-full h-auto"
-          draggable={false}
-        />
-      </div>
-      
-      <div className="container mx-auto px-4 md:px-6 relative">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold text-white flex items-center">
-              <span className="text-orange-300">Nelson</span><span>&apos;</span>
-            </h3>
-            <p className="text-zinc-500">{t('subtitle')}</p>
+    <footer className="relative border-t border-white/[0.08] bg-ink px-4 py-10 text-zinc-400 md:px-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8">
+        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <div className="flex items-center gap-3">
+            <Image src="/assets/images/nelsongx.png" alt="" width={36} height={36} className="rounded-lg" />
+            <div>
+              <p className="font-minecraft text-lg">
+                <span className="text-orange-300">Nelson</span><span className="text-zinc-200">&apos;s</span>
+              </p>
+              <p className="text-sm text-zinc-500">{t('subtitle')}</p>
+            </div>
           </div>
-          <div className="flex space-x-4">
-            <a href="mailto:hi@nelsongx.com" className="hover:text-orange-400 transition">
-              <Mail size={20} />
+          <div className="flex gap-2">
+            <a href="mailto:hi@nelsongx.com" aria-label="Email" className={iconLink}>
+              <Mail size={18} />
             </a>
-            <a href="https://github.com/nelsonGX" className="hover:text-orange-400 transition">
-              <SiGithub size={20} />
+            <a href="https://github.com/nelsonGX" aria-label="GitHub" className={iconLink}>
+              <SiGithub size={18} />
             </a>
           </div>
         </div>
-        <div className="mt-6 text-center text-zinc-600 text-sm px-4">
-          <div className="flex flex-wrap items-center justify-center gap-1">
-            <span className="text-zinc-500">{t('websiteName')}</span>
-            <span>&copy; {t('copyright')}</span>
-            <span>{t('openSource.text')}</span>
-            <a href="https://github.com/nelsonGX/Nelson-Website" className="text-orange-300/50">{t('openSource.github')}</a>
-            <span>{t('openSource.license')}</span>
-          </div>
+        <div className="flex flex-wrap items-center gap-x-1 gap-y-1 border-t border-white/[0.06] pt-6 text-sm text-zinc-600">
+          <span className="text-zinc-500">{t('websiteName')}</span>
+          <span>&copy; {t('copyright')}</span>
+          <span>{t('openSource.text')}</span>
+          <a href="https://github.com/nelsonGX/Nelson-Website" className="text-zinc-400 underline decoration-zinc-700 underline-offset-4 hover:text-orange-300">{t('openSource.github')}</a>
+          <span>{t('openSource.license')}</span>
         </div>
       </div>
     </footer>
