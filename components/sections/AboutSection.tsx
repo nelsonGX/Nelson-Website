@@ -48,7 +48,7 @@ const AboutSection: React.FC = () => {
     },
     { 
       name: 'Tailwind CSS', 
-      icon: <Image src="/assets/images/tailwind.webp" alt="Tailwind CSS" width={20} height={20} className="text-white" />, 
+      icon: <Image src="/assets/images/tailwind.webp" alt="Tailwind CSS" width={20} height={12} className="text-white" />, 
       bg: "bg-yellow-400/15",
       confidence: t('techStack.tailwind.confidence')
     },

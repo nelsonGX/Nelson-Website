@@ -1,6 +1,20 @@
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import { Geist, Geist_Mono } from "next/font/google";
+import { AnimatePresence } from "framer-motion";
+import { LoadingProvider } from "@/components/context/LoadingContext";
+import PageTransition from "@/components/PageTransition";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
  
 export default async function LocaleLayout({
   children,
@@ -25,9 +39,16 @@ export default async function LocaleLayout({
  
   return (
     <html lang={locale}>
-      <body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <LoadingProvider>
+            <PageTransition />
+            <AnimatePresence mode="wait">
+              {children}
+            </AnimatePresence>
+          </LoadingProvider>
         </NextIntlClientProvider>
       </body>
     </html>

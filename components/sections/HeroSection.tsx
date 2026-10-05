@@ -32,7 +32,7 @@ const HeroSection = ({}) => {
         </motion.div>
 
         {/* Mask */}
-        <div className="z-10 bg-zinc-900 md:px-20 px-50 py-8 absolute right-0 bottom-0" />
+        <div className="z-10 bg-zinc-900 md:px-50 px-50 xl:py-20 py-10 absolute right-0 bottom-0" />
         
         {/* Content - positioned absolute to overlay on Spline */}
         <div className="absolute inset-0 flex items-center justify-center z-20">
