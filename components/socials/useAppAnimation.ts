@@ -1,30 +1,30 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { App, AppRef } from './types';
 
 export const useAppAnimation = () => {
   const [selectedApp, setSelectedApp] = useState<App | undefined>(undefined);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const appRef = useRef<AppRef | null>(null);
+  const [appRect, setAppRect] = useState<AppRef | null>(null);
   
   useEffect(() => {    
     function handleResize() {
-      if (selectedApp && appRef.current) {
+      if (selectedApp) {
         requestAnimationFrame(() => {
           const appElement = document.querySelector(`[data-app="${selectedApp.name}"]`);
           if (appElement) {
             const rect = appElement.getBoundingClientRect();
-            appRef.current = {
-              ...appRef.current,
+            setAppRect(prev => prev && {
+              ...prev,
               app: selectedApp,
               rect,
               x: rect.left,
               y: rect.top,
               width: rect.width,
               height: rect.height,
-              containerWidth: appRef.current?.containerWidth || window.innerWidth,
-              containerHeight: appRef.current?.containerHeight || window.innerHeight,
-            };
+              containerWidth: prev.containerWidth || window.innerWidth,
+              containerHeight: prev.containerHeight || window.innerHeight,
+            });
           }
         });
       }
@@ -47,7 +47,7 @@ export const useAppAnimation = () => {
     const relativeX = iconRect.left - containerRect.left;
     const relativeY = iconRect.top - containerRect.top;
     
-    appRef.current = {
+    setAppRect({
       app: app,
       rect: iconRect,
       x: relativeX,
@@ -56,7 +56,7 @@ export const useAppAnimation = () => {
       height: iconRect?.height,
       containerWidth: containerRect.width,
       containerHeight: containerRect.height
-    };
+    });
     
     setIsAnimating(true);
     setIsClosing(false);
@@ -88,17 +88,15 @@ export const useAppAnimation = () => {
       const relativeX = iconRect.left - containerRect.left;
       const relativeY = iconRect.top - containerRect.top;
       
-      if (appRef.current) {
-        appRef.current = {
-          ...appRef.current,
-          x: relativeX,
-          y: relativeY,
-          width: iconRect.width,
-          height: iconRect.height,
-          containerWidth: containerRect.width,
-          containerHeight: containerRect.height
-        };
-      }
+      setAppRect(prev => prev && {
+        ...prev,
+        x: relativeX,
+        y: relativeY,
+        width: iconRect.width,
+        height: iconRect.height,
+        containerWidth: containerRect.width,
+        containerHeight: containerRect.height
+      });
     }
     
     setIsAnimating(true);
@@ -115,7 +113,7 @@ export const useAppAnimation = () => {
     selectedApp,
     isAnimating,
     isClosing,
-    appRef,
+    appRect,
     handleAppClick,
     closeApp
   };

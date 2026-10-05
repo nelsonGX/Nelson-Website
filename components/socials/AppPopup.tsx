@@ -5,7 +5,7 @@ import { AppContent } from './AppContent';
 
 interface AppPopupProps {
   selectedApp: App | undefined;
-  appRef: React.RefObject<AppRef | null>;
+  appRect: AppRef | null;
   isAnimating: boolean;
   isClosing: boolean;
   closeApp: () => void;
@@ -14,7 +14,7 @@ interface AppPopupProps {
 
 export const AppPopup: React.FC<AppPopupProps> = ({ 
   selectedApp, 
-  appRef, 
+  appRect, 
   isAnimating, 
   isClosing, 
   closeApp,
@@ -25,23 +25,23 @@ export const AppPopup: React.FC<AppPopupProps> = ({
   if (!selectedApp) return null;
 
   const getAnimationStyle = () => {
-    if (!appRef.current) return {};
+    if (!appRect) return {};
     
     const containerWidth = window.innerWidth > 768 ? 800 : 350;
     const containerHeight = window.innerWidth > 768 ? 600 : 700;
     
-    if (isAnimating && appRef.current) {
-      const appIconX = appRef.current.x;
-      const appIconY = appRef.current.y;
+    if (isAnimating && appRect) {
+      const appIconX = appRect.x;
+      const appIconY = appRect.y;
       
-      const iconCenterX = appIconX + (appRef.current.width / 2);
-      const iconCenterY = appIconY + (appRef.current.height / 2);
+      const iconCenterX = appIconX + (appRect.width / 2);
+      const iconCenterY = appIconY + (appRect.height / 2);
       
       const centerXPercent = (iconCenterX / containerWidth) * 100;
       const centerYPercent = (iconCenterY / containerHeight) * 100;
       
-      const scaleX = appRef.current.width / containerWidth;
-      const scaleY = appRef.current.height / containerHeight;
+      const scaleX = appRect.width / containerWidth;
+      const scaleY = appRect.height / containerHeight;
       
       if (isClosing) {
         return {

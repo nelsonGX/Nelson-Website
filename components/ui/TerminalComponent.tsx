@@ -2,31 +2,34 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 type OutputLine = { id: number; text: string };
 
+const bannerLines = (time: string) => [
+  "Welcome to Nelson Linux 1.0 LTS. (GNU/Linux 6.9.8-generic x86_64)",
+  " ",
+  "_   _      _                  __          __  _         _ _       ",
+  "| \\ | |    | |                 \\ \\        / / | |       (_) |      ",
+  "|  \\| | ___| |___  ___  _ __    \\ \\  /\\  / /__| |__  ___ _| |_ ___ ",
+  "| . ` |/ _ \\ / __|/ _ \\| '_ \\    \\ \\/  \\/ / _ \\ '_ \\/ __| | __/ _ \\",
+  "| |\\  |  __/ \\__ \\ (_) | | | |    \\  /\\  /  __/ |_) \\__ \\ | ||  __/",
+  "|_| \\_|\\___|_|___/\\___/|_| |_|     \\/  \\/ \\___|_.__/|___/_|\\__\\___|",
+  " ",
+  "  System information as of " + time + " UTC",
+  "  Usage of /:   69.0% of 2GB",
+  "  Memory usage: 69%                 IPv4 address for lo:   127.0.0.1",
+  "  Swap usage:   0%                 IPv4 address for eth0: nelsongx.com",
+  "  Temperature:  69.0 C",
+  " ",
+  "Type 'help' for available commands.",
+  " ",
+];
+const BANNER_LINE_COUNT = bannerLines('').length;
+
 const Terminal = () => {
   const now = new Date();
   const time = now.toLocaleString('en-US', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'UTC' });
-  const nextId = useRef(0);
+  const nextId = useRef(BANNER_LINE_COUNT);
   const line = useCallback((text: string): OutputLine => ({ id: nextId.current++, text }), []);
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState<OutputLine[]>(() => [
-    "Welcome to Nelson Linux 1.0 LTS. (GNU/Linux 6.9.8-generic x86_64)",
-    " ",
-    "_   _      _                  __          __  _         _ _       ",
-    "| \\ | |    | |                 \\ \\        / / | |       (_) |      ",
-    "|  \\| | ___| |___  ___  _ __    \\ \\  /\\  / /__| |__  ___ _| |_ ___ ",
-    "| . ` |/ _ \\ / __|/ _ \\| '_ \\    \\ \\/  \\/ / _ \\ '_ \\/ __| | __/ _ \\",
-    "| |\\  |  __/ \\__ \\ (_) | | | |    \\  /\\  /  __/ |_) \\__ \\ | ||  __/",
-    "|_| \\_|\\___|_|___/\\___/|_| |_|     \\/  \\/ \\___|_.__/|___/_|\\__\\___|",
-    " ",
-    "  System information as of " + time + " UTC",
-    "  Usage of /:   69.0% of 2GB",
-    "  Memory usage: 69%                 IPv4 address for lo:   127.0.0.1",
-    "  Swap usage:   0%                 IPv4 address for eth0: nelsongx.com",
-    "  Temperature:  69.0 C",
-    " ",
-    "Type 'help' for available commands.",
-    " ",
-  ].map(text => ({ id: nextId.current++, text })));
+  const [output, setOutput] = useState<OutputLine[]>(() => bannerLines(time).map((text, id) => ({ id, text })));
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [isTyping, setIsTyping] = useState(false);

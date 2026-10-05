@@ -49,8 +49,6 @@ export default function Header() {
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
-    } else {
-      setHasScrolledDown(true);
     }
   }, [isHomePage]);
 
@@ -68,7 +66,7 @@ export default function Header() {
         <Link href="/" className="cursor-pointer">
           <div className="flex items-center justify-center gap-4">
             <Image src={"/assets/images/nelsongx.png"} alt="" height={32} width={32} />
-            <div className={`flex flex-col transition-opacity duration-500 ${hasScrolledDown ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`flex flex-col transition-opacity duration-500 ${!isHomePage || hasScrolledDown ? 'opacity-100' : 'opacity-0'}`}>
               <div className="relative text-sm font-bold font-minecraft md:hidden"><div className="flex"><p className="text-orange-300">Nelson</p><p className="text-zinc-300">&apos;s</p></div><p className="text-zinc-400">Website</p></div>
               <div className="md:flex text-xl font-bold font-minecraft hidden"><p className="text-orange-300">Nelson</p><p className="text-zinc-200">&apos;s Website</p></div>
             </div>

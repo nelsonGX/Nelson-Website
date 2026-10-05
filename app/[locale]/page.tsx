@@ -1,6 +1,5 @@
 "use client"
 
-export const runtime = 'edge';
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -50,17 +49,12 @@ const NelsonPortfolio = () => {
   } = useDraggableWindows();
   
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (isFirstVisit) {
-        const id = setTimeout(() => {
-          setLoading(false);
-          setFadeOut(true);
-        }, 800);
-        return () => clearTimeout(id);
-      } else {
-        setLoading(false);
-      }
-    }
+    if (!isFirstVisit) return;
+    const id = setTimeout(() => {
+      setLoading(false);
+      setFadeOut(true);
+    }, 800);
+    return () => clearTimeout(id);
   }, [isFirstVisit]);
   
   return (
@@ -78,7 +72,7 @@ const NelsonPortfolio = () => {
       <ProgressIndicator scrollProgress={scrollProgress} />
       
       {/* Loading screen */}
-      <LoadingScreen loading={loading} fadeOut={fadeOut} />
+      <LoadingScreen loading={loading && isFirstVisit} fadeOut={fadeOut} />
   
       {/* Header */}
       <Header />

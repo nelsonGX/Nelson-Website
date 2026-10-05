@@ -1,30 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+
+const subscribe = (callback: () => void) => {
+  window.addEventListener('resize', callback);
+  return () => window.removeEventListener('resize', callback);
+};
 
 const useWindowDimensions = () => {
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-      setIsSmallScreen(window.innerWidth < 768);
-      
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-        setWindowHeight(window.innerHeight);
-        setIsSmallScreen(window.innerWidth < 768);
-      };
-      
-      window.addEventListener('resize', handleResize);
-      
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, []);
-  
+  const windowWidth = useSyncExternalStore(subscribe, () => window.innerWidth, () => 0);
+  const windowHeight = useSyncExternalStore(subscribe, () => window.innerHeight, () => 0);
+  const isSmallScreen = windowWidth > 0 && windowWidth < 768;
+
   return { windowWidth, windowHeight, isSmallScreen };
 };
 

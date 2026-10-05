@@ -78,7 +78,6 @@ export default function Stack({
 }: StackProps) {
   const [isMobile, setIsMobile] = useState(false);
   const isPausedRef = useRef(false);
-  const rotationMap = useRef<Record<number, number>>({});
 
   useEffect(() => {
     const checkMobile = () => {
@@ -93,50 +92,37 @@ export default function Stack({
   const shouldDisableDrag = mobileClickOnly && isMobile;
   const shouldEnableClick = sendToBackOnClick || shouldDisableDrag;
 
-  const [stack, setStack] = useState<{ id: number; content: React.ReactNode }[]>(() => {
-    if (cards.length) {
-      return cards.map((content, index) => ({ id: index + 1, content }));
-    } else {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    if (cards.length) {
-      setStack(cards.map((content, index) => ({ id: index + 1, content })));
-    }
-  }, [cards]);
+  const [order, setOrder] = useState<number[]>(() => cards.map((_, index) => index + 1));
+  const [prevCardCount, setPrevCardCount] = useState(cards.length);
+  if (cards.length !== prevCardCount) {
+    setPrevCardCount(cards.length);
+    setOrder(cards.map((_, index) => index + 1));
+  }
+  const stack = order.map(id => ({ id, content: cards[id - 1] }));
 
   const sendToBack = (id: number) => {
-    setStack(prev => {
-      const newStack = [...prev];
-      const index = newStack.findIndex(card => card.id === id);
-      const [card] = newStack.splice(index, 1);
-      newStack.unshift(card);
-      return newStack;
-    });
+    setOrder(prev => [id, ...prev.filter(cardId => cardId !== id)]);
   };
 
+  // Deterministic pseudo-random tilt in [-5, 5) per card, stable across renders
   const getRotation = (id: number) => {
     if (!randomRotation) return 0;
-    if (!(id in rotationMap.current)) {
-      rotationMap.current[id] = Math.random() * 10 - 5;
-    }
-    return rotationMap.current[id];
+    const seed = Math.sin(id * 12.9898) * 43758.5453;
+    return (seed - Math.floor(seed)) * 10 - 5;
   };
 
   useEffect(() => {
-    if (!autoplay || stack.length <= 1) return;
+    if (!autoplay || order.length <= 1) return;
 
     const interval = setInterval(() => {
       if (!isPausedRef.current) {
-        const topCardId = stack[stack.length - 1].id;
-        sendToBack(topCardId);
+        const topCardId = order[order.length - 1];
+        setOrder(prev => [topCardId, ...prev.filter(cardId => cardId !== topCardId)]);
       }
     }, autoplayDelay);
 
     return () => clearInterval(interval);
-  }, [autoplay, autoplayDelay, stack]);
+  }, [autoplay, autoplayDelay, order]);
 
   return (
     <div

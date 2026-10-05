@@ -1,6 +1,5 @@
 "use client";
 
-export const runtime = 'edge';
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -22,7 +21,7 @@ export default function AppleDeviceUI() {
     selectedApp, 
     isAnimating, 
     isClosing, 
-    appRef, 
+    appRect, 
     handleAppClick, 
     closeApp 
   } = useAppAnimation();
@@ -38,17 +37,12 @@ export default function AppleDeviceUI() {
   }, []);
   
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (isFirstVisit) {
-        const id = setTimeout(() => {
-          setLoading(false);
-          setFadeOut(true);
-        }, 800);
-        return () => clearTimeout(id);
-      } else {
-        setLoading(false);
-      }
-    }
+    if (!isFirstVisit) return;
+    const id = setTimeout(() => {
+      setLoading(false);
+      setFadeOut(true);
+    }, 800);
+    return () => clearTimeout(id);
   }, [isFirstVisit]);
   
   return (
@@ -74,7 +68,7 @@ export default function AppleDeviceUI() {
         selectedApp={selectedApp}
         isAnimating={isAnimating}
         isClosing={isClosing}
-        appRef={appRef}
+        appRect={appRect}
         handleAppClick={handleAppClick}
         closeApp={closeApp}
       />
@@ -85,7 +79,7 @@ export default function AppleDeviceUI() {
         selectedApp={selectedApp}
         isAnimating={isAnimating}
         isClosing={isClosing}
-        appRef={appRef}
+        appRect={appRect}
         handleAppClick={handleAppClick}
         closeApp={closeApp}
       />

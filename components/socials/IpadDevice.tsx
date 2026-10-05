@@ -12,7 +12,7 @@ interface IpadDeviceProps {
   selectedApp: App | undefined;
   isAnimating: boolean;
   isClosing: boolean;
-  appRef: React.RefObject<AppRef | null>;
+  appRect: AppRef | null;
   handleAppClick: (app: App, e: React.MouseEvent<HTMLDivElement>) => void;
   closeApp: () => void;
 }
@@ -22,7 +22,7 @@ export const IpadDevice: React.FC<IpadDeviceProps> = ({
   selectedApp,
   isAnimating,
   isClosing,
-  appRef,
+  appRect,
   handleAppClick,
   closeApp
 }) => {
@@ -66,7 +66,7 @@ export const IpadDevice: React.FC<IpadDeviceProps> = ({
       {selectedApp && (
         <AppPopup 
           selectedApp={selectedApp}
-          appRef={appRef}
+          appRect={appRect}
           isAnimating={isAnimating}
           isClosing={isClosing}
           closeApp={closeApp}
