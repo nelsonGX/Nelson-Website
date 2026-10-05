@@ -1,7 +1,22 @@
 import { ArrowUp } from "lucide-react";
 import { RefObject, SetStateAction, useEffect, useRef, useState } from "react";
-import generateSmartReply from "./GenerateSmartReply";
+import generateSmartReply, { allReplies } from "./GenerateSmartReply";
 import { useTranslations } from 'next-intl';
+
+// Calls the static stand-in "nMessage relay" (app/api/nmessage) so the chat shows real
+// traffic in the network tab. Resolves with the JSON body, or null on failure; callers fall
+// back to local data so the chat works offline too.
+const relay = async (path: string, query: Record<string, string | number> = {}) => {
+  try {
+    const params = new URLSearchParams(Object.entries(query).map(([k, v]) => [k, String(v)]));
+    const res = await fetch(`/api/nmessage/${path}?${params}`, { cache: 'no-store' });
+    return res.ok ? await res.json() : null;
+  } catch {
+    return null;
+  }
+};
+
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 export default function DockMessageContent() {
   const t = useTranslations('socials.dockMessage');
@@ -60,7 +75,7 @@ export default function DockMessageContent() {
     }
   }, [messages, isResponding]);
 
-  const handleSendMessage = (e: { preventDefault: () => void; }) => {
+  const handleSendMessage = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     if (newMessage.trim() === '' || isResponding) return;
     
@@ -72,35 +87,43 @@ export default function DockMessageContent() {
     };
     
     setMessages([...messages, userMsg]);
-    
-    const smartReply = generateSmartReply(newMessage);
+
+    const localReply = generateSmartReply(newMessage);
+    const replyId = allReplies.indexOf(localReply);
     setNewMessage('');
-  
+
     setIsResponding(true);
-    
-    setTimeout(() => {
-      setMessages(prevMessages => [
-        ...prevMessages, 
-        { id: 0, text: '', sent: false, time: '', typing: true }
-      ]);
-    }, 500);
-    
-    setTimeout(() => {
-      setMessages(prevMessages => {
-        const messagesWithoutTyping = prevMessages.filter(msg => msg.typing !== true);
-        
-        const replyMsg = {
-          id: messagesWithoutTyping.length + 1,
-          text: smartReply,
-          sent: false,
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        };
-        
-        return [...messagesWithoutTyping, replyMsg];
-      });
+    const started = Date.now();
+    await relay('send', { id: userMsg.id, text: userMsg.text, t: started });
+
+    await sleep(Math.max(0, started + 500 - Date.now()));
+    relay('typing', { t: Date.now() });
+    setMessages(prevMessages => [
+      ...prevMessages, 
+      { id: 0, text: '', sent: false, time: '', typing: true }
+    ]);
+
+    const [reply] = await Promise.all([
+      replyId >= 0 ? relay(`reply/${replyId}`, { in_reply_to: userMsg.id }) : null,
+      sleep(Math.max(0, started + 2000 - Date.now())),
+    ]);
+    const replyText: string = reply?.text ?? localReply;
+
+    setMessages(prevMessages => {
+      const messagesWithoutTyping = prevMessages.filter(msg => msg.typing !== true);
       
-      setIsResponding(false);
-    }, 2000);
+      const replyMsg = {
+        id: messagesWithoutTyping.length + 1,
+        text: replyText,
+        sent: false,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      
+      return [...messagesWithoutTyping, replyMsg];
+    });
+    relay('receive', { id: userMsg.id + 1, t: Date.now() });
+    
+    setIsResponding(false);
   };
 
   const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => {
